@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="对于自我职业规划的问题许多人对于自己的一条完整的职业规划之路没有一个清晰的认知，但若你想从一个普通学生变成IT界、大厂里的大牛，往往需要经历什么才从能青铜走向王者呢？ 1.青铜——万恶之源首先是《计算机基础》这本书，在计算机基础中我们会学到计算机的历史、计算机的特点、进制转换、内存管理、线性数据结构、网络请求协议等等。计算机基础真心很重要，无比重要，究极重要，为啥我这么说呢，里面涉及的计算机知识还">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代码进阶之路">
+<meta property="og:url" content="http://yoursite.com/2020/05/12/%E4%BB%A3%E7%A0%81%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/index.html">
+<meta property="og:site_name" content="">
+<meta property="og:description" content="对于自我职业规划的问题许多人对于自己的一条完整的职业规划之路没有一个清晰的认知，但若你想从一个普通学生变成IT界、大厂里的大牛，往往需要经历什么才从能青铜走向王者呢？ 1.青铜——万恶之源首先是《计算机基础》这本书，在计算机基础中我们会学到计算机的历史、计算机的特点、进制转换、内存管理、线性数据结构、网络请求协议等等。计算机基础真心很重要，无比重要，究极重要，为啥我这么说呢，里面涉及的计算机知识还">
+<meta property="article:published_time" content="2020-05-12T06:00:05.000Z">
+<meta property="article:modified_time" content="2020-05-12T06:35:46.609Z">
+<meta property="article:author" content="xzs">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/05/12/代码进阶之路/"/>
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/text.js"></script>
+  
+
+  <title>代码进阶之路 | </title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/xzs1017477355" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"></span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/12/%E4%BB%A3%E7%A0%81%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">代码进阶之路</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T14:00:05+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BB%A3%E7%A0%81%E8%BF%9B%E9%98%B6%E5%88%86%E4%BA%AB/" itemprop="url" rel="index">
+                    <span itemprop="name">代码进阶分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="对于自我职业规划的问题"><a href="#对于自我职业规划的问题" class="headerlink" title="对于自我职业规划的问题"></a>对于自我职业规划的问题</h3><p>许多人对于自己的一条完整的职业规划之路没有一个清晰的认知，但若你想从一个普通学生变成IT界、大厂里的大牛，往往需要经历什么才从能青铜走向王者呢？</p>
+<h4 id="1-青铜——万恶之源"><a href="#1-青铜——万恶之源" class="headerlink" title="1.青铜——万恶之源"></a>1.青铜——万恶之源</h4><p>首先是《计算机基础》这本书，在计算机基础中我们会学到计算机的历史、计算机的特点、进制转换、内存管理、线性数据结构、网络请求协议等等。<br>计算机基础真心很重要，无比重要，究极重要，为啥我这么说呢，里面涉及的计算机知识还有很多网络协议的知识，大家以后一定会用到，我可以负责的告诉你，面试也一定会问，什么Http、Https、Tcp/Ip、三次握手、四次挥手面试不要太常问。<a id="more"></a><br>        Tip：这里有个小插曲就是我身边那个架构师团队Leader这周面试阿里p8岗位的时候，我以为问的都是什么源码，中间件的究极操作，我想大家跟我想的一样，但是大家错了，反而问的很多计算机的基础知识。我聊天大概问了一下面试内容，有什么求二叉树的镜像，内核态和用户态的理解，计算机的缓存页等。 大家是不是惊了，这他*不是我校招的题目么？怎么P8级别的大佬还问这个？其实很好理解，大家想一下到了一定的工作年限技术的广度深度都有一定的造诣了，你写代码就这样了没办法优化了，机器配置也是最好的了，那还能优化啥？<br>        底层！我们都知道所有语言到最后要运行都是变成机器语言的，最后归根究底都是要去跟机器交互的，那计算机的底层是不是最后还是要关注的东西了？<br>        学完计算机基础你基本上对计算机的整个知识体系都一知半解了，对于编程或许还是很懵懂，但是你现在已经要踏入编程的门了。 </p>
+<h4 id="2-白银——编程第一课"><a href="#2-白银——编程第一课" class="headerlink" title="2.白银——编程第一课"></a>2.白银——编程第一课</h4><p>计算机基础学了，后面就要编程的入门课程了。想必看我这篇文章有99%的小伙伴都是以下面这段代码开始的自己的程序人生的吧：我还记得大一上开始学习的C语言，《C语言程序设计》课本，在第27页就是第一章，HelloWord，现在回忆起来还历历在目，老师在黑板上写下这两个庄严的单词，同桌的他和我露出无限的求知欲……<br>        我想所有的语言都是语法基础开始的，而且编程语言的基础语法也都是大同小异的。If、For、While等关键字，List、Set、Map等集合，Int、float、Double等基础类型，大家第一次学的时候我想也不会知道，这些关键字将会陪伴我们走完各自的程序生涯吧？<br>        接下去就难一点比如JDBC、IO、文件流啊什么的，依稀的记得当时还是代码里面写SQL然后查询，也不知道记错没有。<br>        学到这里，你可能觉得你JavaSE无敌，出去可以找工作了，反正当时的帅丙，觉得自己可以闯出一片天了，不知天高地厚，四处炫技。但是幼稚的我根本不知道，未知的前方还有什么等着我，我也不知道自己其实才刚入门，但是如果要往WEB方向发展，这些倒是基本足够了。但是你到现在为止学的东西都是服务端的东西呀，怎么让你的服务端东西展示给别人看呢？<br>        这个时候我们就应该去做个丑不拉几的页面，进行简单的交互了，你这个时候要学HTML 、Servlet、MySQL、 JavaScript、Tomcat、CSS等。目标呢就是写出第一个动态网站，也许只是个登陆功能，只能展示下个人资料，但这是很重要的一步，你要弄清楚的是，一个用户的点击产生的请求，是从哪里发起，哪里接收，哪里处理，哪里返回，你得理解浏览器和服务器的关系和分工，Cookie和Session，Request和Response。<br>        Tip：我记得我刚出来面试就有面试题是这样的，一个Http请求从网页发起到服务端产生数据返回中间经历了些什么，或者Spring做了什么？大家可以思考一下<br>         还有有一个自己的项目真心很重要，我就是在大学期间做了项目，至今在校园内网上稳定运行着，出来实习面试的时候基本上也是一路披荆斩棘，吊打了同行面试的仔，反正大学有个项目贼加分，是读者的大学生记住了么？</p>
+<h4 id="3-黄金——初出茅庐"><a href="#3-黄金——初出茅庐" class="headerlink" title="3.黄金——初出茅庐"></a>3.黄金——初出茅庐</h4><p>上面的只是WEB开发的学习初级阶段，这都是些JAVA诞生以来最原始的最官方的WEB开发技术，当然现在真正的项目很少直接采用这些技术了，现在都是前后端分离了，Vue、Node.js、React等前端的语言更新迭代速度非常快，我学了一点刚用舒服，前端的朋友告诉我又迭代了……我他喵的不学了！<br>        为了不断提高技术的易用性、开发效率和可维护性、可扩展性，无数开源项目都是在这些原始技术的基础上封装、改进。<br>        所以这个阶段不要盲目乐观地跑去找工作或者对实习挑三拣四，你会被打击到的，又或者找个小公司浑浑噩噩几年过去感觉跟新的技术栈脱节。<br>        有人跟你说小公司学的东西多，他害你的，刚开始能去多大的去多大的，越大越好，你想你去了大的你想去小的分分钟的事情，但是你小的要去大的就相对难了。<br>        好，初始阶段完成，开始进入WEB开发的正题，首先是传说中的框架，SSM（Spring SpringMVC Mybatis）成为熟练的增删改查程序员是必须的，在这个阶段你还要理解为什么要用这仨而不是那些Jsp、Servlet、Jdbc，你要体会到写MVC、三层架构的好处。<br>        这个阶段不要轻易质疑框架的价值，也许刚开始你会觉得麻烦，觉得他们有时候是多此一举，我最开始这么写的时候发现，真的恶心，什么dao，service，Controller等等，分这么多干嘛。等过一两年后回过头来你会觉得少了这些框架你已经很难干活了，没有分层清晰的系统，你反而开口大骂项目的架构师的。不过要提醒大家的是，这个阶段还要避免的心态是，能熟练地增删改查了，就自认为写程序不过如此，然后往简历上填个精通，这也是新手面试被批得体无完肤的原因之一。<br>        浅尝即止，是新手的大忌，为啥这么写，这么写有啥好处，有啥坏处，多问几个为什么，你多年后会感谢敖丙的。<br>        如果你学得好，这会应该能熟练地写个博客啊，小论坛啊之类的WEB项目了，也就是达到了就业的基本要求。<br>        Tip：而且说一下作为一个应届生，你除了基础知识，如果你有自己的技术博客，还有像样的项目能展示给面试官看，是真的很加分，搭建个简单的项目，项目流程你也知道了，技术栈也熟悉了，还可以手机访问网页给面试官现场演示，很加分的。<br>        像我身边的朋友Java3y，JavaGuide，我没有三颗心脏等，就是在这个阶段就已经开始写了自己的博客，并且各自都做出了成绩，这些以后都是你面试的议价能力的一部分，也是你的加分项，和你自身的财富。我问了一下他们，都是靠博客就已经得到不少大公司的面试邀约了，反正有项目，有不错的履历，有不错的博客，都会给你加分，如果你什么都没有，现在动手去多学点，少打两局LOL等你到我这个年纪就会发现，索然无味。</p>
+<h4 id="4-铂金——遵义会议"><a href="#4-铂金——遵义会议" class="headerlink" title="4.铂金——遵义会议"></a>4.铂金——遵义会议</h4><p>这会是程序员生涯的一个转折点，把握好了人生起飞，把握不好全盘皆输，所以我用具有重要转折点历史意义的遵义会议，作为这阶段的标题，我觉得，妙啊！<br>        慢慢的你会发现数据库性能实在不行，出于不甘现状，或者赶时髦，你该去了解NoSQL了，Memcached、Redis、Mongodb等非关系型数据库眼花缭乱，没关系，试着用用，能很好地缓解MySQL、Oracle之类关系数据库的压力。<br>        出于公司某些业务需要，你可能会钻研一个特定技术领域，比如全文搜索技术ElasticSearch（以下简称Es），那你了解了Es，你又要想到数据库的数据怎么同步进Es呢？<br>        你可能会接触到Logstash，Canal等中间件，然后发现可视化也是个问题，那Kibana就应运而生，用的时候发现欧洲人的分词习惯跟我们不一样，那Ik中文分词器又得了解啦。使用之后你还会发现他底层的Lucene有很多坑要怎避免，时间多你还可以了解Solr等等。<br>        总之知识就是一个体系，我经常跟群里的仔说，形成知识体系，你面试说了Es那相关的技术栈你一样要了解的，我题目取了叫《吊打面试官》就是噱头，你去面试如果面试官技术深度真的很深，我想被吊打的100%是你。<br>        你甚至会开始对系统中一些比较特殊的存在感兴趣，比如权限系统，单点登陆之类的，又或者某些特定业务领域的算法研究，这些是你的加分项。<br>        你还发现服务拆分后Http通信有诸多弊端，就开始接触优秀的Rpc框架还有消息队列中间件了，如Dubbo、RocketMQ等。<br>        再再后来你发现呀，数据量大得一批，表顶不住了，几亿数据查出来要好几秒，那分库分表就出来，什么水平拆分，垂直拆分，还学习了TDDL、Sharding-JDBC、DRDS等这样的分库分表中间件。但是你用了发现全局的唯一id生成又是一个问题，或许中间件有自带的，但是你还是要了解原理，什么雪花算法，uuid等等也得学。<br>        再再再后来呀，你发现分库分表也顶不住了，业务体量爆炸式增长了，你可能就需要了解动态分库分表的解决思路和解决方案了，特别是FaceBook开源的一些方案。<br>        再再再再后来呀，你发现动态分库分表也不行啊，很多离线的数据也很多啊，每天几个T，公司都要被败光了，那你就要了解大数据场景的离线分析啊，数据缓存啊，数据清洗，数据可视化等等啊什么的。那就需要学什么ODPS啊，Hadoop、Hive、Hbase等等中间件或者工具了。<br>        再再再再再后来你开始发现你的代码很乱，久了以后自己都看不懂，重复的，难以重用的代码堆积如山，不想维护，BUG百出。于是你要开始重视设计模式，合理地改造下自己的代码习惯，不再被僵化的SSH、MVC三层架构束缚住。<br>        再再再再再再…..<br>        到这里不知道你有没有体会到我每篇文章开头那句话的意思？就是工作之后发现自己越来越无知了，你再品一下下面这句话。<br>        你知道的越多，你不知道的越多<br>        Google和各种资料是你进步的动力，极少再遇到必须请教别人才能解决的问题，如果你这个阶段还老是问别人，你的技术生涯也就快到头了。<br>        这个阶段，如果你技术卓越和跟敖丙一样能吹，你的收入将是白领水平，至少接近了，或者大幅领先同龄人了。<br>        我觉得多数程序员在工作多年之后都能达到这个水平，有的人只需要一两年，有的人却要用上五六年，在这个阶段落伍的人，有的是出于天赋和思维所限，有的是出于对技术缺乏热情，有的是出于工作内容的制约。<br>等到年近中年，再也拼不过年轻人，被淘汰出局，只能在自嘲为屌丝和码农的无奈中黯然转行。<br>        这是个很重要的分水龄，你能不能继续进步，能不能在30岁以后继续从事技术工作，能不能在公司里独当一面，我觉得就看你能不能超越这个阶段了。<br>        很多烂公司里工作数年的项目经理，连这个层次都还没达到…<br>        为了30岁的自己听到裁员完全不虚，为了家里的老母亲不再为了省电费不舍得开灯，为了让自己……<br>        我想这个阶段你应该要做好准备，这也是我大篇幅介绍这个阶段的原因。</p>
+<h4 id="5-钻石——扬帆起航"><a href="#5-钻石——扬帆起航" class="headerlink" title="5.钻石——扬帆起航"></a>5.钻石——扬帆起航</h4><p>你要读读优秀开源项目的源码，你要搞懂一些当年不懂的基础知识，你开始理解《thinking in java》的精髓，你能写一些底层的代码，有时还会觉得自己封装的比某些开源工具更好用更简单。<br>        当年看不懂的《深入分析JVM虚拟机》现在你已经可以对里面的知识点如数家珍，张口就来，并且能够将大量知识点带入到项目中优化，并且能够看到实质性的变化（暗示KPI）。<br>        WEB的难点和重点永远都在于性能、负载能力上，而现在网络的发达造成了数据量和操作密度的大大上升，硬件却没有相应的进步。<br>        你得试着更好地运用更多的服务器来协同工作，从WEB端到服务端到数据库，全都需要集群，需要分布式，需要合理的控制数据的流向，掌握好网站上下，一大堆机器的平衡，找出性能的瓶颈，找出稳定性和安全性的瓶颈，硬件出现故障，第三方技术出现错误，将被当成家常便饭融入到你的系统和代码里仔细考虑。你会开始觉得方案无比地重要，一将无能累死千军将不断应验，一个不好的设计，一个不好的方案，会让一群优秀的程序员工作成果大打折扣。<br>        你要关注架构知识，不能再满足于SSH三层架构到底。领域驱动设计，面向事件开发，敏捷开发等等一系列的思想在关键时刻能决定你项目的生死，这个阶段不再有标准范例让你照抄，你只知道思想和原理，实践却需要自己不断尝试和改进。<br>        多关注各种杂七杂八的开源技术，有些你可能前面已经接触过了，和通信有关的，和集成开发环境有关的，和架构有关的，各个领域你都应该能信口说上几个主流技术，虽然你可能只是听说过，了解。但关键时刻你得知道如何去选择技术，并快速掌握它。<br>        你还会去考虑尝试下别的语言，这里不是说转向什么C++ C#之类的，那和JAVA程序员不相干，我说的是一些运行于JVM之上的语言，比如scala和groovy，初识他们时你会觉得Java真的老了。<br>        但当你回到一个综合性的大型项目中，又会觉得Java积累下来的整个体系技术是如此完善，就像一个工业化标准一样，你可能发现光是Spring家族的东西你都受用终身，无法完全通读。你能把这个阶段实践好，胜任项目经理，乃至中小公司的技术总监，大厂的小团队Leader都是可以的</p>
+<h4 id="6-大师——登峰造极"><a href="#6-大师——登峰造极" class="headerlink" title="6.大师——登峰造极"></a>6.大师——登峰造极</h4><p>其实写到上面这个阶段的时候我觉得，这是很多人满足的地方了，都是小公司技术总监了，那我图啥？<br>但是未知的人生还在那等着你呢，我问了身边顶级的大神，为啥要走出舒适区？去像字节跳动、阿里等这些压力大很多的地方呢？<br>        他们给的回答都不太一样，但是一样的就是挑战自我吧，谁也不知道哪里是自己的终点，那为啥不多做点尝试，新的环境，新的技术栈，新业务场景挑战新的自我。<br>        这个阶段你的一举一动可能都关系一个项目的生死存亡，一个错误或者正确的决策就可能改变整个项目的命运，水能载舟亦能覆舟，我想用在这里也恰到好处。<br>        我身边这样级别的大佬凤毛麟角，但不是没有，他们在公司都是核心人物，大型项目或者项目紧要关头都是他们带领团队冲冲冲，除了问题也是能最快给出解决思路和方案的。<br>        Tip：我现在的老大就是这样的人，双十一大家还手忙脚乱去追数据的时候，他上来一套操作，写了几个脚本就搞定了，卧槽我们当时周围一群人，从头到尾的知识盲区，结束了还没反应过来，只能拍手叫666。<br>        这就是强者的世界，我所向往的世界，当然我知道这样的世界，只有一步一个脚印才能涉足。</p>
+<h4 id="7-王者——泰山之巅"><a href="#7-王者——泰山之巅" class="headerlink" title="7.王者——泰山之巅"></a>7.王者——泰山之巅</h4><p>最后王者其实我不会写任何内容，能到这个领域的人本身就是屈指可数了，敖丙身边有，但是我觉得大家自己体会吧，一般就是人脉，交际，能力都到了一定的高度了，这个阶段的事情我也体会不到。<br>        能想到的就只有先祖的诗句：指点江山，挥斥方遒。算是给大家留下无限遐想的空间吧，未来或许你就是你所在领域的王者也说不定的呢对吧。</p>
+<h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><p>不知不觉写了这么多了，以上是我个人眼里的一般向JAVA 程序员的发展线路，限于篇辐也不全面，实际个人成长路线可能因为工作内容的不同差异会很大，有的人偏向了底层研究，有的人偏向了业务需求设计，有的带有浓重的行业色彩，而且技术之外，还有很多知识也很重要，做JAVA没有轻松的方向，但一个对技术抱有兴趣的人，走到这一步时，仍然会对开发抱有热情，想要写出好的项目。<br>        纯为了生计而工作的程序猿是走不到这一步的，这一行来都来了，大家一天都是24小时，为啥有差距，我想你我都明白的，知道为啥那就干出点名堂吧。</p>
+<p>Just do it ！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/07/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/" rel="next" title="跨域问题">
+                <i class="fa fa-chevron-left"></i> 跨域问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/05/12/SpringCloud%E4%BA%94%E5%A4%A7%E7%A5%9E%E5%85%BD/" rel="prev" title="SpringCloud五大神兽">
+                SpringCloud五大神兽 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/%5Bobject%20Object%5D"
+                alt="xzs" />
+            
+              <p class="site-author-name" itemprop="name">xzs</p>
+              <p class="site-description motion-element" itemprop="description">Try me!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzs1017477355" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1017477355" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1017477355@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzs1017477355" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzs1017477355" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzs1017477355" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzs1017477355" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-globe"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/xzs1017477355" title="Title1" target="_blank">Title1</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/xzs1017477355" title="Title2" target="_blank">Title2</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对于自我职业规划的问题"><span class="nav-number">1.</span> <span class="nav-text">对于自我职业规划的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-青铜——万恶之源"><span class="nav-number">1.1.</span> <span class="nav-text">1.青铜——万恶之源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-白银——编程第一课"><span class="nav-number">1.2.</span> <span class="nav-text">2.白银——编程第一课</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-黄金——初出茅庐"><span class="nav-number">1.3.</span> <span class="nav-text">3.黄金——初出茅庐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-铂金——遵义会议"><span class="nav-number">1.4.</span> <span class="nav-text">4.铂金——遵义会议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-钻石——扬帆起航"><span class="nav-number">1.5.</span> <span class="nav-text">5.钻石——扬帆起航</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-大师——登峰造极"><span class="nav-number">1.6.</span> <span class="nav-text">6.大师——登峰造极</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-王者——泰山之巅"><span class="nav-number">1.7.</span> <span class="nav-text">7.王者——泰山之巅</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结："><span class="nav-number">1.8.</span> <span class="nav-text">总结：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xzs</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+<!-- </div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div> -->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共7.6k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 
+  
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  
+  -->
+
+
+</body>
+</html>
