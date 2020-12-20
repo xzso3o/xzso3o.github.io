@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-12-20T14:07:12.117Z</updated>
+  <updated>2020-12-20T14:14:49.511Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,26 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Test</title>
-    <link href="http://yoursite.com/2020/12/20/Test/"/>
-    <id>http://yoursite.com/2020/12/20/Test/</id>
-    <published>2020-12-20T14:06:35.000Z</published>
-    <updated>2020-12-20T14:07:12.117Z</updated>
+    <title>Vuex知识点</title>
+    <link href="http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
+    <published>2020-12-20T14:14:05.000Z</published>
+    <updated>2020-12-20T14:14:49.511Z</updated>
     
-    <content type="html"><![CDATA[<p>Test</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Vuex：状态管理管家"><a href="#Vuex：状态管理管家" class="headerlink" title="Vuex：状态管理管家"></a>Vuex：状态管理管家</h3><p> state：        存放属性  已经在state里定义的属性才有放进响应式系统 通过Vue.set() Vue.delete()是响应式的<br>         getters    ：属性需要经过变化使用该属性 类似计算属性                                                                                                                                              定义的方法可有三个参数（state，getters，rootState）<br>        mutations：存放同步方法                                                                                                                                                                        通过mutations更新state里的属性值：this.$store.commit(‘mutations里定义的方法名’)<br>                              要多传个参数过去直接this.$store.commit(‘方法名’,参数)<br>        action：       类似于mutations，用来替代mutations进行异步操作, this.$store.dispatch(‘action里定义的方法名’)<br>                              context上下文对象  可调用commit那些 但只能在本块区域<br>        modules：  可将state分割成模块，每个模块都有state、mutations、actions、getters，并且最终模块被                                 放到了state里</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Test&lt;/p&gt;
-
+        &lt;h3 id=&quot;Vuex：状态管理管家&quot;&gt;&lt;a href=&quot;#Vuex：状态管理管家&quot; class=&quot;headerlink&quot; title=&quot;Vuex：状态管理管家&quot;&gt;&lt;/a&gt;Vuex：状态管理管家&lt;/h3&gt;&lt;p&gt; state：        存放属性  已经在state里定义的属
       
     
     </summary>
     
     
-      <category term="套用代码" scheme="http://yoursite.com/categories/%E5%A5%97%E7%94%A8%E4%BB%A3%E7%A0%81/"/>
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
     
     
   </entry>
@@ -62,6 +61,30 @@
     
     
       <category term="SpringSecurity" scheme="http://yoursite.com/categories/SpringSecurity/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>回调的理解</title>
+    <link href="http://yoursite.com/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>http://yoursite.com/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/</id>
+    <published>2020-05-12T07:28:17.000Z</published>
+    <updated>2020-12-20T14:14:58.297Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="在axios中的回调"><a href="#在axios中的回调" class="headerlink" title="在axios中的回调"></a>在axios中的回调</h3><p>回调就是把函数当作参数传进来，然后你可以调用这个函数，调用的同时你不就可以传些东西出去了</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">config, success, failure</span>) </span>&#123; <span class="comment">//1.三个参数 后面两个是回调函数</span></span><br><span class="line">  <span class="comment">// 创建axios的实例</span></span><br><span class="line">  <span class="keyword">const</span> instance = axios.create(&#123;</span><br><span class="line">    baseURL: <span class="string">'http://123.207.32.32:8000'</span>,</span><br><span class="line">    timeout: <span class="number">5000</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送真正的网络请求</span></span><br><span class="line">  instance(config)    <span class="comment">//config为请求参数</span></span><br><span class="line">    .then(<span class="function"><span class="params">results</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(results);</span></span><br><span class="line">      success(results);      <span class="comment">//2.使用传进来的那个函数  并且将results放入这个函数就可以回调传出去</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(error);</span></span><br><span class="line">      failure(error)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">request(&#123;</span><br><span class="line">  url: <span class="string">'/home/multidata'</span></span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);    <span class="comment">//3. 这里就可以拿到results放入res执行函数，完成回调</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(err);</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;在axios中的回调&quot;&gt;&lt;a href=&quot;#在axios中的回调&quot; class=&quot;headerlink&quot; title=&quot;在axios中的回调&quot;&gt;&lt;/a&gt;在axios中的回调&lt;/h3&gt;&lt;p&gt;回调就是把函数当作参数传进来，然后你可以调用这个函数，调用的同时你不就可以传
+      
+    
+    </summary>
+    
+    
+      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
     
     
   </entry>
