@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="Eureka注册中心： 注册中心：itcast-eureka(1.引入启动器  2.配置spring.application.name&#x3D;itcast-eureka  3.在引导类上加注解@EnableEurekaServer)        客户端： itcast-service-provider   itcast-service-consumer         ( 1.引入启动器      2">
+<meta name="description" content="Eureka服务注册、集群实现一、创建Eureka服务端1.引入eureka服务端依赖 12345&lt;!--eureka-server--&gt;    &lt;dependency&gt;           &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;           &lt;artifactId&gt;spring-">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SpringCloud五大神兽">
-<meta property="og:url" content="https://xzso3o.github.io/2020/05/12/SpringCloud%E4%BA%94%E5%A4%A7%E7%A5%9E%E5%85%BD/index.html">
+<meta property="og:title" content="Eureka服务注册、集群实现">
+<meta property="og:url" content="https://xzso3o.github.io/2020/12/21/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="">
-<meta property="og:description" content="Eureka注册中心： 注册中心：itcast-eureka(1.引入启动器  2.配置spring.application.name&#x3D;itcast-eureka  3.在引导类上加注解@EnableEurekaServer)        客户端： itcast-service-provider   itcast-service-consumer         ( 1.引入启动器      2">
-<meta property="article:published_time" content="2020-05-12T06:38:51.000Z">
-<meta property="article:modified_time" content="2020-12-21T04:35:13.222Z">
+<meta property="og:description" content="Eureka服务注册、集群实现一、创建Eureka服务端1.引入eureka服务端依赖 12345&lt;!--eureka-server--&gt;    &lt;dependency&gt;           &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;           &lt;artifactId&gt;spring-">
+<meta property="article:published_time" content="2020-12-21T04:49:58.000Z">
+<meta property="article:modified_time" content="2020-12-21T04:50:35.868Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
 
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="https://xzso3o.github.io/2020/05/12/SpringCloud五大神兽/"/>
+  <link rel="canonical" href="https://xzso3o.github.io/2020/12/21/Eureka服务注册、集群实现/Eureka服务注册、集群实现/"/>
 
 
 
@@ -134,7 +134,7 @@
     <script src="/js/cursor/text.js"></script>
   
 
-  <title>SpringCloud五大神兽 | </title>
+  <title>Eureka服务注册、集群实现 | </title>
   
 
 
@@ -314,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/SpringCloud%E4%BA%94%E5%A4%A7%E7%A5%9E%E5%85%BD/">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/12/21/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xzs">
@@ -331,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">SpringCloud五大神兽</h1>
+          <h1 class="post-title" itemprop="name headline">Eureka服务注册、集群实现</h1>
         
 
         <div class="post-meta">
@@ -343,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T14:38:51+08:00">
-                2020-05-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T12:49:58+08:00">
+                2020-12-21
               </time>
             
 
@@ -397,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  419
                 </span>
               
 
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  2
                 </span>
               
             </div>
@@ -434,18 +434,26 @@
       
 
       
-        <h4 id="Eureka注册中心："><a href="#Eureka注册中心：" class="headerlink" title="Eureka注册中心："></a>Eureka注册中心：</h4><p> 注册中心：itcast-eureka(1.引入启动器  2.配置spring.application.name=itcast-eureka  3.在引导类上加注解@EnableEurekaServer)<br>        客户端： itcast-service-provider   itcast-service-consumer<br>         ( 1.引入启动器  </p>
-<p>   2.配置spring.application.name  eureka.client.service-url.defaultZone=<a href="http://localhost:10086/eureka" target="_blank" rel="noopener">http://localhost:10086/eureka</a> (下载APP)<br>              3. @EnableDiscoveryClient(启用eureka客户端))</p>
-<p>服务名称修改：instance.instance-id=”xxx”  主机IP信息显示:  instance.prefer-ip-address: true  显示服务信息info: <a id="more"></a></p>
-<h4 id="Ribbon负载均衡："><a href="#Ribbon负载均衡：" class="headerlink" title="Ribbon负载均衡："></a>Ribbon负载均衡：</h4><p>1.不需要添加启动器 Eureka里面自带了</p>
-<p>2.不需要覆盖默认配置就能使用了</p>
-<p>3.在RestTemplate上启用 @LoadBalanced 开启负载均衡</p>
-<p>4.使用：通过服务名service-provider修改getForObject(“xxx”)里的参数</p>
-<p>​               this.restTemplate.getForObject(“<a href="http://service-provider/user&quot;+id,User.class" target="_blank" rel="noopener">http://service-provider/user&quot;+id,User.class</a>);</p>
-<h4 id="Hystrix容错组件："><a href="#Hystrix容错组件：" class="headerlink" title="Hystrix容错组件："></a>Hystrix容错组件：</h4><p>降级：检查每次请求，是否请求超时；或者连接池已满<br>                   1.pom.xml加启动器<br>                   2.不需要覆盖默认配置 因为默认设置超时时间为一秒钟 开发过程中够用，但如果需要改就去copy笔记放入service-consumer的application.yml中配置<br>                   3.开启@EnableCircuitBreaker熔断器注解<br>                   4.写一个熔断方法fallbackMethod()，返回类似”服务器正忙，请稍后再试！”  同时在原方法上加个注解@HystrixCommand(fallbackMethod=”fallbackMethod”) 使该方法调用失败时则会调用熔断方法 返回值和参数列表都一致<br>                   5.或给类统一设定一个熔断方法：@DefaultProperties(defaultFallback=”fallbackMethod”)，防止方法太多一直写上面那个注解，如果方法有自己设置@HystrixCommand熔断方法，则使用他自己设置的熔断方法  且全局熔断方法的返回值和被熔断方法一致，但参数列表为空<br>       熔断：不在发送请求  三种状态<br>                   1.close：闭合状态，所有请求正常访问<br>                   2.open：打开状态，所有请求都无法访问。如果在一定时间内容，失败的比例不小于50%或者次数不少于20次<br>                   3.half open： 半开状态，打开状态默认5s休眠期，在休眠期所有请求无法正常访问。过了休眠期就会进入半开状态，放部分请求通过                          @SpringCloudApplication=@SpringbootApplication+@EnableDiscoveryClient+@EnableCircuitBreaker</p>
-<h4 id="Feign远程调用组件："><a href="#Feign远程调用组件：" class="headerlink" title="Feign远程调用组件："></a>Feign远程调用组件：</h4><p>1.service-consume的pox.xml加openFeign启动器<br>        2.在引导类上加注解@EnableFeignClients  就不需要用restTemplate了<br>        3.使用Feign就是创建一个接口 接口上加@FeignClient(value=”service-provider”//服务提供者名字)<br>        4.不能使用@RequestMapping写主路径  只能在接口方法上面的@GetMapping()里把路径全写出来（现在好像修复了？）<br>        5.feign.hystrix.enabled: true 开启Hystrix熔断  默认不开启要开启一下<br>        6.写一个类UserClientFallback实现接口  实现方法就是熔断方法  ，并且在接口原先注解 @FeignClient(value=”service-provider” fallback=UserClientFallback.class//实现类.class)<br>然后在熔断类上加@Component  添加入组件</p>
-<h4 id="Zuul网关："><a href="#Zuul网关：" class="headerlink" title="Zuul网关："></a>Zuul网关：</h4><p>1.建立独立的模块  引入Cloud Routing-&gt;Zuul 依赖<br>        2.配置port和spring.application.name<br>        3.导入类上加注解@EnableZuulProxy<br>        4.配置路由(分发服务)： zuul：(第三种配置)<br>                                                 routes：<br>                                                 service-provider：/service-provider/**   #这个服务前缀路径路由到这个服务id  #路由名称，随便写，习惯写上服务名<br>                                                 service-consumer(路由名称)：/consumer/**<br>                                                 #path：/service-provider/**<br>                                                 #url： http：//localhost：8082  #service-provider的路径<br>                                                 #serviceId：service-provider<br>                                                 prefix：/api    #zuul网关的前缀  判断有没有通过网关访问服务<br>                                                  eureka：<br>                                                       client：<br>                                                          service-url：<br>                                                             defaultZone：http：//localhost：10086/eureka<br>        5.过滤器  继承ZuulFilter 重写四个方法<br>                                                                  filterType: pre route post error<br>                                                                  filterOrder: 返回值越小优先级越高<br>                                                                  shouldFilter: 是否执行run方法。true执行<br>                                                                  run: 具体的拦截逻辑</p>
-<h4 id="SpringCloud-Config分布式配置中心："><a href="#SpringCloud-Config分布式配置中心：" class="headerlink" title="SpringCloud Config分布式配置中心："></a>SpringCloud Config分布式配置中心：</h4><p>每个微服务都有个application.yml，要是成百上千个，这么多yml难以管理，所以SpringCloud推出了该配置中心来管理这些yml<br>       运行期间动态调整配置，不再需要在每个服务部署的机器上编写配置文件，服务会向配置中心统一拉取配置自己的信息<br>       当配置发生变动时，服务不需要重启即可感知到配置的变化并应用新的配置，将配置信息以REST接口的形式暴露<br>          服务端配置（与GitHub连通）：<br>                1.GitHub建一个仓库 拿到config项目的SSH协议的git地址<br>                2.本地磁盘上新建个git仓库  并右键Git Bash Here输入git clone config项目的SSH协议的git地址<br>                3.在仓库的config项目文件夹里面新建application.yml文件，记住保存编码为UTF-8<br>                4.通过git指令(add commit push)将yml文件上传到GitHub仓库<br>                5.在config模块中导入pom依赖<br>                6.覆盖yml配置文件：cloud.config.server.git.url: GitHub上面的仓库名字  保持一致<br>                7.引导类上加@EnableConfigServer注解<br>          客户端配置：<br>                1.保存好客户端要用的yml文件，并传输到GitHub上<br>                2.创建客户端模块，添加pom依赖<br>                3.添加bootstrap.yml文件（优先级高）   127.0.0.1-&gt;config-3344.com 域名映射<br>               spring:<br>                  cloud:<br>                     config:<br>                       name: microservicecloud-config-client #需要从github上读取的资源名称，注意没有yml后缀名<br>                       profile: dev   #本次访问的配置项<br>                       label: master<br>                       uri: <a href="http://config-3344.com:3344" target="_blank" rel="noopener">http://config-3344.com:3344</a>  #本微服务启动后先去找3344号服务端，通过SpringCloudConfig获取GitHub的服务地址<br>               4.添加application.yml，放个名字就好<br>                   spring:<br>                        application:<br>                             name: microservicecloud-config-client<br>               5.添加带有@RestController注解的类  进行获取配置文件信息<br>               6.启动引导类</p>
+        <h3 id="Eureka服务注册、集群实现"><a href="#Eureka服务注册、集群实现" class="headerlink" title="Eureka服务注册、集群实现"></a>Eureka服务注册、集群实现</h3><h4 id="一、创建Eureka服务端"><a href="#一、创建Eureka服务端" class="headerlink" title="一、创建Eureka服务端"></a>一、创建Eureka服务端</h4><p>1.引入eureka服务端依赖</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--eureka-server--&gt;</span><br><span class="line">    &lt;dependency&gt;    </span><br><span class="line">       &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;    </span><br><span class="line">       &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.编写yml文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">eureka7001.com</span> <span class="comment">#eureka服务端的实例名称</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span>     <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span>     <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">    <span class="comment">#集群指向其它eureka</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7002.com:7002/eureka/</span></span><br><span class="line">    <span class="comment">#单机就是7001自己</span></span><br><span class="line"><span class="comment">#     defaultZone: http://eureka7001.com:7001/eureka/</span></span><br></pre></td></tr></table></figure>
+
+<p>3.添加注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableEurekaServer</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="二、创建Eureka客户端"><a href="#二、创建Eureka客户端" class="headerlink" title="二、创建Eureka客户端"></a>二、创建Eureka客户端</h4><p>1.引入eureka客户端依赖</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--eureka-client--&gt;</span><br><span class="line">    &lt;dependency&gt;    </span><br><span class="line">      &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;    </span><br><span class="line">      &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.编写yml文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8001</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloud-payment-service</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">com.alibaba.druid.pool.DruidDataSource</span>            <span class="comment"># 当前数据源操作类型</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span>              <span class="comment"># mysql驱动包</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/db2019?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">xzs666</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="comment">#表示是否将自己注册进EurekaServer默认为true。</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment">#是否从EurekaServer抓取已有的注册信息，默认为true。单节点无所谓，集群必须设置为true才能配合ribbon使用负载均衡</span></span><br><span class="line">    <span class="attr">fetchRegistry:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="comment">#单机版</span></span><br><span class="line"><span class="comment">#      defaultZone: http://localhost:7001/eureka</span></span><br><span class="line">      <span class="comment"># 集群版</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka</span></span><br><span class="line"></span><br><span class="line"><span class="attr">mybatis:</span></span><br><span class="line">  <span class="attr">mapperLocations:</span> <span class="string">classpath:mapper/*.xml</span></span><br><span class="line">  <span class="attr">type-aliases-package:</span> <span class="string">com.xzs.springcloud.entities</span>    <span class="comment"># 所有Entity别名类所在包</span></span><br></pre></td></tr></table></figure>
+
+<p>3.添加注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableEurekaClient</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="三、通过RestTemplate调用服务"><a href="#三、通过RestTemplate调用服务" class="headerlink" title="三、通过RestTemplate调用服务"></a>三、通过RestTemplate调用服务</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApplicationContextConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@LoadBalanced</span>  进行负载均衡的注解</span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">getRestTemplate</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -472,8 +480,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/12/%E4%BB%A3%E7%A0%81%E8%BF%9B%E9%98%B6%E4%B9%8B%E8%B7%AF/" rel="next" title="代码进阶之路">
-                <i class="fa fa-chevron-left"></i> 代码进阶之路
+              <a href="/2020/12/21/Springboot%E6%95%B4%E5%90%88RabbitMQ/" rel="next" title="Springboot整合RabbitMQ">
+                <i class="fa fa-chevron-left"></i> Springboot整合RabbitMQ
               </a>
             
           </div>
@@ -482,8 +490,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/05/12/Vue/" rel="prev" title="Vue">
-                Vue <i class="fa fa-chevron-right"></i>
+              <a href="/2020/12/21/Ribbon%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/" rel="prev" title="Ribbon服务调用">
+                Ribbon服务调用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -708,7 +716,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Eureka注册中心："><span class="nav-number">1.</span> <span class="nav-text">Eureka注册中心：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ribbon负载均衡："><span class="nav-number">2.</span> <span class="nav-text">Ribbon负载均衡：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hystrix容错组件："><span class="nav-number">3.</span> <span class="nav-text">Hystrix容错组件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Feign远程调用组件："><span class="nav-number">4.</span> <span class="nav-text">Feign远程调用组件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Zuul网关："><span class="nav-number">5.</span> <span class="nav-text">Zuul网关：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SpringCloud-Config分布式配置中心："><span class="nav-number">6.</span> <span class="nav-text">SpringCloud Config分布式配置中心：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Eureka服务注册、集群实现"><span class="nav-number">1.</span> <span class="nav-text">Eureka服务注册、集群实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、创建Eureka服务端"><span class="nav-number">1.1.</span> <span class="nav-text">一、创建Eureka服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、创建Eureka客户端"><span class="nav-number">1.2.</span> <span class="nav-text">二、创建Eureka客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、通过RestTemplate调用服务"><span class="nav-number">1.3.</span> <span class="nav-text">三、通过RestTemplate调用服务</span></a></li></ol></li></ol></div>
             
 
           </div>

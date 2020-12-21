@@ -87,19 +87,19 @@
 <meta name="description" content="1.基于数据库的认证 之前我们都是自己配置用户名、密码和权限，现在我们要从数据库中读取这些数据 过程： 如果我们需要自己从数据库加载用户，在定义用户时要实现UserDetail , 再实现接口里的方法   UserDetail相当于一个规范，我们每个人定义的User属性名可能不一样，所以通过重写方法返回我们自己定义的用户名、密码等，UserDetail则可知道  首先Bean里定义的User类需要">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringSecurity基于数据库的认证">
-<meta property="og:url" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/index.html">
+<meta property="og:url" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/index.html">
 <meta property="og:site_name" content="">
 <meta property="og:description" content="1.基于数据库的认证 之前我们都是自己配置用户名、密码和权限，现在我们要从数据库中读取这些数据 过程： 如果我们需要自己从数据库加载用户，在定义用户时要实现UserDetail , 再实现接口里的方法   UserDetail相当于一个规范，我们每个人定义的User属性名可能不一样，所以通过重写方法返回我们自己定义的用户名、密码等，UserDetail则可知道  首先Bean里定义的User类需要">
-<meta property="og:image" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395766607.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395976580.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395988543.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396003816.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396311487.png">
+<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395766607.png">
+<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395976580.png">
+<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395988543.png">
+<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396003816.png">
+<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396311487.png">
 <meta property="article:published_time" content="2020-12-21T04:38:10.000Z">
 <meta property="article:modified_time" content="2020-12-21T04:40:00.510Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395766607.png">
+<meta name="twitter:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395766607.png">
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/12/21/SpringSecurity基于数据库的认证/"/>
+  <link rel="canonical" href="https://xzso3o.github.io/2020/12/21/SpringSecurity基于数据库的认证/"/>
 
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xzs">
@@ -616,7 +616,7 @@ var jiathis_config={
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -786,7 +786,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.7k字</span>
+  <span class="post-count">博客全站共17.3k字</span>
 </div>
 
 

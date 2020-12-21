@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2020-12-21T05:12:05.639Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="https://xzso3o.github.io/"/>
+  <updated>2020-12-21T05:23:24.645Z</updated>
+  <id>https://xzso3o.github.io/</id>
   
   <author>
     <name>xzs</name>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>Test</title>
-    <link href="http://yoursite.com/2020/12/21/Test/Test/"/>
-    <id>http://yoursite.com/2020/12/21/Test/Test/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/Test/Test/"/>
+    <id>https://xzso3o.github.io/2020/12/21/Test/Test/</id>
     <published>2020-12-21T05:07:42.000Z</published>
-    <updated>2020-12-21T05:12:05.639Z</updated>
+    <updated>2020-12-21T05:23:24.645Z</updated>
     
     <content type="html"><![CDATA[<p>成功接收到消息！</p><p><img src="/2020/12/21/Test/Test/F:%5CBlog%5CMyBlog%5Csource_posts%5CTest%5C1605541329967.png" alt="1605541329967"></p><p><img src="/2020/12/21/Test/Test/F:%5CBlog%5CMyBlog%5Csource_posts%5CTest%5C1605541329967.png" alt="01"></p>]]></content>
     
@@ -30,8 +30,10 @@
       
       
         &lt;p&gt;成功接收到消息！&lt;/p&gt;
+
+
 &lt;p&gt;&lt;img src=&quot;/2020/12/21/Test/Test/F:%5CBlog%5CMyBlog%5Csource_posts%5CTest%5C1605541329967.png&quot; alt=&quot;1605541329967&quot;&gt;&lt;/p&gt;
-&lt;p
+
       
     
     </summary>
@@ -42,8 +44,8 @@
   
   <entry>
     <title>SpringCloud Alibaba-Seata</title>
-    <link href="http://yoursite.com/2020/12/21/SpringCloud-Alibaba-Seata/"/>
-    <id>http://yoursite.com/2020/12/21/SpringCloud-Alibaba-Seata/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringCloud-Alibaba-Seata/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringCloud-Alibaba-Seata/</id>
     <published>2020-12-21T05:00:13.000Z</published>
     <updated>2020-12-21T05:00:39.400Z</updated>
     
@@ -59,15 +61,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringCloud Alibaba-Sentinel</title>
-    <link href="http://yoursite.com/2020/12/21/SpringCloud-Alibaba-Sentinel/"/>
-    <id>http://yoursite.com/2020/12/21/SpringCloud-Alibaba-Sentinel/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringCloud-Alibaba-Sentinel/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringCloud-Alibaba-Sentinel/</id>
     <published>2020-12-21T04:59:16.000Z</published>
     <updated>2020-12-21T04:59:43.921Z</updated>
     
@@ -83,15 +85,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringCloud Alibaba-Nacos</title>
-    <link href="http://yoursite.com/2020/12/21/SpringCloud-Alibaba-Nacos/"/>
-    <id>http://yoursite.com/2020/12/21/SpringCloud-Alibaba-Nacos/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringCloud-Alibaba-Nacos/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringCloud-Alibaba-Nacos/</id>
     <published>2020-12-21T04:57:48.000Z</published>
     <updated>2020-12-21T04:58:32.750Z</updated>
     
@@ -107,15 +109,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringCloud Sleuth分布式请求链路跟踪</title>
-    <link href="http://yoursite.com/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/"/>
-    <id>http://yoursite.com/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/</id>
     <published>2020-12-21T04:55:47.000Z</published>
     <updated>2020-12-21T04:56:34.249Z</updated>
     
@@ -131,15 +133,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringCloud Stream消息驱动</title>
-    <link href="http://yoursite.com/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/"/>
-    <id>http://yoursite.com/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/</id>
     <published>2020-12-21T04:54:49.000Z</published>
     <updated>2020-12-21T04:55:21.655Z</updated>
     
@@ -155,19 +157,19 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>GateWay网关</title>
-    <link href="http://yoursite.com/2020/12/21/GateWay%E7%BD%91%E5%85%B3/"/>
-    <id>http://yoursite.com/2020/12/21/GateWay%E7%BD%91%E5%85%B3/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/"/>
+    <id>https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/</id>
     <published>2020-12-21T04:53:51.000Z</published>
-    <updated>2020-12-21T04:54:19.365Z</updated>
+    <updated>2020-12-21T05:14:27.054Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="GateWay网关"><a href="#GateWay网关" class="headerlink" title="GateWay网关"></a>GateWay网关</h3><p>核心逻辑：路由转发+执行过滤器链</p><p>三大核心概念：路由、断言、过滤</p><p>1.引入POM依赖</p><p>GateWay不需要引入web、actuator这两个依赖，本身自己带有</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--gateway--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">      &lt;!--eureka-client--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br></pre></td></tr></table></figure><p>2.建立YML文件</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">locator:</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment">#开启从注册中心动态创建路由的功能，利用微服务名进行路由</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/get/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line"></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh2</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/lb/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line">            <span class="comment">#- After=2020-02-21T15:51:37.485+08:00[Asia/Shanghai]</span></span><br><span class="line">            <span class="comment">#- Cookie=username,zzyy</span></span><br><span class="line">            <span class="comment">#- Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式</span></span><br></pre></td></tr></table></figure><p>运行过程：寻找路由里uri提供的服务地址，然后前往predicates断言下的服务地址路径，相匹配的则需要通过访问9527网关端口才可访问服务。同时可添加许多断言规则，具体搜官网</p><p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1600058451076.png" alt="1600058451076"></p><p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1600058405289.png" alt="1600058405289"></p><p>同时还可通过编码方式进行配置路由映射</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GateWayConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RouteLocator <span class="title">customRouteLocator</span><span class="params">(RouteLocatorBuilder routeLocatorBuilder)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();</span><br><span class="line"></span><br><span class="line">        routes.route(<span class="string">"path_route_xzs"</span>,</span><br><span class="line">                r -&gt; r.path(<span class="string">"/guonei"</span>)</span><br><span class="line">                        .uri(<span class="string">"http://news.baidu.com/guonei"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> routes.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上为配置了一个叫path_route_xzs的路由，当访问localhost:9527/guonei，则跳转到<a href="http://news.baidu.com/guonei" target="_blank" rel="noopener">http://news.baidu.com/guonei</a></p><p>3.路由过滤</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLogGateWayFilter</span> <span class="keyword">implements</span> <span class="title">GlobalFilter</span>,<span class="title">Ordered</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mono&lt;Void&gt; <span class="title">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        log.info(<span class="string">"***********come in MyLogGateWayFilter:  "</span>+<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">        String uname = exchange.getRequest().getQueryParams().getFirst(<span class="string">"uname"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(uname == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            log.info(<span class="string">"*******用户名为null，非法用户，o(╥﹏╥)o"</span>);</span><br><span class="line">            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);</span><br><span class="line">            <span class="keyword">return</span> exchange.getResponse().setComplete();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> chain.filter(exchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOrder</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>即实现两个接口GlobalFilter,Ordered，直接进行过滤规则编写。以上为访问时需带上一个uname值才可访问</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="GateWay网关"><a href="#GateWay网关" class="headerlink" title="GateWay网关"></a>GateWay网关</h3><p>核心逻辑：路由转发+执行过滤器链</p><p>三大核心概念：路由、断言、过滤</p><p>1.引入POM依赖</p><p>GateWay不需要引入web、actuator这两个依赖，本身自己带有</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--gateway--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">      &lt;!--eureka-client--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br></pre></td></tr></table></figure><p>2.建立YML文件</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">locator:</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment">#开启从注册中心动态创建路由的功能，利用微服务名进行路由</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/get/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line"></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh2</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/lb/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line">            <span class="comment">#- After=2020-02-21T15:51:37.485+08:00[Asia/Shanghai]</span></span><br><span class="line">            <span class="comment">#- Cookie=username,zzyy</span></span><br><span class="line">            <span class="comment">#- Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式</span></span><br></pre></td></tr></table></figure><p>运行过程：寻找路由里uri提供的服务地址，然后前往predicates断言下的服务地址路径，相匹配的则需要通过访问9527网关端口才可访问服务。同时可添加许多断言规则，具体搜官网</p><p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/F:%5CBlog%5CMyBlog%5Csource_posts%5CGateWay%E7%BD%91%E5%85%B3%5C1600058451076.png" alt="1600058451076"></p><p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1600058405289.png" alt="1600058405289"></p><p>同时还可通过编码方式进行配置路由映射</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GateWayConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RouteLocator <span class="title">customRouteLocator</span><span class="params">(RouteLocatorBuilder routeLocatorBuilder)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();</span><br><span class="line"></span><br><span class="line">        routes.route(<span class="string">"path_route_xzs"</span>,</span><br><span class="line">                r -&gt; r.path(<span class="string">"/guonei"</span>)</span><br><span class="line">                        .uri(<span class="string">"http://news.baidu.com/guonei"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> routes.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上为配置了一个叫path_route_xzs的路由，当访问localhost:9527/guonei，则跳转到<a href="http://news.baidu.com/guonei" target="_blank" rel="noopener">http://news.baidu.com/guonei</a></p><p>3.路由过滤</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLogGateWayFilter</span> <span class="keyword">implements</span> <span class="title">GlobalFilter</span>,<span class="title">Ordered</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mono&lt;Void&gt; <span class="title">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        log.info(<span class="string">"***********come in MyLogGateWayFilter:  "</span>+<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">        String uname = exchange.getRequest().getQueryParams().getFirst(<span class="string">"uname"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(uname == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            log.info(<span class="string">"*******用户名为null，非法用户，o(╥﹏╥)o"</span>);</span><br><span class="line">            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);</span><br><span class="line">            <span class="keyword">return</span> exchange.getResponse().setComplete();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> chain.filter(exchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOrder</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>即实现两个接口GlobalFilter,Ordered，直接进行过滤规则编写。以上为访问时需带上一个uname值才可访问</p>]]></content>
     
     <summary type="html">
     
@@ -180,15 +182,40 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>GateWay网关</title>
+    <link href="https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/GateWay%E7%BD%91%E5%85%B3/"/>
+    <id>https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/GateWay%E7%BD%91%E5%85%B3/</id>
+    <published>2020-12-21T04:53:51.000Z</published>
+    <updated>2020-12-21T05:15:35.303Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="GateWay网关"><a href="#GateWay网关" class="headerlink" title="GateWay网关"></a>GateWay网关</h3><p>核心逻辑：路由转发+执行过滤器链</p><p>三大核心概念：路由、断言、过滤</p><p>1.引入POM依赖</p><p>GateWay不需要引入web、actuator这两个依赖，本身自己带有</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--gateway--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">      &lt;!--eureka-client--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br></pre></td></tr></table></figure><p>2.建立YML文件</p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">locator:</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment">#开启从注册中心动态创建路由的功能，利用微服务名进行路由</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/get/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line"></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh2</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/lb/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line">            <span class="comment">#- After=2020-02-21T15:51:37.485+08:00[Asia/Shanghai]</span></span><br><span class="line">            <span class="comment">#- Cookie=username,zzyy</span></span><br><span class="line">            <span class="comment">#- Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式</span></span><br></pre></td></tr></table></figure><p>运行过程：寻找路由里uri提供的服务地址，然后前往predicates断言下的服务地址路径，相匹配的则需要通过访问9527网关端口才可访问服务。同时可添加许多断言规则，具体搜官网</p><p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/GateWay%E7%BD%91%E5%85%B3/F:%5CBlog%5CMyBlog%5Csource_posts%5CGateWay%E7%BD%91%E5%85%B3%5C1600058451076.png" alt="01"></p><p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/GateWay%E7%BD%91%E5%85%B3/F:%5CBlog%5CMyBlog%5Csource_posts%5CGateWay%E7%BD%91%E5%85%B3%5C1600058405289.png" alt="1600058405289"></p><p>同时还可通过编码方式进行配置路由映射</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GateWayConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RouteLocator <span class="title">customRouteLocator</span><span class="params">(RouteLocatorBuilder routeLocatorBuilder)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();</span><br><span class="line"></span><br><span class="line">        routes.route(<span class="string">"path_route_xzs"</span>,</span><br><span class="line">                r -&gt; r.path(<span class="string">"/guonei"</span>)</span><br><span class="line">                        .uri(<span class="string">"http://news.baidu.com/guonei"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> routes.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>以上为配置了一个叫path_route_xzs的路由，当访问localhost:9527/guonei，则跳转到<a href="http://news.baidu.com/guonei" target="_blank" rel="noopener">http://news.baidu.com/guonei</a></p><p>3.路由过滤</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLogGateWayFilter</span> <span class="keyword">implements</span> <span class="title">GlobalFilter</span>,<span class="title">Ordered</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mono&lt;Void&gt; <span class="title">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        log.info(<span class="string">"***********come in MyLogGateWayFilter:  "</span>+<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">        String uname = exchange.getRequest().getQueryParams().getFirst(<span class="string">"uname"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(uname == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            log.info(<span class="string">"*******用户名为null，非法用户，o(╥﹏╥)o"</span>);</span><br><span class="line">            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);</span><br><span class="line">            <span class="keyword">return</span> exchange.getResponse().setComplete();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> chain.filter(exchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOrder</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>即实现两个接口GlobalFilter,Ordered，直接进行过滤规则编写。以上为访问时需带上一个uname值才可访问</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;GateWay网关&quot;&gt;&lt;a href=&quot;#GateWay网关&quot; class=&quot;headerlink&quot; title=&quot;GateWay网关&quot;&gt;&lt;/a&gt;GateWay网关&lt;/h3&gt;&lt;p&gt;核心逻辑：路由转发+执行过滤器链&lt;/p&gt;
+&lt;p&gt;三大核心概念：路由、断言、过滤&lt;/p
+      
+    
+    </summary>
+    
+    
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>Hystrix服务降级、熔断、限流</title>
-    <link href="http://yoursite.com/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/"/>
-    <id>http://yoursite.com/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/"/>
+    <id>https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/</id>
     <published>2020-12-21T04:53:10.000Z</published>
     <updated>2020-12-21T04:53:34.984Z</updated>
     
@@ -204,15 +231,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>OpenFeign服务接口调用</title>
-    <link href="http://yoursite.com/2020/12/21/OpenFeign%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/"/>
-    <id>http://yoursite.com/2020/12/21/OpenFeign%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/OpenFeign%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/"/>
+    <id>https://xzso3o.github.io/2020/12/21/OpenFeign%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/</id>
     <published>2020-12-21T04:51:51.000Z</published>
     <updated>2020-12-21T04:52:19.573Z</updated>
     
@@ -229,15 +256,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>Ribbon服务调用</title>
-    <link href="http://yoursite.com/2020/12/21/Ribbon%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/"/>
-    <id>http://yoursite.com/2020/12/21/Ribbon%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/Ribbon%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/"/>
+    <id>https://xzso3o.github.io/2020/12/21/Ribbon%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/</id>
     <published>2020-12-21T04:50:57.000Z</published>
     <updated>2020-12-21T04:51:23.106Z</updated>
     
@@ -254,15 +281,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>Eureka服务注册、集群实现</title>
-    <link href="http://yoursite.com/2020/12/21/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://yoursite.com/2020/12/21/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/"/>
+    <id>https://xzso3o.github.io/2020/12/21/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/Eureka%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E3%80%81%E9%9B%86%E7%BE%A4%E5%AE%9E%E7%8E%B0/</id>
     <published>2020-12-21T04:49:58.000Z</published>
     <updated>2020-12-21T04:50:35.868Z</updated>
     
@@ -278,15 +305,15 @@
     </summary>
     
     
-      <category term="SpringCloud" scheme="http://yoursite.com/categories/SpringCloud/"/>
+      <category term="SpringCloud" scheme="https://xzso3o.github.io/categories/SpringCloud/"/>
     
     
   </entry>
   
   <entry>
     <title>Springboot整合RabbitMQ</title>
-    <link href="http://yoursite.com/2020/12/21/Springboot%E6%95%B4%E5%90%88RabbitMQ/"/>
-    <id>http://yoursite.com/2020/12/21/Springboot%E6%95%B4%E5%90%88RabbitMQ/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/Springboot%E6%95%B4%E5%90%88RabbitMQ/"/>
+    <id>https://xzso3o.github.io/2020/12/21/Springboot%E6%95%B4%E5%90%88RabbitMQ/</id>
     <published>2020-12-21T04:43:08.000Z</published>
     <updated>2020-12-21T04:45:57.752Z</updated>
     
@@ -302,15 +329,15 @@
     </summary>
     
     
-      <category term="Springboot" scheme="http://yoursite.com/categories/Springboot/"/>
+      <category term="Springboot" scheme="https://xzso3o.github.io/categories/Springboot/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringSecurity动态权限配置</title>
-    <link href="http://yoursite.com/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/</id>
     <published>2020-12-21T04:40:24.000Z</published>
     <updated>2020-12-21T04:40:54.633Z</updated>
     
@@ -326,15 +353,15 @@
     </summary>
     
     
-      <category term="SpringSecurity" scheme="http://yoursite.com/categories/SpringSecurity/"/>
+      <category term="SpringSecurity" scheme="https://xzso3o.github.io/categories/SpringSecurity/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringSecurity基于数据库的认证</title>
-    <link href="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/"/>
-    <id>http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/</id>
     <published>2020-12-21T04:38:10.000Z</published>
     <updated>2020-12-21T04:40:00.510Z</updated>
     
@@ -350,15 +377,15 @@
     </summary>
     
     
-      <category term="SpringSecurity" scheme="http://yoursite.com/categories/SpringSecurity/"/>
+      <category term="SpringSecurity" scheme="https://xzso3o.github.io/categories/SpringSecurity/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringSecurity配置</title>
-    <link href="http://yoursite.com/2020/12/21/SpringSecurity%E9%85%8D%E7%BD%AE/"/>
-    <id>http://yoursite.com/2020/12/21/SpringSecurity%E9%85%8D%E7%BD%AE/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringSecurity%E9%85%8D%E7%BD%AE/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringSecurity%E9%85%8D%E7%BD%AE/</id>
     <published>2020-12-21T04:35:43.000Z</published>
     <updated>2020-12-21T04:37:38.037Z</updated>
     
@@ -374,15 +401,15 @@
     </summary>
     
     
-      <category term="SpringSecurity" scheme="http://yoursite.com/categories/SpringSecurity/"/>
+      <category term="SpringSecurity" scheme="https://xzso3o.github.io/categories/SpringSecurity/"/>
     
     
   </entry>
   
   <entry>
     <title>SpringSecurity初体验</title>
-    <link href="http://yoursite.com/2020/12/21/SpringSecurity%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
-    <id>http://yoursite.com/2020/12/21/SpringSecurity%E5%88%9D%E4%BD%93%E9%AA%8C/</id>
+    <link href="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%88%9D%E4%BD%93%E9%AA%8C/"/>
+    <id>https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%88%9D%E4%BD%93%E9%AA%8C/</id>
     <published>2020-12-21T04:33:31.000Z</published>
     <updated>2020-12-21T04:34:24.027Z</updated>
     
@@ -399,15 +426,15 @@
     </summary>
     
     
-      <category term="SpringSecurity" scheme="http://yoursite.com/categories/SpringSecurity/"/>
+      <category term="SpringSecurity" scheme="https://xzso3o.github.io/categories/SpringSecurity/"/>
     
     
   </entry>
   
   <entry>
     <title>Vuex知识点</title>
-    <link href="http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
+    <link href="https://xzso3o.github.io/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>https://xzso3o.github.io/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
     <published>2020-12-20T14:14:05.000Z</published>
     <updated>2020-12-20T14:14:49.511Z</updated>
     
@@ -423,15 +450,15 @@
     </summary>
     
     
-      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
+      <category term="Vue" scheme="https://xzso3o.github.io/categories/Vue/"/>
     
     
   </entry>
   
   <entry>
     <title>回调的理解</title>
-    <link href="http://yoursite.com/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>http://yoursite.com/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/</id>
+    <link href="https://xzso3o.github.io/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>https://xzso3o.github.io/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/</id>
     <published>2020-05-12T07:28:17.000Z</published>
     <updated>2020-12-20T14:14:58.297Z</updated>
     
@@ -447,15 +474,15 @@
     </summary>
     
     
-      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
+      <category term="Vue" scheme="https://xzso3o.github.io/categories/Vue/"/>
     
     
   </entry>
   
   <entry>
     <title>Vue零碎知识点</title>
-    <link href="http://yoursite.com/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    <id>http://yoursite.com/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
+    <link href="https://xzso3o.github.io/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <id>https://xzso3o.github.io/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
     <published>2020-05-12T07:04:36.000Z</published>
     <updated>2020-05-12T07:17:56.304Z</updated>
     
@@ -471,31 +498,7 @@
     </summary>
     
     
-      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Vue</title>
-    <link href="http://yoursite.com/2020/05/12/Vue/"/>
-    <id>http://yoursite.com/2020/05/12/Vue/</id>
-    <published>2020-05-12T06:53:02.000Z</published>
-    <updated>2020-12-21T04:35:06.949Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Vue整体概括"><a href="#Vue整体概括" class="headerlink" title="Vue整体概括"></a>Vue整体概括</h3><p>main.js主文件  进行App.vue这个根文件  进行渲染，同时可设置路由router</p><p>App.vue主界面入口  导入一些自己写的组件 同时可用router-view进行路由渲染 从而不在这里面放入太多的组件</p><p>index.js 路由文件  导入VueRouter 并Vue.use(VueRouter)使用  同时写上</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line"> routes,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>并在上面定义一个routes路由数组 在数组里配置各个路由映射</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: <span class="string">'/home'</span>,</span><br><span class="line">    component: Home</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>记得导入组件，可以直接导入，也可以懒加载导入</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Home = () =&gt; <span class="keyword">import</span>(<span class="string">'../views/home/Home'</span>)</span><br></pre></td></tr></table></figure><p>之后项目划分：</p><p>​    assets-&gt;css、img  放样式和图片<br>​            common-&gt;mixin.js、utils.js、const.js 放公用函数、常量文件<br>​            components-&gt;common、content  放可复用的组件，同时分为公用和业务所需<br>​            network-&gt;request.js、home.js、detail.js 放网络请求的文件 同时对axios进行一层封装为request<br>​                                          之后home.js等文件只需导入request，并传入url、params作为网络请求的config<br>​            router-&gt;index.js  配置路由 大体只配置主要的部分/home /category /cart /profile /detail/:iid<br>​            store-&gt;index.js、actions.js、mutations.js、getters.js  配置Vuex的五大组件 进行状态管理<br>​            views-&gt;home、category、cart、profile、detail  配置主要部分的视图 业务组件都在这里编写</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Vue整体概括&quot;&gt;&lt;a href=&quot;#Vue整体概括&quot; class=&quot;headerlink&quot; title=&quot;Vue整体概括&quot;&gt;&lt;/a&gt;Vue整体概括&lt;/h3&gt;&lt;p&gt;main.js主文件  进行App.vue这个根文件  进行渲染，同时可设置路由router&lt;/p&gt;
-      
-    
-    </summary>
-    
-    
-      <category term="Vue" scheme="http://yoursite.com/categories/Vue/"/>
+      <category term="Vue" scheme="https://xzso3o.github.io/categories/Vue/"/>
     
     
   </entry>

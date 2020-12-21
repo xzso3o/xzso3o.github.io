@@ -87,16 +87,16 @@
 <meta name="description" content="Hystrix一、主要三大概念 二、服务降级1.导入一些依赖 123456789101112131415&lt;!--hystrix--&gt;   &lt;dependency&gt; 	  &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hystrix服务降级、熔断、限流">
-<meta property="og:url" content="http://yoursite.com/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/index.html">
+<meta property="og:url" content="https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/index.html">
 <meta property="og:site_name" content="">
 <meta property="og:description" content="Hystrix一、主要三大概念 二、服务降级1.导入一些依赖 123456789101112131415&lt;!--hystrix--&gt;   &lt;dependency&gt; 	  &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;     &lt;artifactId&gt;spring-cloud-starter-net">
-<meta property="og:image" content="http://yoursite.com/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1599971166608.png">
-<meta property="og:image" content="http://yoursite.com/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1599995658090.png">
+<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1599971166608.png">
+<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1599995658090.png">
 <meta property="article:published_time" content="2020-12-21T04:53:10.000Z">
 <meta property="article:modified_time" content="2020-12-21T04:53:34.984Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1599971166608.png">
+<meta name="twitter:image" content="https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1599971166608.png">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/12/21/Hystrix服务降级、熔断、限流/"/>
+  <link rel="canonical" href="https://xzso3o.github.io/2020/12/21/Hystrix服务降级、熔断、限流/"/>
 
 
 
@@ -317,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xzs">
@@ -528,7 +528,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/" rel="prev" title="GateWay网关">
+              <a href="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/GateWay%E7%BD%91%E5%85%B3/" rel="prev" title="GateWay网关">
                 GateWay网关 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -637,7 +637,7 @@ var jiathis_config={
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -807,7 +807,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共16.7k字</span>
+  <span class="post-count">博客全站共17.3k字</span>
 </div>
 
 
