@@ -84,12 +84,12 @@
 
 
 
-<meta name="description" content="动态权限配置之前我们各个用户赋予各个权限，实际中显然不行，我们需要通过后台管理动态去配置用户权限，我们可以修改用户访问权限，也可以修改用户能访问哪些资源 所以我们把权限这套东西放在数据库里，然后通过数据库里数据的关系来描述用户拥有的权限 创建各类表： menu资源表 role角色表 user用户表 和两个关联表 我们就可以通过用户查到用户所拥有的角色，才通过角色查询到所能访问的资源（相当于把9.基">
+<meta name="description" content="动态权限配置之前我们各个用户赋予各个权限，实际中显然不行，我们需要通过后台管理动态去配置用户权限，我们可以修改用户访问权限，也可以修改用户能访问哪些资源 所以我们把权限这套东西放在数据库里，然后通过数据库里数据的关系来描述用户拥有的权限 创建各类表： menu资源表 role角色表 user用户表 和两个关联表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringSecurity动态权限配置">
 <meta property="og:url" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="">
-<meta property="og:description" content="动态权限配置之前我们各个用户赋予各个权限，实际中显然不行，我们需要通过后台管理动态去配置用户权限，我们可以修改用户访问权限，也可以修改用户能访问哪些资源 所以我们把权限这套东西放在数据库里，然后通过数据库里数据的关系来描述用户拥有的权限 创建各类表： menu资源表 role角色表 user用户表 和两个关联表 我们就可以通过用户查到用户所拥有的角色，才通过角色查询到所能访问的资源（相当于把9.基">
+<meta property="og:description" content="动态权限配置之前我们各个用户赋予各个权限，实际中显然不行，我们需要通过后台管理动态去配置用户权限，我们可以修改用户访问权限，也可以修改用户能访问哪些资源 所以我们把权限这套东西放在数据库里，然后通过数据库里数据的关系来描述用户拥有的权限 创建各类表： menu资源表 role角色表 user用户表 和两个关联表">
 <meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/1.png">
 <meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/2.png">
 <meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/3.png">
@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/6.png">
 <meta property="og:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/7.png">
 <meta property="article:published_time" content="2020-12-21T04:40:24.000Z">
-<meta property="article:modified_time" content="2020-12-21T12:03:01.708Z">
+<meta property="article:modified_time" content="2020-12-21T12:18:20.480Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://xzso3o.github.io/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/1.png">
@@ -449,6 +449,8 @@
 <p>role角色表<img src="/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/2.png" alt="1604396749741"></p>
 <p>user用户表<img src="/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/3.png" alt="1604396775805"></p>
 <p>和两个关联表</p>
+<a id="more"></a> 
+
 <p>我们就可以通过用户查到用户所拥有的角色，才通过角色查询到所能访问的资源（相当于把9.基于数据库的认证里的访问权限拦截设置也放数据库里了）</p>
 <p>原本我们这个路径是自己写死的</p>
 <p><img src="/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/4.png" alt="1604398080044"></p>

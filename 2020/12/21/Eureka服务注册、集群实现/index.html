@@ -91,7 +91,7 @@
 <meta property="og:site_name" content="">
 <meta property="og:description" content="Eureka服务注册、集群实现一、创建Eureka服务端1.引入eureka服务端依赖 12345&lt;!--eureka-server--&gt;    &lt;dependency&gt;           &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;groupId&gt;           &lt;artifactId&gt;spring-">
 <meta property="article:published_time" content="2020-12-21T04:49:58.000Z">
-<meta property="article:modified_time" content="2020-12-21T04:50:35.868Z">
+<meta property="article:modified_time" content="2020-12-21T12:15:41.950Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
 
@@ -436,6 +436,8 @@
       
         <h3 id="Eureka服务注册、集群实现"><a href="#Eureka服务注册、集群实现" class="headerlink" title="Eureka服务注册、集群实现"></a>Eureka服务注册、集群实现</h3><h4 id="一、创建Eureka服务端"><a href="#一、创建Eureka服务端" class="headerlink" title="一、创建Eureka服务端"></a>一、创建Eureka服务端</h4><p>1.引入eureka服务端依赖</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--eureka-server--&gt;</span><br><span class="line">    &lt;dependency&gt;    </span><br><span class="line">       &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;    </span><br><span class="line">       &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-server&lt;/artifactId&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a> 
 
 <p>2.编写yml文件</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">instance:</span></span><br><span class="line">    <span class="attr">hostname:</span> <span class="string">eureka7001.com</span> <span class="comment">#eureka服务端的实例名称</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">register-with-eureka:</span> <span class="literal">false</span>     <span class="comment">#false表示不向注册中心注册自己。</span></span><br><span class="line">    <span class="attr">fetch-registry:</span> <span class="literal">false</span>     <span class="comment">#false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">    <span class="comment">#集群指向其它eureka</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://eureka7002.com:7002/eureka/</span></span><br><span class="line">    <span class="comment">#单机就是7001自己</span></span><br><span class="line"><span class="comment">#     defaultZone: http://eureka7001.com:7001/eureka/</span></span><br></pre></td></tr></table></figure>
