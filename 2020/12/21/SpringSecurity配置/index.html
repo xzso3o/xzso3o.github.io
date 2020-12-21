@@ -84,16 +84,24 @@
 
 
 
-<meta name="description" content="Vuex：状态管理管家 state：        存放属性  已经在state里定义的属性才有放进响应式系统 通过Vue.set() Vue.delete()是响应式的         getters    ：属性需要经过变化使用该属性 类似计算属性">
+<meta name="description" content="1.HttpSecurity拦截配置我们需要配置不同的拦截规则对不同的url进行拦截 1.重写方法 1234567891011121314@Override   protected void configure(HttpSecurity http) throws Exception &amp;#123;       http.authorizeRequests()  &#x2F;&#x2F;开启配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vuex知识点">
-<meta property="og:url" content="http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:title" content="SpringSecurity配置">
+<meta property="og:url" content="http://yoursite.com/2020/12/21/SpringSecurity%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="">
-<meta property="og:description" content="Vuex：状态管理管家 state：        存放属性  已经在state里定义的属性才有放进响应式系统 通过Vue.set() Vue.delete()是响应式的         getters    ：属性需要经过变化使用该属性 类似计算属性">
-<meta property="article:published_time" content="2020-12-20T14:14:05.000Z">
-<meta property="article:modified_time" content="2020-12-20T14:14:49.511Z">
+<meta property="og:description" content="1.HttpSecurity拦截配置我们需要配置不同的拦截规则对不同的url进行拦截 1.重写方法 1234567891011121314@Override   protected void configure(HttpSecurity http) throws Exception &amp;#123;       http.authorizeRequests()  &#x2F;&#x2F;开启配置">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327277062.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604326438237.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327236568.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327611247.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327662920.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327699659.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604330708908.png">
+<meta property="article:published_time" content="2020-12-21T04:35:43.000Z">
+<meta property="article:modified_time" content="2020-12-21T04:37:38.037Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327277062.png">
 
 
 
@@ -123,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/12/20/Vuex知识点/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/12/21/SpringSecurity配置/"/>
 
 
 
@@ -134,7 +142,7 @@
     <script src="/js/cursor/text.js"></script>
   
 
-  <title>Vuex知识点 | </title>
+  <title>SpringSecurity配置 | </title>
   
 
 
@@ -314,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/21/SpringSecurity%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xzs">
@@ -331,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vuex知识点</h1>
+          <h1 class="post-title" itemprop="name headline">SpringSecurity配置</h1>
         
 
         <div class="post-meta">
@@ -343,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-20T22:14:05+08:00">
-                2020-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T12:35:43+08:00">
+                2020-12-21
               </time>
             
 
@@ -366,8 +374,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
+                  <a href="/categories/SpringSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringSecurity</span>
                   </a>
                 </span>
 
@@ -397,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  200
+                  1.1k
                 </span>
               
 
@@ -413,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -434,8 +442,42 @@
       
 
       
-        <h3 id="Vuex：状态管理管家"><a href="#Vuex：状态管理管家" class="headerlink" title="Vuex：状态管理管家"></a>Vuex：状态管理管家</h3><p> state：        存放属性  已经在state里定义的属性才有放进响应式系统 通过Vue.set() Vue.delete()是响应式的<br>         getters    ：属性需要经过变化使用该属性 类似计算属性                                                                                                                                              定义的方法可有三个参数（state，getters，rootState）<br>        mutations：存放同步方法                                                                                                                                                                        通过mutations更新state里的属性值：this.$store.commit(‘mutations里定义的方法名’)<br>                              要多传个参数过去直接this.$store.commit(‘方法名’,参数)<br>        action：       类似于mutations，用来替代mutations进行异步操作, this.$store.dispatch(‘action里定义的方法名’)<br>                              context上下文对象  可调用commit那些 但只能在本块区域<br>        modules：  可将state分割成模块，每个模块都有state、mutations、actions、getters，并且最终模块被                                 放到了state里</p>
+        <h1 id="1-HttpSecurity拦截配置"><a href="#1-HttpSecurity拦截配置" class="headerlink" title="1.HttpSecurity拦截配置"></a>1.HttpSecurity拦截配置</h1><p>我们需要配置不同的拦截规则对不同的url进行拦截</p>
+<p>1.重写方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       http.authorizeRequests()  <span class="comment">//开启配置</span></span><br><span class="line">               .antMatchers(<span class="string">"/admin/**"</span>).hasRole(<span class="string">"admin"</span>)<span class="comment">//ant风格的匹配符，路径符合这个规则要有哪些角色权限</span></span><br><span class="line">               .antMatchers(<span class="string">"/user/**"</span>).hasAnyRole(<span class="string">"admin"</span>,<span class="string">"user"</span>)<span class="comment">//拥有多个角色中的一个就能访问</span></span><br><span class="line">           <span class="comment">//  .antMatchers("/user/**").access("hasAnyRole('admin','user')")  和上面一样</span></span><br><span class="line">               .anyRequest().authenticated() <span class="comment">//剩下的其他请求都是authenticated，登录之后就能访问</span></span><br><span class="line">               .and()</span><br><span class="line">               .formLogin()  <span class="comment">//登录表单  主要是易于postman发送请求</span></span><br><span class="line">               .loginProcessingUrl(<span class="string">"/doLogin"</span>) <span class="comment">//处理登录的URL postman访问这个接口即可登录</span></span><br><span class="line">               .permitAll()  <span class="comment">//跟登录相关的这些接口就能访问</span></span><br><span class="line">               .and()</span><br><span class="line">               .csrf().disable();  <span class="comment">//spring security自带csrf攻击 关闭csrf攻击就能用postman</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
+<p>访问/admin的请求都需要有admin权限</p>
+<p>访问/user的请求都需要有user权限</p>
+<h1 id="2-登陆表单配置"><a href="#2-登陆表单配置" class="headerlink" title="2.登陆表单配置"></a>2.登陆表单配置</h1><p>访问一个接口，spring security会默认给你跳到/login登录页面去</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"> 	<span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http.authorizeRequests()</span><br><span class="line">                .antMatchers(<span class="string">"/admin/**"</span>).hasRole(<span class="string">"admin"</span>)</span><br><span class="line"><span class="comment">//                .antMatchers("/user/**").hasAnyRole("admin","user")</span></span><br><span class="line">                .antMatchers(<span class="string">"/user/**"</span>).access(<span class="string">"hasAnyRole('admin','user')"</span>)</span><br><span class="line">                .anyRequest().authenticated()</span><br><span class="line">                .and()</span><br><span class="line">                .formLogin()</span><br><span class="line">                .loginProcessingUrl(<span class="string">"/doLogin"</span>)</span><br><span class="line">                .loginPage(<span class="string">"/login"</span>)  <span class="comment">//配置自己的登录页面</span></span><br><span class="line">                .usernameParameter(<span class="string">"uname"</span>)  <span class="comment">//postman访问的参数名</span></span><br><span class="line">                .passwordParameter(<span class="string">"pwd"</span>)</span><br><span class="line">            	.successHandler(<span class="keyword">new</span> AuthenticationSuccessHandler() &#123; <span class="comment">//登录成功后的处理</span></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationSuccess</span><span class="params">(HttpServletRequest req, HttpServletResponse resp, Authentication authentication)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">                        resp.setContentType(<span class="string">"application/json;charset=utf-8"</span>);<span class="comment">//返回json</span></span><br><span class="line">                        PrintWriter out = resp.getWriter();</span><br><span class="line">                        Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">                        map.put(<span class="string">"status"</span>,<span class="number">200</span>);</span><br><span class="line">                        map.put(<span class="string">"msg"</span>,authentication.getPrincipal());<span class="comment">//getPrincipal()保存了刚刚登录成功的用户对象</span></span><br><span class="line">                        out.write(<span class="keyword">new</span> ObjectMapper().writeValueAsString(map));<span class="comment">//把map搞成一个json字符串写出去</span></span><br><span class="line">                        out.flush();</span><br><span class="line">                        out.close();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            	.failureHandler(<span class="keyword">new</span> AuthenticationFailureHandler()&#123; <span class="comment">//登录失败的处理</span></span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAuthenticationFailure</span><span class="params">(HttpServletRequest req, HttpServletResponse resp, AuthenticationException exception)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;<span class="comment">//这时候就没有登录成功的对象authentication了，而是一个异常，通过异常我们就能知道因为什么而登录失败</span></span><br><span class="line">                        resp.setContentType(<span class="string">"application/json;charset=utf-8"</span>);</span><br><span class="line">                        PrintWriter out = resp.getWriter();</span><br><span class="line">                        Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">                        map.put(<span class="string">"status"</span>,<span class="number">401</span>);</span><br><span class="line">                        <span class="keyword">if</span>(exception <span class="keyword">instanceof</span> LockedException)&#123;</span><br><span class="line">                            map.put(<span class="string">"msg"</span>,<span class="string">"账户被锁定，登录失败"</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(exception <span class="keyword">instanceof</span> BadCredentialsException)&#123;</span><br><span class="line">                            map.put(<span class="string">"msg"</span>,<span class="string">"用户名或密码输入错误，登录失败"</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(exception <span class="keyword">instanceof</span> DisabledException)&#123;</span><br><span class="line">                            map.put(<span class="string">"msg"</span>,<span class="string">"账户被禁用，登录失败"</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(exception <span class="keyword">instanceof</span> AccountExpiredException)&#123;</span><br><span class="line">                            map.put(<span class="string">"msg"</span>,<span class="string">"账户过期，登录失败"</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(exception <span class="keyword">instanceof</span> CredentialsExpiredException)&#123;</span><br><span class="line">                            map.put(<span class="string">"msg"</span>,<span class="string">"密码过期，登录失败"</span>);</span><br><span class="line">                        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                            map.put(<span class="string">"msg"</span>,<span class="string">"登录失败"</span>);</span><br><span class="line">                        &#125;</span><br><span class="line">                        out.write(<span class="keyword">new</span> ObjectMapper().writeValueAsString(map));</span><br><span class="line">                        out.flush();</span><br><span class="line">                        out.close();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .permitAll()</span><br><span class="line">                .and()</span><br><span class="line">                .csrf().disable();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327277062.png" alt="1604327277062"></p>
+<p>访问后跳转到/login页面，需要进行登录</p>
+<p>这时候使用Postman访问/doLogin接口进行登录</p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604326438237.png" alt="1604326438237"></p>
+<p>此时登录成功，再进行访问/admin/hello接口，访问成功</p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327236568.png" alt="1604327236568"></p>
+<h1 id="3-注销登陆配置"><a href="#3-注销登陆配置" class="headerlink" title="3.注销登陆配置"></a>3.注销登陆配置</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">.permitAll()</span><br><span class="line">            .and()</span><br><span class="line">            .logout()</span><br><span class="line">            .logoutUrl(<span class="string">"/logout"</span>)</span><br><span class="line">            .logoutSuccessHandler(<span class="keyword">new</span> LogoutSuccessHandler() &#123;<span class="comment">//注销成功的回调</span></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLogoutSuccess</span><span class="params">(HttpServletRequest req, HttpServletResponse resp, Authentication authentication)</span> <span class="keyword">throws</span> IOException, ServletException </span>&#123;</span><br><span class="line">                    resp.setContentType(<span class="string">"application/json;charset=utf-8"</span>);</span><br><span class="line">                    PrintWriter out = resp.getWriter();</span><br><span class="line">                    Map&lt;String,Object&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">                    map.put(<span class="string">"status"</span>,<span class="number">200</span>);</span><br><span class="line">                    map.put(<span class="string">"msg"</span>,<span class="string">"注销登录成功！"</span>);</span><br><span class="line">                    out.write(<span class="keyword">new</span> ObjectMapper().writeValueAsString(map));</span><br><span class="line">                    out.flush();</span><br><span class="line">                    out.close();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327611247.png" alt="1604327611247"></p>
+<p>此时为登录状态，访问/logout进行登录注销</p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327662920.png" alt="1604327662920"></p>
+<p>再次访问/admin/hello，则需要再次登录</p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604327699659.png" alt="1604327699659"></p>
+<h1 id="4-多个HttpSecurity配置"><a href="#4-多个HttpSecurity配置" class="headerlink" title="4.多个HttpSecurity配置"></a>4.多个HttpSecurity配置</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//多个HttpSecurity不再需要 extends WebSecurityConfigurerAdapter 只需注入configure方法</span></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiHttpSecurityConfig</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">PasswordEncoder <span class="title">passwordEncoder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> NoOpPasswordEncoder.getInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        auth.inMemoryAuthentication()</span><br><span class="line">                .withUser(<span class="string">"xzs"</span>).password(<span class="string">"111"</span>).roles(<span class="string">"admin"</span>)</span><br><span class="line">                .and()</span><br><span class="line">                .withUser(<span class="string">"xxzs"</span>).password(<span class="string">"222"</span>).roles(<span class="string">"user"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义一个静态内部类</span></span><br><span class="line">    <span class="meta">@Configuration</span></span><br><span class="line">    <span class="comment">//有多个HttpSecurity，就涉及到优先级问题</span></span><br><span class="line">    <span class="meta">@Order</span>(<span class="number">1</span>) <span class="comment">//数字越小优先级越大</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            <span class="comment">// 这种"/admin/**"格式的路径都要有admin权限</span></span><br><span class="line">            http.antMatcher(<span class="string">"/admin/**"</span>).authorizeRequests().anyRequest().hasAnyRole(<span class="string">"admin"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//先跟上面匹配，匹配不上才找到这里</span></span><br><span class="line">    <span class="meta">@Configuration</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">OtherSecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span></span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">            http.authorizeRequests().anyRequest().authenticated()</span><br><span class="line">                    .and()</span><br><span class="line">                    .formLogin()</span><br><span class="line">                    .loginProcessingUrl(<span class="string">"/doLogin"</span>)</span><br><span class="line">                    .permitAll()</span><br><span class="line">                    .and()</span><br><span class="line">                    .csrf().disable();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="5-密码加密"><a href="#5-密码加密" class="headerlink" title="5.密码加密"></a>5.密码加密</h1><p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604330708908.png" alt="1604330708908"></p>
+<p>使用BCryptPasswordEncoder进行加密，生成一些加密密码，将这些加密密码进行替换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        auth.inMemoryAuthentication()</span><br><span class="line">                .withUser(<span class="string">"xzs"</span>).password(<span class="string">"$2a$10$GPZYsEzEes4vFndEhofmneACUmfFvD/KvgblGVL.I9YdzGmMdS6PC"</span>).roles(<span class="string">"admin"</span>)</span><br><span class="line">                .and()</span><br><span class="line">                .withUser(<span class="string">"xxzs"</span>).password(<span class="string">"$2a$10$Kr.ZQiC/ZGoQ.5Behtuh2u.SJNladI8Mf5XG6Q4O/2ilhuOWUNkTu"</span>).roles(<span class="string">"user"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时登录仍是用123，但密码已经被加密加盐了</p>
+<h1 id="6-方法安全"><a href="#6-方法安全" class="headerlink" title="6.方法安全"></a>6.方法安全</h1><p>在方法上添加注解确保方法的安全</p>
+<p>先在配置类上加@EnableGlobalMethodSecurity注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableGlobalMethodSecurity</span>(prePostEnabled = <span class="keyword">true</span>,securedEnabled = <span class="keyword">true</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MultiHttpSecurityConfig</span></span>&#123;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在Service方法上添加注解</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodService</span> </span>&#123;</span><br><span class="line">	<span class="comment">//@PreAuthorize方法调用之后进行校验</span></span><br><span class="line">    <span class="meta">@PreAuthorize</span>(<span class="string">"hasRole('admin')"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">admin</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello admin!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Secured</span>(<span class="string">"ROLE_user"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">user</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello user!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PreAuthorize</span>(<span class="string">"hasAnyRole('admin','user')"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
       
     </div>
     
@@ -461,8 +503,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/" rel="next" title="回调的理解">
-                <i class="fa fa-chevron-left"></i> 回调的理解
+              <a href="/2020/12/21/SpringSecurity%E5%88%9D%E4%BD%93%E9%AA%8C/" rel="next" title="SpringSecurity初体验">
+                <i class="fa fa-chevron-left"></i> SpringSecurity初体验
               </a>
             
           </div>
@@ -471,8 +513,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/12/21/SpringSecurity%E5%88%9D%E4%BD%93%E9%AA%8C/" rel="prev" title="SpringSecurity初体验">
-                SpringSecurity初体验 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/" rel="prev" title="SpringSecurity基于数据库的认证">
+                SpringSecurity基于数据库的认证 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -697,7 +739,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vuex：状态管理管家"><span class="nav-number">1.</span> <span class="nav-text">Vuex：状态管理管家</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-HttpSecurity拦截配置"><span class="nav-number">1.</span> <span class="nav-text">1.HttpSecurity拦截配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-登陆表单配置"><span class="nav-number">2.</span> <span class="nav-text">2.登陆表单配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-注销登陆配置"><span class="nav-number">3.</span> <span class="nav-text">3.注销登陆配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-多个HttpSecurity配置"><span class="nav-number">4.</span> <span class="nav-text">4.多个HttpSecurity配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-密码加密"><span class="nav-number">5.</span> <span class="nav-text">5.密码加密</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-方法安全"><span class="nav-number">6.</span> <span class="nav-text">6.方法安全</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">7.</span> <span class="nav-text"></span></a></li></ol></div>
             
 
           </div>

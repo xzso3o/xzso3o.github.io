@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="Vuex：状态管理管家 state：        存放属性  已经在state里定义的属性才有放进响应式系统 通过Vue.set() Vue.delete()是响应式的         getters    ：属性需要经过变化使用该属性 类似计算属性">
+<meta name="description" content="1.基于数据库的认证 之前我们都是自己配置用户名、密码和权限，现在我们要从数据库中读取这些数据 过程： 如果我们需要自己从数据库加载用户，在定义用户时要实现UserDetail , 再实现接口里的方法   UserDetail相当于一个规范，我们每个人定义的User属性名可能不一样，所以通过重写方法返回我们自己定义的用户名、密码等，UserDetail则可知道  首先Bean里定义的User类需要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vuex知识点">
-<meta property="og:url" content="http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:title" content="SpringSecurity基于数据库的认证">
+<meta property="og:url" content="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/index.html">
 <meta property="og:site_name" content="">
-<meta property="og:description" content="Vuex：状态管理管家 state：        存放属性  已经在state里定义的属性才有放进响应式系统 通过Vue.set() Vue.delete()是响应式的         getters    ：属性需要经过变化使用该属性 类似计算属性">
-<meta property="article:published_time" content="2020-12-20T14:14:05.000Z">
-<meta property="article:modified_time" content="2020-12-20T14:14:49.511Z">
+<meta property="og:description" content="1.基于数据库的认证 之前我们都是自己配置用户名、密码和权限，现在我们要从数据库中读取这些数据 过程： 如果我们需要自己从数据库加载用户，在定义用户时要实现UserDetail , 再实现接口里的方法   UserDetail相当于一个规范，我们每个人定义的User属性名可能不一样，所以通过重写方法返回我们自己定义的用户名、密码等，UserDetail则可知道  首先Bean里定义的User类需要">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395766607.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395976580.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395988543.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396003816.png">
+<meta property="og:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396311487.png">
+<meta property="article:published_time" content="2020-12-21T04:38:10.000Z">
+<meta property="article:modified_time" content="2020-12-21T04:40:00.510Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395766607.png">
 
 
 
@@ -123,7 +129,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/12/20/Vuex知识点/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/12/21/SpringSecurity基于数据库的认证/"/>
 
 
 
@@ -134,7 +140,7 @@
     <script src="/js/cursor/text.js"></script>
   
 
-  <title>Vuex知识点 | </title>
+  <title>SpringSecurity基于数据库的认证 | </title>
   
 
 
@@ -314,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/20/Vuex%E7%9F%A5%E8%AF%86%E7%82%B9/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/21/SpringSecurity%E5%9F%BA%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%AE%A4%E8%AF%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xzs">
@@ -331,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Vuex知识点</h1>
+          <h1 class="post-title" itemprop="name headline">SpringSecurity基于数据库的认证</h1>
         
 
         <div class="post-meta">
@@ -343,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-20T22:14:05+08:00">
-                2020-12-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T12:38:10+08:00">
+                2020-12-21
               </time>
             
 
@@ -366,8 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
+                  <a href="/categories/SpringSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringSecurity</span>
                   </a>
                 </span>
 
@@ -397,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  200
+                  771
                 </span>
               
 
@@ -413,7 +419,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -434,7 +440,37 @@
       
 
       
-        <h3 id="Vuex：状态管理管家"><a href="#Vuex：状态管理管家" class="headerlink" title="Vuex：状态管理管家"></a>Vuex：状态管理管家</h3><p> state：        存放属性  已经在state里定义的属性才有放进响应式系统 通过Vue.set() Vue.delete()是响应式的<br>         getters    ：属性需要经过变化使用该属性 类似计算属性                                                                                                                                              定义的方法可有三个参数（state，getters，rootState）<br>        mutations：存放同步方法                                                                                                                                                                        通过mutations更新state里的属性值：this.$store.commit(‘mutations里定义的方法名’)<br>                              要多传个参数过去直接this.$store.commit(‘方法名’,参数)<br>        action：       类似于mutations，用来替代mutations进行异步操作, this.$store.dispatch(‘action里定义的方法名’)<br>                              context上下文对象  可调用commit那些 但只能在本块区域<br>        modules：  可将state分割成模块，每个模块都有state、mutations、actions、getters，并且最终模块被                                 放到了state里</p>
+        <h1 id="1-基于数据库的认证"><a href="#1-基于数据库的认证" class="headerlink" title="1.基于数据库的认证"></a>1.基于数据库的认证</h1><p> 之前我们都是自己配置用户名、密码和权限，现在我们要从数据库中读取这些数据</p>
+<p>过程：</p>
+<p>如果我们需要自己从数据库加载用户，在定义用户时要实现UserDetail , 再实现接口里的方法 </p>
+<p> UserDetail相当于一个规范，我们每个人定义的User属性名可能不一样，所以通过重写方法返回我们自己定义的用户名、密码等，UserDetail则可知道 </p>
+<p>首先Bean里定义的User类需要继承UserDetail</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">UserDetails</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">    <span class="keyword">private</span> Boolean enabled;</span><br><span class="line">    <span class="keyword">private</span> Boolean locked;</span><br><span class="line">    <span class="keyword">private</span> List&lt;Role&gt; roles;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//账户是否没有过期</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAccountNonExpired</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">////账户是否没有被锁定</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAccountNonLocked</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> !locked;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//密码是否没有过期</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCredentialsNonExpired</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//账户是否可用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isEnabled</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> enabled;   <span class="comment">//返回我们自己定义的字段</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回用户的所有角色</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Collection&lt;? extends GrantedAuthority&gt; getAuthorities() &#123;</span><br><span class="line">        List&lt;SimpleGrantedAuthority&gt; authorities = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Role role : roles) &#123;<span class="comment">//SpringSecurity有一个规则，角色要以ROLE_开头，数据库如果不是这样我们就得手动加上</span></span><br><span class="line">            authorities.add(<span class="keyword">new</span> SimpleGrantedAuthority(<span class="string">"ROLE_"</span>+role.getName()));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> authorities;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Role&gt; <span class="title">getRoles</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> roles;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setRoles</span><span class="params">(List&lt;Role&gt; roles)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.roles = roles;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEnabled</span><span class="params">(Boolean enabled)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.enabled = enabled;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setLocked</span><span class="params">(Boolean locked)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.locked = locked;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其次UserService也要实现UserDetailsService，再写mapper去数据库查询数据即可</p>
+<p>UserService记得要注入SecurityConfig里的auth</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserService</span> <span class="keyword">implements</span> <span class="title">UserDetailsService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据用户名去查询用户</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> UserDetails <span class="title">loadUserByUsername</span><span class="params">(String username)</span> <span class="keyword">throws</span> UsernameNotFoundException </span>&#123;</span><br><span class="line">        User user = userMapper.loadUserByUsername(username);</span><br><span class="line">        <span class="keyword">if</span>(user == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UsernameNotFoundException(<span class="string">"用户不存在!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        user.setRoles(userMapper.getUserRolesById(user.getId()));</span><br><span class="line">        <span class="comment">//登陆成功后，把user返回，至于他填的用户名和密码对不对由SpringSecurity自己去比较</span></span><br><span class="line">        <span class="keyword">return</span> user;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后书写SecurityConfig</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityConfig</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将userService注入auth</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        auth.userDetailsService(userService);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">PasswordEncoder <span class="title">passwordEncoder</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BCryptPasswordEncoder();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        http.authorizeRequests()</span><br><span class="line">                .antMatchers(<span class="string">"/dba/**"</span>).hasRole(<span class="string">"dba"</span>)</span><br><span class="line">                .antMatchers(<span class="string">"/admin/**"</span>).hasRole(<span class="string">"admin"</span>)</span><br><span class="line">                .antMatchers(<span class="string">"/user/**"</span>).hasRole(<span class="string">"user"</span>)</span><br><span class="line">                .anyRequest().authenticated()</span><br><span class="line">                .and()</span><br><span class="line">                .formLogin()</span><br><span class="line">                .permitAll()</span><br><span class="line">                .and()</span><br><span class="line">                .csrf().disable();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>访问各个接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/dba/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">dba</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello dba!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/admin/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">admin</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello admin!"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/user/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">user</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"hello user!"</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395766607.png" alt="1604395766607"></p>
+<p>root具有dba和admin权限，admin有admin权限，user有user权限</p>
+<p>从数据库中读取用户账户、密码，然后使用root登录</p>
+<p> ![img](file:///C:\Users\ASUS\Documents\Tencent Files\1017477355\Image\C2C\OQA[4QB3E$M59T1<code>J@</code>{SZ4.png) </p>
+<p>从而root只能访问/dba/hello、/admin/hello接口</p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395976580.png" alt="1604395976580"></p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604395988543.png" alt="1604395988543"></p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396003816.png" alt="1604396003816"></p>
+<h1 id="2-角色继承"><a href="#2-角色继承" class="headerlink" title="2.角色继承"></a>2.角色继承</h1><p>加上此Bean，dba就有了dab、admin、user权限，admin也有admin、user，user有user</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">   <span class="function">RoleHierarchy <span class="title">roleHierarchy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       RoleHierarchyImpl roleHierarchy = <span class="keyword">new</span> RoleHierarchyImpl();</span><br><span class="line">       String hierarchy = <span class="string">"ROLE_dba &gt; ROLE_admin \n ROLE_admin &gt; ROLE_user"</span>;</span><br><span class="line">       roleHierarchy.setHierarchy(hierarchy);</span><br><span class="line">       <span class="keyword">return</span> roleHierarchy;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>再次用root登录去访问/user接口</p>
+<p><img src="C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1604396311487.png" alt="1604396311487"></p>
+<p>成功访问得到！</p>
 
       
     </div>
@@ -461,8 +497,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/" rel="next" title="回调的理解">
-                <i class="fa fa-chevron-left"></i> 回调的理解
+              <a href="/2020/12/21/SpringSecurity%E9%85%8D%E7%BD%AE/" rel="next" title="SpringSecurity配置">
+                <i class="fa fa-chevron-left"></i> SpringSecurity配置
               </a>
             
           </div>
@@ -471,8 +507,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/12/21/SpringSecurity%E5%88%9D%E4%BD%93%E9%AA%8C/" rel="prev" title="SpringSecurity初体验">
-                SpringSecurity初体验 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/12/21/SpringSecurity%E5%8A%A8%E6%80%81%E6%9D%83%E9%99%90%E9%85%8D%E7%BD%AE/" rel="prev" title="SpringSecurity动态权限配置">
+                SpringSecurity动态权限配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -697,7 +733,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vuex：状态管理管家"><span class="nav-number">1.</span> <span class="nav-text">Vuex：状态管理管家</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-基于数据库的认证"><span class="nav-number">1.</span> <span class="nav-text">1.基于数据库的认证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-角色继承"><span class="nav-number">2.</span> <span class="nav-text">2.角色继承</span></a></li></ol></div>
             
 
           </div>
