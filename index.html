@@ -437,12 +437,12 @@
       
         
           
-            <h3 id="Seata处理分布式事务"><a href="#Seata处理分布式事务" class="headerlink" title="Seata处理分布式事务"></a>Seata处理分布式事务</h3><h4 id="一、问题的提出："><a href="#一、问题的提出：" class="headerlink" title="一、问题的提出："></a>一、问题的提出：</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/SpringCloud-Alibaba-Seata%5C1.png" alt="01"></p>
+            <h3 id="Seata处理分布式事务"><a href="#Seata处理分布式事务" class="headerlink" title="Seata处理分布式事务"></a>Seata处理分布式事务</h3><h4 id="一、问题的提出："><a href="#一、问题的提出：" class="headerlink" title="一、问题的提出："></a>一、问题的提出：</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/1.png" alt="01"></p>
 <p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/C:%5CUsers%5CASUS%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1602508607972.png" alt="1602508607972"></p>
-<h4 id="二、Seata术语："><a href="#二、Seata术语：" class="headerlink" title="二、Seata术语："></a>二、Seata术语：</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/SpringCloud-Alibaba-Seata%5C2.png" alt="02"></p>
-<h4 id="三、处理过程："><a href="#三、处理过程：" class="headerlink" title="三、处理过程："></a>三、处理过程：</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/SpringCloud-Alibaba-Seata%5C3.png" alt="3"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/SpringCloud-Alibaba-Seata%5C4.png" alt="4"></p>
-<h4 id="四、业务说明"><a href="#四、业务说明" class="headerlink" title="四、业务说明"></a>四、业务说明</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/SpringCloud-Alibaba-Seata%5C5.png" alt="5"></p>
+<h4 id="二、Seata术语："><a href="#二、Seata术语：" class="headerlink" title="二、Seata术语："></a>二、Seata术语：</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/2.png" alt="02"></p>
+<h4 id="三、处理过程："><a href="#三、处理过程：" class="headerlink" title="三、处理过程："></a>三、处理过程：</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/3.png" alt="3"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/4.png" alt="4"></p>
+<h4 id="四、业务说明"><a href="#四、业务说明" class="headerlink" title="四、业务说明"></a>四、业务说明</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Seata/5.png" alt="5"></p>
 
           
         
@@ -619,56 +619,56 @@
           
             <h3 id="Sentinel实现熔断与限流"><a href="#Sentinel实现熔断与限流" class="headerlink" title="Sentinel实现熔断与限流"></a>Sentinel实现熔断与限流</h3><p>面对云原生微服务的流量控制、熔断降级组件</p>
 <p>分布式系统的流量防卫兵，取代了Hystrix</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C1.png" alt="1"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/1.png" alt="1"></p>
 <h4 id="一、运行"><a href="#一、运行" class="headerlink" title="一、运行"></a>一、运行</h4><p>java -jar sentinel-dashboard-1.7.2.jar</p>
 <p>访问<a href="http://localhost:8080即可出现可视化界面">http://localhost:8080即可出现可视化界面</a></p>
 <p>用户名密码都是sentinel</p>
 <h4 id="二、初次使用"><a href="#二、初次使用" class="headerlink" title="二、初次使用"></a>二、初次使用</h4><p>主要配好YML文件即可使用</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8401</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">cloudalibaba-sentinel-service</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="string">localhost:8848</span> <span class="comment">#Nacos服务注册中心地址</span></span><br><span class="line">    <span class="attr">sentinel:</span></span><br><span class="line">      <span class="attr">transport:</span></span><br><span class="line">        <span class="attr">dashboard:</span> <span class="string">localhost:8080</span> <span class="comment">#配置Sentinel dashboard地址</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">8719</span></span><br><span class="line"></span><br><span class="line"><span class="attr">management:</span></span><br><span class="line">  <span class="attr">endpoints:</span></span><br><span class="line">    <span class="attr">web:</span></span><br><span class="line">      <span class="attr">exposure:</span></span><br><span class="line">        <span class="attr">include:</span> <span class="string">'*'</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C2.png" alt="2"></p>
-<h4 id="三、Sentinel流控"><a href="#三、Sentinel流控" class="headerlink" title="三、Sentinel流控"></a>三、Sentinel流控</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C3.png" alt="3"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C4.png" alt="4"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/2.png" alt="2"></p>
+<h4 id="三、Sentinel流控"><a href="#三、Sentinel流控" class="headerlink" title="三、Sentinel流控"></a>三、Sentinel流控</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/3.png" alt="3"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/4.png" alt="4"></p>
 <p>预热</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C5.png" alt="5"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C6.png" alt="6"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/5.png" alt="5"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/6.png" alt="6"></p>
 <p>排队等待</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C7.png" alt="7"></p>
-<h4 id="四、Sentinel降级"><a href="#四、Sentinel降级" class="headerlink" title="四、Sentinel降级"></a>四、Sentinel降级</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C8.png" alt="8"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C9.png" alt="9"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C10.png" alt="10"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/7.png" alt="7"></p>
+<h4 id="四、Sentinel降级"><a href="#四、Sentinel降级" class="headerlink" title="四、Sentinel降级"></a>四、Sentinel降级</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/8.png" alt="8"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/9.png" alt="9"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/10.png" alt="10"></p>
 <p>1.RT（平均响应时间）</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C11.png" alt="11"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/11.png" alt="11"></p>
 <p>2.异常比例</p>
 <p>异常超过一定比例就跳闸</p>
 <p>3.异常数</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C12.png" alt="12"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C13.png" alt="13"></p>
-<h4 id="五、Sentinel热点Key限流"><a href="#五、Sentinel热点Key限流" class="headerlink" title="五、Sentinel热点Key限流"></a>五、Sentinel热点Key限流</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C14.png" alt="14"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/12.png" alt="12"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/13.png" alt="13"></p>
+<h4 id="五、Sentinel热点Key限流"><a href="#五、Sentinel热点Key限流" class="headerlink" title="五、Sentinel热点Key限流"></a>五、Sentinel热点Key限流</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/14.png" alt="14"></p>
 <p>@SentunelResource对Sentinel控制台里的热点规则负责，只要服务违背了配置规则，则会调用下面的兜底方法</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C15.png" alt="15"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/15.png" alt="15"></p>
 <p>当索引为0的参数（即p1）单机阈值（一秒点击率）超过了1，则调用兜底方法，而参数p2随便快速点击多少次也没事</p>
 <p>特殊情况：</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C16.png" alt="16"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C17.png" alt="17"></p>
-<h4 id="六、Sentinel系统规则"><a href="#六、Sentinel系统规则" class="headerlink" title="六、Sentinel系统规则"></a>六、Sentinel系统规则</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C18.png" alt="18"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C19.png" alt="19"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/16.png" alt="16"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/17.png" alt="17"></p>
+<h4 id="六、Sentinel系统规则"><a href="#六、Sentinel系统规则" class="headerlink" title="六、Sentinel系统规则"></a>六、Sentinel系统规则</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/18.png" alt="18"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/19.png" alt="19"></p>
 <p>系统全局的保护规则</p>
-<h4 id="七、-SentinelResource配置"><a href="#七、-SentinelResource配置" class="headerlink" title="七、@SentinelResource配置"></a>七、@SentinelResource配置</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C20.png" alt="1602498555342"></p>
+<h4 id="七、-SentinelResource配置"><a href="#七、-SentinelResource配置" class="headerlink" title="七、@SentinelResource配置"></a>七、@SentinelResource配置</h4><p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/20.png" alt="1602498555342"></p>
 <p>对customerBlockHandler进行限流，一旦超出限制，则交由blockHandlerClass里的blockHandler进行兜底</p>
 <p>blockHandlerClass里就可以写好几个blockHandler来进行兜底</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C21.png" alt="1602498686863"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/21.png" alt="1602498686863"></p>
 <p>即</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C22.png" alt="1602498766708"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/22.png" alt="1602498766708"></p>
 <h4 id="八、Sentinel服务熔断"><a href="#八、Sentinel服务熔断" class="headerlink" title="八、Sentinel服务熔断"></a>八、Sentinel服务熔断</h4><p>没有配置：</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C23.png" alt="1602500010113"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/23.png" alt="1602500010113"></p>
 <p>只配置fallback，fallback只负责业务java异常：</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C24.png" alt="1602500084574"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/24.png" alt="1602500084574"></p>
 <p>只配置blockHandler，只负责sentinal控制台配置违规：</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C25.png" alt="1602500224788"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/25.png" alt="1602500224788"></p>
 <p>fallback和blockHandler都配置：</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C26.png" alt="1602500512750"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/SpringCloud-Alibaba-Sentinel%5C27.png" alt="1602500639919"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/26.png" alt="1602500512750"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Sentinel/27.png" alt="1602500639919"></p>
 <p>blockHandler大于fallback</p>
 
           
@@ -844,10 +844,10 @@
       
         
           
-            <h3 id="SpringCloud-Alibaba"><a href="#SpringCloud-Alibaba" class="headerlink" title="SpringCloud Alibaba"></a>SpringCloud Alibaba</h3><p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C1.png" alt="01"></p>
+            <h3 id="SpringCloud-Alibaba"><a href="#SpringCloud-Alibaba" class="headerlink" title="SpringCloud Alibaba"></a>SpringCloud Alibaba</h3><p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/1.png" alt="01"></p>
 <h3 id="Nacos"><a href="#Nacos" class="headerlink" title="Nacos"></a>Nacos</h3><p>一句话，等价于Eureka+Config+Bus</p>
 <p>Nacos自带负载均衡，且支持AP和CP‘</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C2.png" alt="02"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/2.png" alt="02"></p>
 <h4 id="一、服务提供者"><a href="#一、服务提供者" class="headerlink" title="一、服务提供者"></a>一、服务提供者</h4><p>1.nacos/bin/startup.cmd启动nacos</p>
 <p>2.写POM</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--SpringCloud ailibaba nacos --&gt;</span><br><span class="line"> &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
@@ -871,7 +871,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--nacos-config--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-config&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;!--nacos-discovery--&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.alibaba.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-alibaba-nacos-discovery&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
 <p>2.写application.yml和bootstrap.yml</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C3.png" alt="03"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/3.png" alt="03"></p>
 <p>application.yml</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span> <span class="comment"># 表示开发环境</span></span><br><span class="line">    <span class="comment">#active: test # 表示测试环境</span></span><br><span class="line">    <span class="comment">#active: info</span></span><br></pre></td></tr></table></figure>
 
@@ -879,15 +879,15 @@
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nacos配置</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">3377</span></span><br><span class="line"></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nacos-config-client</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="string">localhost:8848</span> <span class="comment">#Nacos服务注册中心地址</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="string">localhost:8848</span> <span class="comment">#Nacos作为配置中心地址</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span> <span class="comment">#指定yaml格式的配置</span></span><br><span class="line"><span class="comment">#        group: DEV_GROUP</span></span><br><span class="line"><span class="comment">#        namespace: 7d8f0f5a-6a53-4785-9686-dd460158e5d4</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># $&#123;spring.application.name&#125;-$&#123;spring.profile.active&#125;.$&#123;spring.cloud.nacos.config.file-extension&#125;</span></span><br><span class="line"><span class="comment"># nacos-config-client-dev.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># nacos-config-client-test.yaml   ----&gt; config.info</span></span><br></pre></td></tr></table></figure>
 
 <p>3.在nacos页面添加配置</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C4.png" alt="04"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/4.png" alt="04"></p>
 <p>Data ID需要固定设置</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C5.png" alt="05"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C6.png" alt="06"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C7.png" alt="07"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/5.png" alt="05"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/6.png" alt="06"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/7.png" alt="07"></p>
 <p>三大配置：Data ID、Group、NameSpace</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C8.png" alt="08"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/8.png" alt="08"></p>
 <p>4.Data ID：根据spring.profiles.active里的配置进行加载nacos上的配置</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C9.png" alt="09"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/9.png" alt="09"></p>
 <p>5.Group:  默认加载默认组，加载特定组只需要在config下添加一条group即可</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">nacos-config-client</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="string">localhost:8848</span> <span class="comment">#Nacos服务注册中心地址</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">server-addr:</span> <span class="string">localhost:8848</span> <span class="comment">#Nacos作为配置中心地址</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span> <span class="comment">#指定yaml格式的配置</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">DEV_GROUP</span></span><br></pre></td></tr></table></figure>
 
@@ -900,15 +900,15 @@
 
 <p>该配置则去寻找命名空间ID为20ffe5ef-79bb-4048-aaa9-5920c61f5761的空间下，TEST_GROUP的nacos-config-client-dev.yaml（application.yml里是active:dev）</p>
 <h4 id="四、Nacos集群和持久化配置（重要）"><a href="#四、Nacos集群和持久化配置（重要）" class="headerlink" title="四、Nacos集群和持久化配置（重要）"></a>四、Nacos集群和持久化配置（重要）</h4><p>1.Nacos集群架构</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C10.png" alt="10"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C11.png" alt="11"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/10.png" alt="10"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/11.png" alt="11"></p>
 <p>2.Nacos内嵌数据库derby存储配置，所以要进行切换数据库derby到我们本地数据库MySQL</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C12.png" alt="12"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/12.png" alt="12"></p>
 <p>3.</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C13.png" alt="13"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/13.png" alt="13"></p>
 <p>4.服务端访问nginx的端口，nginx里配置好映射，映射到三台nacos上</p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C14.png" alt="14"></p>
-<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/SpringCloud-Alibaba-Nacos%5C15.png" alt="15"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/14.png" alt="14"></p>
+<p><img src="/2020/12/21/SpringCloud-Alibaba-Nacos/15.png" alt="15"></p>
 
           
         
@@ -1084,9 +1084,9 @@
         
           
             <h3 id="SpringCloud-Sleuth分布式请求链路跟踪（链路监控）"><a href="#SpringCloud-Sleuth分布式请求链路跟踪（链路监控）" class="headerlink" title="SpringCloud Sleuth分布式请求链路跟踪（链路监控）"></a>SpringCloud Sleuth分布式请求链路跟踪（链路监控）</h3><p>1.问题</p>
-<p><img src="/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA%5C1.png" alt="1600257590874"></p>
+<p><img src="/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/1.png" alt="1600257590874"></p>
 <p>2.安装zipkin</p>
-<p><img src="/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA%5C2.png" alt="1600265041699"></p>
+<p><img src="/2020/12/21/SpringCloud-Sleuth%E5%88%86%E5%B8%83%E5%BC%8F%E8%AF%B7%E6%B1%82%E9%93%BE%E8%B7%AF%E8%B7%9F%E8%B8%AA/2.png" alt="1600265041699"></p>
 <p>3.服务端payment8001和客户端order80都导入POM</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--包含了sleuth+zipkin--&gt;</span><br><span class="line"> &lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-zipkin&lt;/artifactId&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
@@ -1270,8 +1270,8 @@
           
             <h3 id="SpringCloud-Stream消息驱动"><a href="#SpringCloud-Stream消息驱动" class="headerlink" title="SpringCloud Stream消息驱动"></a>SpringCloud Stream消息驱动</h3><p>一句话：屏蔽底层消息中间件的差异，降低切换成本，统一消息的编程模型</p>
 <p>核心：通过定义绑定器Binder作为中间层，实现了应用程序与消息中间件细节之间的隔离</p>
-<p><img src="/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%5C1.png" alt="1600176801553"></p>
-<p><img src="/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%5C2.png" alt="1600175467504"></p>
+<p><img src="/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/1.png" alt="1600176801553"></p>
+<p><img src="/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/2.png" alt="1600175467504"></p>
 <h4 id="服务提供者"><a href="#服务提供者" class="headerlink" title="服务提供者"></a>服务提供者</h4><p>1.写POM文件</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-stream-rabbit&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
@@ -1285,7 +1285,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@EnableBinding</span>(Sink<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class"><span class="title">public</span> <span class="title">class</span> <span class="title">ReceiveMessageListenerController</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Value</span>(<span class="string">"$&#123;server.port&#125;"</span>)</span><br><span class="line">    <span class="keyword">private</span> String serverPort;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@StreamListener</span>(Sink.INPUT)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">input</span><span class="params">(Message&lt;String&gt; message)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"消费者2号,-----&gt;接受到的消息: "</span>+message.getPayload()+<span class="string">"\t  port: "</span>+serverPort);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="避免重复消费问题"><a href="#避免重复消费问题" class="headerlink" title="避免重复消费问题"></a>避免重复消费问题</h4><p>服务提供者发布消息，会存在被多个消费者消费的问题。因为默认分组不同，会被重复消费，同一个组才只能其中一个消费</p>
-<p><img src="/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8%5C3.png" alt="1600178378666"></p>
+<p><img src="/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/3.png" alt="1600178378666"></p>
 <p>解决方法：yml里添加一行group: xzsA</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">bindings:</span> <span class="comment"># 服务的整合处理</span></span><br><span class="line">          <span class="attr">input:</span> <span class="comment"># 这个名字是一个通道的名称</span></span><br><span class="line">            <span class="attr">destination:</span> <span class="string">studyExchange</span> <span class="comment"># 表示要使用的Exchange名称定义</span></span><br><span class="line">            <span class="attr">content-type:</span> <span class="string">application/json</span> <span class="comment"># 设置消息类型，本次为对象json，如果是文本则设置“text/plain”</span></span><br><span class="line">            <span class="attr">binder:</span> <span class="string">defaultRabbit</span> <span class="comment"># 设置要绑定的消息服务的具体设置</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xzsA</span></span><br></pre></td></tr></table></figure>
 
@@ -1658,7 +1658,7 @@
       
         
           
-            <h3 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h3><h4 id="一、主要三大概念"><a href="#一、主要三大概念" class="headerlink" title="一、主要三大概念"></a>一、主要三大概念</h4><p><img src="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81%5C1.png" alt="01"></p>
+            <h3 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h3><h4 id="一、主要三大概念"><a href="#一、主要三大概念" class="headerlink" title="一、主要三大概念"></a>一、主要三大概念</h4><p><img src="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/1.png" alt="01"></p>
 <h4 id="二、服务降级"><a href="#二、服务降级" class="headerlink" title="二、服务降级"></a>二、服务降级</h4><p>1.导入一些依赖</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--hystrix--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line"> 	  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;		</span><br><span class="line">   &lt;!--openfeign--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line"> 	  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;!--eureka client--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line"> 	  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
 
@@ -1704,7 +1704,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"paymentCircuitBreaker_fallback"</span>,commandProperties = &#123;</span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.enabled"</span>,value = <span class="string">"true"</span>),<span class="comment">// 是否开启断路器</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.requestVolumeThreshold"</span>,value = <span class="string">"10"</span>),<span class="comment">// 请求次数</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.sleepWindowInMilliseconds"</span>,value = <span class="string">"10000"</span>), <span class="comment">// 时间窗口期</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.errorThresholdPercentage"</span>,value = <span class="string">"60"</span>),<span class="comment">// 失败率达到多少后跳闸</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
 
 <p>表示在十秒钟之内发送十次请求，如果失败率达到60%以上就跳闸</p>
-<p><img src="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81%5C2.png" alt="01"></p>
+<p><img src="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/2.png" alt="01"></p>
 <p>熔断时候直接调用fallbackMethod</p>
 <h4 id="四、服务限流"><a href="#四、服务限流" class="headerlink" title="四、服务限流"></a>四、服务限流</h4><h4 id="五、Hystrix-Dashboard服务监控"><a href="#五、Hystrix-Dashboard服务监控" class="headerlink" title="五、Hystrix Dashboard服务监控"></a>五、Hystrix Dashboard服务监控</h4><p>1.添加依赖</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix-dashboard&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"> 其中需要监控的服务都要加上这个actuator依赖</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
