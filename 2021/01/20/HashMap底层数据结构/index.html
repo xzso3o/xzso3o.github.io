@@ -84,16 +84,24 @@
 
 
 
-<meta name="description" content="子类访问权限子类可以通过 super 关键字访问父类中的资源，但并不是所有的父类资源都可以被子类访问。 访问权限修饰符 public、private、protected、缺省默认（不写）     同一个类 同一个包中 不同包 子类（同包） 子类（不同包）    public 可以访问 可以访问 可以访问 可以访问 可以访问   protected 可以访问 可以访问 不可以访问 可以访问，supe">
+<meta name="description" content="HashMap 的底层数据结构HashMap 底层是数组，称为哈希桶，JDK7 和 JDK8 版本的变动是比较大的。 存储结构：JDK7 是数组+链表，JDK8 是数组+链表+红黑树。 本质就是为了存数据，改进是为了查询效率越来越高 为什么要使用数组+链表的形式？ HashMap 底层数组的默认大小是 16，最大索引是 15，数组是可以扩容的。 HashMap 以 key-value 的形式进行存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="子类访问权限、方法重写和重载">
-<meta property="og:url" content="https://xzso3o.github.io/2021/01/19/%E5%AD%90%E7%B1%BB%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E3%80%81%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/index.html">
+<meta property="og:title" content="HashMap底层数据结构">
+<meta property="og:url" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="">
-<meta property="og:description" content="子类访问权限子类可以通过 super 关键字访问父类中的资源，但并不是所有的父类资源都可以被子类访问。 访问权限修饰符 public、private、protected、缺省默认（不写）     同一个类 同一个包中 不同包 子类（同包） 子类（不同包）    public 可以访问 可以访问 可以访问 可以访问 可以访问   protected 可以访问 可以访问 不可以访问 可以访问，supe">
-<meta property="article:published_time" content="2021-01-19T06:21:40.000Z">
-<meta property="article:modified_time" content="2021-01-19T06:26:02.425Z">
+<meta property="og:description" content="HashMap 的底层数据结构HashMap 底层是数组，称为哈希桶，JDK7 和 JDK8 版本的变动是比较大的。 存储结构：JDK7 是数组+链表，JDK8 是数组+链表+红黑树。 本质就是为了存数据，改进是为了查询效率越来越高 为什么要使用数组+链表的形式？ HashMap 底层数组的默认大小是 16，最大索引是 15，数组是可以扩容的。 HashMap 以 key-value 的形式进行存">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.png">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.png">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3.png">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.png">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.png">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/6.png">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/7.png">
+<meta property="article:published_time" content="2021-01-20T01:42:26.000Z">
+<meta property="article:modified_time" content="2021-01-20T05:45:01.246Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.png">
 
 
 
@@ -123,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="https://xzso3o.github.io/2021/01/19/子类访问权限、方法重写和重载/"/>
+  <link rel="canonical" href="https://xzso3o.github.io/2021/01/20/HashMap底层数据结构/"/>
 
 
 
@@ -134,7 +142,7 @@
     <script src="/js/cursor/text.js"></script>
   
 
-  <title>子类访问权限、方法重写和重载 | </title>
+  <title>HashMap底层数据结构 | </title>
   
 
 
@@ -314,7 +322,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/19/%E5%AD%90%E7%B1%BB%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E3%80%81%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xzs">
@@ -331,7 +339,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">子类访问权限、方法重写和重载</h1>
+          <h1 class="post-title" itemprop="name headline">HashMap底层数据结构</h1>
         
 
         <div class="post-meta">
@@ -343,8 +351,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-19T14:21:40+08:00">
-                2021-01-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T09:42:26+08:00">
+                2021-01-20
               </time>
             
 
@@ -397,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  650
+                  2.5k
                 </span>
               
 
@@ -413,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  9
                 </span>
               
             </div>
@@ -434,100 +442,92 @@
       
 
       
-        <h1 id="子类访问权限"><a href="#子类访问权限" class="headerlink" title="子类访问权限"></a>子类访问权限</h1><p>子类可以通过 super 关键字访问父类中的资源，但并不是所有的父类资源都可以被子类访问。</p>
-<p>访问权限修饰符</p>
-<p>public、private、protected、缺省默认（不写）</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>同一个类</th>
-<th>同一个包中</th>
-<th>不同包</th>
-<th>子类（同包）</th>
-<th>子类（不同包）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public</td>
-<td>可以访问</td>
-<td>可以访问</td>
-<td>可以访问</td>
-<td>可以访问</td>
-<td>可以访问</td>
-</tr>
-<tr>
-<td>protected</td>
-<td>可以访问</td>
-<td>可以访问</td>
-<td>不可以访问</td>
-<td>可以访问，super可以访问</td>
-<td>不可以访问，super可以访问</td>
-</tr>
-<tr>
-<td>缺省默认</td>
-<td>可以访问</td>
-<td>可以访问</td>
-<td>不可以访问</td>
-<td>可以访问，super可以访问</td>
-<td>不可以访问，super不可以访问</td>
-</tr>
-<tr>
-<td>private</td>
-<td>可以访问</td>
-<td>不可以访问</td>
-<td>不可以访问</td>
-<td>不可以访问</td>
-<td>不可以访问</td>
-</tr>
-</tbody></table>
-<p>包（package）是 Java 管理文件的一种方式，一个工程可能会出现重名的类，通过包来解决冲突问题。</p>
-<p>包的命名方式一般采用公司/组织的倒置域名</p>
-<p>default 关键字是用来表示接口中的默认方法的，和访问权限修饰符的缺省默认值没有关系。</p>
+        <h1 id="HashMap-的底层数据结构"><a href="#HashMap-的底层数据结构" class="headerlink" title="HashMap 的底层数据结构"></a>HashMap 的底层数据结构</h1><p>HashMap 底层是数组，称为哈希桶，JDK7 和 JDK8 版本的变动是比较大的。</p>
+<p>存储结构：JDK7 是<strong>数组+链表</strong>，JDK8 是<strong>数组+链表+红黑树</strong>。</p>
+<p><strong>本质就是为了存数据，改进是为了查询效率越来越高</strong></p>
+<p><strong>为什么要使用数组+链表的形式？</strong></p>
+<p>HashMap 底层数组的默认大小是 16，最大索引是 15，数组是可以<strong>扩容</strong>的。</p>
+<p>HashMap 以 key-value 的形式进行存储，key+value 会以一个 Entry 对象的形式来存储，把 Entry 存入数组中，具体存入的下标不是按顺序存入，而是通过 key 获取对应的 hash 值，再根据 <strong>hash 值与数组最大索引进行按位与运算</strong>（将操作数转换为二进制，分别对比各位上的值，都为 1 则该位返回 1，否则返回 0，得到的结果就是按位与运算结果）</p>
+<p>与数组最大索引进行按位与运算是为了保证数组下标不越界</p>
+<p>A &amp; B 结果一定是小于等于 B</p>
+<p>很有可能出现两个 Entry 下标一样，hash 冲突，我们应该尽量避免，如果一旦一样怎么处理？意味着需要将两个 Entry 存入数组中的同一个位置，所以就形成了链表。</p>
+<p>数组中存储的是第一个 Entry 的地址，第二个 Entry 就往后排。</p>
+<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.png" alt="1611106695027"></p>
 <a id="more"></a>
 
-<h1 id="方法重写"><a href="#方法重写" class="headerlink" title="方法重写"></a>方法重写</h1><p>子类在继承父类方法的基础上，对父类方法重新定义并覆盖的操作叫做方法重写。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.java.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"输出人员信息"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.java.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">People</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"这是一个学生"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>为什么要使用红黑树呢？</strong></p>
+<p>链表的缺点是查询效率低，因为查询链表中的任意一个元素，都需要从头开始遍历。</p>
+<p>这种方式会导致 HashMap 取数据很慢，而取数据又是 HashMap 最常用的一个操作，所以 JDK 8 引入了红黑树来解决这个问题。</p>
+<p>红黑树可以解决链表查询效率低的问题</p>
+<p>红黑树是一种数据结构，其实是一个<strong>平衡二叉树</strong>，二叉树的查询效率很高。</p>
+<blockquote>
+<p>什么是二叉排序树？</p>
+</blockquote>
+<p>1、左子树上所有节点的值都小于等于它的根节点的值。</p>
+<p>2、右子树上所有节点的值都大于等于它的根节点的值。</p>
+<p>3、左、右子树分别为一个新的二叉排序树。</p>
+<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/2.png" alt="1611106717976"></p>
+<p>二叉排序树相比较于链表，查询效率很高出很多，所以选择使用二叉排序树来替代链表，但是纯二叉排序树有个缺点，有可能出现不平衡的二叉排序树，查询效率不会比链表高出多少。</p>
+<p>所以二叉排序树必须要保证一定是一个平衡二叉树，因为不平衡二叉树其实和链表差不多。</p>
+<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/3.png" alt="1611106741891"></p>
+<p><strong>如何让二叉排序树保持平衡？</strong>这就是红黑树的作用。</p>
+<p>1、节点是红色或者黑色。</p>
+<p>2、根节点是黑色。</p>
+<p>3、每个叶子节点都是黑色的空节点。</p>
+<p>4、每个红色节点的两个子节点都是黑色（从每个叶子节点到根的路径上不能有两连续的红色节点）</p>
+<p>5、从任一节点到它每个叶子节点的路径所包含的黑色节点的数目一致。</p>
+<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/4.png" alt="1611106758744"></p>
+<blockquote>
+<p>HashMap 构造函数</p>
+</blockquote>
+<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/5.png" alt="1611106769184"></p>
+<p>构造器中没有创建数组，HashMap 的数组是按需创建，<strong>只有在添加数据调用put的时候才会创建这个数组</strong>，如果不添加数据，则不会创建数组，避免空间浪费。</p>
+<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/6.png" alt="1611110571610"></p>
+<blockquote>
+<p>HashMap 有两个重要的参数：容量（capacity）和负载因子（loadFactor）</p>
+</blockquote>
+<ul>
+<li>容量：是指 HashMap 中桶的数量，默认值是 16</li>
+<li>负载因子：判断 HashMap 是否需要扩容，默认值是 0.75</li>
+</ul>
+<p>HashMap 存放的元素总数量 / 容量，当该值等于 0.75 的时候，HashMap 就需要进行扩容</p>
+<p>16*0.75 = 12</p>
+<p>当 HashMap 中元素个数超过 12 的时候，数组就需要进行扩容，成倍扩容 32</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;初始默认值</span><br><span class="line">static final int DEFAULT_INITIAL_CAPACITY &#x3D; 1 &lt;&lt; 4; &#x2F;&#x2F; aka 16</span><br><span class="line">&#x2F;&#x2F;数组最大容量</span><br><span class="line">static final int MAXIMUM_CAPACITY &#x3D; 1 &lt;&lt; 30;</span><br><span class="line">&#x2F;&#x2F;默认加载因子</span><br><span class="line">static final float DEFAULT_LOAD_FACTOR &#x3D; 0.75f;</span><br><span class="line">&#x2F;&#x2F;判断链表是否要转为红黑树，链表长度&gt;&#x3D;8就转换为红黑树了</span><br><span class="line">static final int TREEIFY_THRESHOLD &#x3D; 8;</span><br><span class="line">&#x2F;&#x2F;判断红黑树是否转为链表，红黑树的深度&lt;&#x3D;6就转换为链表了</span><br><span class="line">static final int UNTREEIFY_THRESHOLD &#x3D; 6;</span><br><span class="line">&#x2F;&#x2F;用来判断到底是链表转红黑树还是数组扩容，数组小于64只会发生扩容，不会进行转红黑树</span><br><span class="line">static final int MIN_TREEIFY_CAPACITY &#x3D; 64;</span><br></pre></td></tr></table></figure>
 
-<p>构造方法不能被重写，构造方法不能被继承。</p>
-<p>方法重写的规则：</p>
-<p>1、父子类的方法名必须相同。</p>
-<p>2、父子类的方法参数列表必须相同。</p>
-<p>3、子类方法返回值与父类方法返回值相同，或者是其子类。</p>
-<p>4、子类方法的访问权限不能小于父类，至少和父类一样，或者大于父类。</p>
-<p>public &gt; protected &gt; 默认 &gt; private</p>
-<p>父类 public，子类 public</p>
-<p>父类 protected，子类 public、protected</p>
-<p>父类默认，子类 public、protected、默认</p>
-<p>父类 private，子类无法重写父类的方法，<strong>重写需要建立在继承的基础上</strong>，必须先有继承，才能有重写，父类的 private 修饰的方法是无法被子类继承的，所以无法重写。</p>
-<h2 id="方法重写和方法重载"><a href="#方法重写和方法重载" class="headerlink" title="方法重写和方法重载"></a>方法重写和方法重载</h2><table>
-<thead>
-<tr>
-<th></th>
-<th>所在位置</th>
-<th>方法名</th>
-<th>参数列表</th>
-<th>返回值</th>
-<th>访问权限</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>方法重写</td>
-<td>子类重写父类方法</td>
-<td>相同</td>
-<td>相同</td>
-<td>相同或是其子类</td>
-<td>不能小于父类</td>
-</tr>
-<tr>
-<td>方法重载</td>
-<td>同一个类中</td>
-<td>相同</td>
-<td>不相同</td>
-<td>没有要求</td>
-<td>没有要求</td>
-</tr>
-</tbody></table>
+<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/7.png" alt="1611106782856"></p>
+<p>当 key = null 直接返回 0，否则返回 key 的 hashCode 值与自己的高 16 位进行异或运算，</p>
+<p>h &gt;&gt;&gt; 16 是用来取出 h 的高 16 位，&gt;&gt;&gt; 无符号右移</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0000 0100 1011 0011 1101 1111 1110 0001</span><br><span class="line">&gt;&gt;&gt; 16</span><br><span class="line">0000 0000 0000 0000 0000 0100 1011 0011</span><br></pre></td></tr></table></figure>
+
+<p>因为 int 的取值范围是 -21 亿到 21 亿，40 亿种可能，长度为 40 亿的数组内存肯定是存不下的，HashMap 默认长度是 16。</p>
+<p>所以需要跟自己的高 16 位进行异或运算（相同为 0，不同为 1），这样可以混合原始 hash 码的高位和低位，以此来加大低位的随机性，而且混合之后的低位同样会包含高位的信息，所以高位信息也被保留下来，散列分别更均匀，冲突的概率更小。</p>
+<p>可能性太多，内存无法承载，所以需要想办法降低可能性，降低的同时还要保证其随机性，冲突概率更小，所以采用的是跟自己高 16 按位异或的做法。</p>
+<p>拿到 key 的 hash 值之后，还要跟数组最大索引进行按位与运算（都为 1 返回 1，否则返回 0），最终的值才是正在的数组下标。</p>
+<p>具体步骤如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">h&#x3D;hashCode:1111 1111 1111 1111 1111 0000 1110 1010</span><br><span class="line">h&gt;&gt;&gt;16:    0000 0000 0000 0000 1111 1111 1111 1111</span><br><span class="line"></span><br><span class="line">^:		   1111	1111 1111 1111 0000 1111 0001 0101</span><br><span class="line">15:		   0000	0000 0000 0000 0000 0000 0000 1111</span><br><span class="line"></span><br><span class="line">&amp;		   0000 0000 0000 0000 0000 0000 0000 0101</span><br></pre></td></tr></table></figure>
+
+<p>得出下标index = 5</p>
+<p>接下来看看putVal源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent,</span></span></span><br><span class="line"><span class="function"><span class="params">                   <span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">//创建一个Node数组（哈希桶）</span></span><br><span class="line">    	<span class="comment">//创建一个Node节点p，两个int变量 n，i</span></span><br><span class="line">        Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; <span class="keyword">int</span> n, i;</span><br><span class="line">    	<span class="comment">//判断数组是否为空，如果为空就创建数组</span></span><br><span class="line">        <span class="keyword">if</span> ((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>)</span><br><span class="line">            <span class="comment">//resize是创建数组和数组扩容的方法，默认创建长度为16的数组</span></span><br><span class="line">            n = (tab = resize()).length;</span><br><span class="line">    		<span class="comment">//计算索引（数组最大索引&amp;hash），取出数组元素，判断是否为空</span></span><br><span class="line">        <span class="keyword">if</span> ((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>)</span><br><span class="line">            <span class="comment">//如果为null，直接创建Node存入</span></span><br><span class="line">            tab[i] = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            Node&lt;K,V&gt; e; K k;</span><br><span class="line">            <span class="comment">//如果不为null，判断key是否相同</span></span><br><span class="line">            <span class="keyword">if</span> (p.hash == hash &amp;&amp;</span><br><span class="line">                ((k = p.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                <span class="comment">//如果相同，则将已经存在的p赋给e</span></span><br><span class="line">                e = p;</span><br><span class="line">            <span class="comment">//如果key不相同，需要在原Node基础上添加新的Node，这就形成了链表</span></span><br><span class="line">            <span class="comment">//判断该位置是链表还是红黑树</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                <span class="comment">//如果是红黑树，将Node存入红黑树</span></span><br><span class="line">                e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">//如果是链表，就遍历链表</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                    <span class="comment">//遍历到最后一位</span></span><br><span class="line">                    <span class="keyword">if</span> ((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                        <span class="comment">//将Node存入</span></span><br><span class="line">                        p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                        <span class="comment">//判断链表长度是否超过8</span></span><br><span class="line">                        <span class="keyword">if</span> (binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) <span class="comment">// -1 for 1st									    //将链表转为红黑树</span></span><br><span class="line">                            treeifyBin(tab, hash);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//如果链表中存在重复的key，则进行替换</span></span><br><span class="line">                    <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    p = e;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//这里的e是相同的值</span></span><br><span class="line">            <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123; <span class="comment">// existing mapping for key</span></span><br><span class="line">                <span class="comment">//将e的value记录下来</span></span><br><span class="line">                V oldValue = e.value;</span><br><span class="line">                <span class="keyword">if</span> (!onlyIfAbsent || oldValue == <span class="keyword">null</span>)</span><br><span class="line">                    e.value = value;</span><br><span class="line">                afterNodeAccess(e);</span><br><span class="line">                <span class="comment">//将被替换的值返回</span></span><br><span class="line">                <span class="keyword">return</span> oldValue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    	<span class="comment">//哈希映射被修改的次数++</span></span><br><span class="line">        ++modCount;</span><br><span class="line">        <span class="keyword">if</span> (++size &gt; threshold)</span><br><span class="line">            <span class="comment">//threshold=capacity*loadfactor=16*0.75=12</span></span><br><span class="line">            resize();<span class="comment">//数组扩容</span></span><br><span class="line">        afterNodeInsertion(evict);</span><br><span class="line">    	<span class="comment">//如果key不重复，返回null</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>HashMap 底层是单向链表，只需要记录 next。</p>
+<p>双向链表，每一个节点都会记录它的上一个节点和下一个节点。</p>
+<p>转红黑树的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (tab == <span class="keyword">null</span> || (n = tab.length) &lt; MIN_TREEIFY_CAPACITY)</span><br><span class="line">            resize();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((e = tab[index = (n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            TreeNode&lt;K,V&gt; hd = <span class="keyword">null</span>, tl = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果数组的长度小于64，则不进行红黑树的转换，而是继续进行数组扩容，如果数组的长度大于64，再将链表转为红黑树。</p>
+<p><strong>HashMap 存值总体过程：</strong></p>
+<p>1、根据key计算hash值。</p>
+<p>2、在put的时候判断数组是否存在，如果不存在则用 resize 方法创建默认长度为16的数组。</p>
+<p>3、确定要存入的 Node 在数组中的位置，根据 hash 值与数组最大索引进行按位与运算得到索引位置。</p>
+<p>4、判断该位置是否有元素，如果没有直接创建一个 Node 存入。</p>
+<p>5、如果有元素，判断 key 是否相同，如果相同则覆盖，并且将原来的值直接返回。</p>
+<p>6、如果 key 不相同，在原 Node 基础上添加新的 Node，判断该位置是链表还是红黑树。</p>
+<p>7、如果是红黑树，将 Node 存入红黑树。</p>
+<p>8、如果是链表，遍历链表，找到最后一位，将 Node 存入。</p>
+<p>9、将 Node 存入链表之后，判断链表的结构是否要调整，判断链表长度是否超过 8，如果超过 8 需要将链表转为红黑树，这里还有一个条件，如果数组的容量小于 64，不转换红黑树，而是进行数组扩容，当数组的容量大于 64 的时候，再将链表转为红黑树。</p>
+<p>10、存完之后，再次判断数组是否进行扩容，根据负载因子来判断。</p>
 
       
     </div>
@@ -554,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/01/19/%E7%BB%A7%E6%89%BF%E3%80%81%E5%86%85%E9%83%A8%E7%B1%BB/" rel="next" title="继承、内部类">
-                <i class="fa fa-chevron-left"></i> 继承、内部类
+              <a href="/2021/01/19/%E6%B3%9B%E5%9E%8B/" rel="next" title="泛型">
+                <i class="fa fa-chevron-left"></i> 泛型
               </a>
             
           </div>
@@ -563,10 +563,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/01/19/%E6%B3%A8%E8%A7%A3%E3%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%81-%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="prev" title="注解、多态的使用、 抽象方法和抽象类">
-                注解、多态的使用、 抽象方法和抽象类 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -790,7 +786,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#子类访问权限"><span class="nav-number">1.</span> <span class="nav-text">子类访问权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法重写"><span class="nav-number">2.</span> <span class="nav-text">方法重写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法重写和方法重载"><span class="nav-number">2.1.</span> <span class="nav-text">方法重写和方法重载</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap-的底层数据结构"><span class="nav-number">1.</span> <span class="nav-text">HashMap 的底层数据结构</span></a></li></ol></div>
             
 
           </div>

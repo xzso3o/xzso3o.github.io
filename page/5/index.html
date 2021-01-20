@@ -313,6 +313,193 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/Vue/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/12/Vue/" itemprop="url">Vue</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T14:53:02+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  337
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Vue整体概括"><a href="#Vue整体概括" class="headerlink" title="Vue整体概括"></a>Vue整体概括</h3><p>main.js主文件  进行App.vue这个根文件  进行渲染，同时可设置路由router</p>
+<p>App.vue主界面入口  导入一些自己写的组件 同时可用router-view进行路由渲染 从而不在这里面放入太多的组件</p>
+<p>index.js 路由文件  导入VueRouter 并Vue.use(VueRouter)使用  同时写上</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line"> 	routes,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>并在上面定义一个routes路由数组 在数组里配置各个路由映射</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path: <span class="string">'/home'</span>,</span><br><span class="line">    component: Home</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>记得导入组件，可以直接导入，也可以懒加载导入</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Home = () =&gt; <span class="keyword">import</span>(<span class="string">'../views/home/Home'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>之后项目划分：</p>
+<p>​    assets-&gt;css、img  放样式和图片<br>​            common-&gt;mixin.js、utils.js、const.js 放公用函数、常量文件<br>​            components-&gt;common、content  放可复用的组件，同时分为公用和业务所需<br>​            network-&gt;request.js、home.js、detail.js 放网络请求的文件 同时对axios进行一层封装为request<br>​                                          之后home.js等文件只需导入request，并传入url、params作为网络请求的config<br>​            router-&gt;index.js  配置路由 大体只配置主要的部分/home /category /cart /profile /detail/:iid<br>​            store-&gt;index.js、actions.js、mutations.js、getters.js  配置Vuex的五大组件 进行状态管理<br>​            views-&gt;home、category、cart、profile、detail  配置主要部分的视图 业务组件都在这里编写</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/SpringCloud%E4%BA%94%E5%A4%A7%E7%A5%9E%E5%85%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -895,7 +1082,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1049,7 +1236,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共39.4k字</span>
+  <span class="post-count">博客全站共41.9k字</span>
 </div>
 
 
