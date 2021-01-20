@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="反射反射非常重要，它是动态语言的关键。 动态语言就是不写死，而是根据程序的具体执行情况做出不同的变化。 反射概念很抽象 日常生活中的反射：照镜子可以反射物体的形态 都是通过一个虚像可以映射到一个事物，可以直接获取实物的某些特征。 程序中的反射是通过某些信息（对象、类名 “java.lang.String”）可以映射到类，在程序运行期间获取类的相关信息。 反射的工作都是在程序运行期间进行的 反射具体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="反射">
+<meta property="og:url" content="https://xzso3o.github.io/2021/01/20/%E5%8F%8D%E5%B0%84/index.html">
+<meta property="og:site_name" content="">
+<meta property="og:description" content="反射反射非常重要，它是动态语言的关键。 动态语言就是不写死，而是根据程序的具体执行情况做出不同的变化。 反射概念很抽象 日常生活中的反射：照镜子可以反射物体的形态 都是通过一个虚像可以映射到一个事物，可以直接获取实物的某些特征。 程序中的反射是通过某些信息（对象、类名 “java.lang.String”）可以映射到类，在程序运行期间获取类的相关信息。 反射的工作都是在程序运行期间进行的 反射具体">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/%E5%8F%8D%E5%B0%84/1.png">
+<meta property="og:image" content="https://xzso3o.github.io/2021/01/20/%E5%8F%8D%E5%B0%84/2.png">
+<meta property="article:published_time" content="2021-01-20T08:49:47.000Z">
+<meta property="article:modified_time" content="2021-01-20T14:03:38.064Z">
+<meta property="article:author" content="xzs">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xzso3o.github.io/2021/01/20/%E5%8F%8D%E5%B0%84/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://xzso3o.github.io/2021/01/20/反射/"/>
+
+
+
+
+
+  
+  
+    <script src="/js/cursor/text.js"></script>
+  
+
+  <title>反射 | </title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	
+	<a href="https://github.com/xzso3o" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#64CEAA; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title"></span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/20/%E5%8F%8D%E5%B0%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">反射</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T16:49:47+08:00">
+                2021-01-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p>反射非常重要，它是<strong>动态</strong>语言的关键。</p>
+<p>动态语言就是<strong>不写死</strong>，而是根据程序的具体执行情况做出不同的变化。</p>
+<p>反射概念很抽象</p>
+<p>日常生活中的反射：照镜子可以反射物体的形态</p>
+<p>都是通过一个虚像可以映射到一个事物，可以直接获取实物的某些特征。</p>
+<p>程序中的反射是通过某些信息（对象、类名 “java.lang.String”）可以映射到类，在程序运行期间获取类的相关信息。</p>
+<p>反射的工作都是在程序运行期间进行的</p>
+<p>反射具体操作简单来说就是在程序运行期间，<strong>动态获取类的信息</strong>，从而完成某些操作。</p>
+<p>常规情况下，是通过类创建对象，反射就是将其进行反转，通过对象来获取类的信息。</p>
+<a id="more"></a>
+
+<h2 id="Class-类"><a href="#Class-类" class="headerlink" title="Class 类"></a>Class 类</h2><p>Class 类是反射的源头，反射就是获取某些类的信息，<strong>抽象出一个对象来表示类的信息</strong>，Class 就是用来创建这些对象的类。</p>
+<p>Class 的实例化对象是专门用来描述其他类，Class 是专门用来描述其他类的类。</p>
+<p>Class构造器是私有的，不能new出实例化对象。因为实例化对象需要描述一个其他类，这是必须给定的，不可能让你随便new出来，这样子根本不知道他用来描述哪一个类</p>
+<p>如何获取 Class 的实例化对象？一共有 3 种方式，都跟目标类有关系。</p>
+<p><strong>1、通过类名获取</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Class aClass = Class.forName(<span class="string">"java.lang.String"</span>);</span><br><span class="line">        System.out.println(aClass);</span><br><span class="line">        Class&lt;?&gt; aClass1 = Class.forName(<span class="string">"java.io.Serializable"</span>);</span><br><span class="line">        System.out.println(aClass1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、通过类字面量获取</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class class2 = String<span class="class">.<span class="keyword">class</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、通过类的实例化对象获取</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class class3 = str.getClass();</span><br></pre></td></tr></table></figure>
+
+<p>无论通过哪种方式获取的 Class 对象都是同一个，为什么呢？</p>
+<p>Java 中的类只会加载一次，加载到 JVM 内存中类叫做“<strong>运行时类</strong>”，Class 对象就是运行时类映射出来的一个对象。</p>
+<h2 id="获取类的结构"><a href="#获取类的结构" class="headerlink" title="获取类的结构"></a>获取类的结构</h2><p>类的结构包括：成员变量、方法、构造函数、继承的父类、实现的接口等等。</p>
+<p>Constructor 是 Java 反射包提供的一个类，它的作用是专门用来描述其他类的构造器的，一个 Constructor 实例化对象映射的就是某个类的某个构造函数。</p>
+<blockquote>
+<p>构造器</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Class clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">Constructor[] constructors = clazz.getConstructors();</span><br><span class="line"><span class="keyword">for</span> (Constructor constructor : constructors) &#123;</span><br><span class="line">    System.out.println(constructor);</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(<span class="string">"*****************************************"</span>);</span><br><span class="line">Constructor constructor = clazz.getConstructor();</span><br><span class="line">System.out.println(constructor);</span><br><span class="line">constructor = clazz.getConstructor(Integer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">System.out.println(constructor);</span><br><span class="line">constructor = clazz.getConstructor(Integer<span class="class">.<span class="keyword">class</span>,<span class="title">String</span>.<span class="title">class</span>)</span>;</span><br><span class="line">System.out.println(constructor);</span><br><span class="line">System.out.println(<span class="keyword">new</span> User(<span class="number">1</span>, <span class="string">"a"</span>));</span><br><span class="line">System.out.println(constructor.newInstance(<span class="number">1</span>,<span class="string">"a"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>你并不知道其他人要用哪个类，通过反射即可实现动态的让别人使用，下面是反射的一个应用，动态地创建各类对象，用户传什么全类名就创建该类对象</p>
+<p><img src="/2021/01/20/%E5%8F%8D%E5%B0%84/1.png" alt="1611142446180"></p>
+<p><img src="/2021/01/20/%E5%8F%8D%E5%B0%84/2.png" alt="1611142486849"></p>
+<blockquote>
+<p>接口</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Class clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        Class[] interfaces = clazz.getInterfaces();</span><br><span class="line">        <span class="keyword">for</span> (Class anInterface : interfaces) &#123;</span><br><span class="line">            System.out.println(anInterface);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>动态代理（Proxy）</strong>机制，给目标类找一个代理去完成工作，代理类不是提前写好的，而是程序运行时动态生成的，动态生成的代理类和目标类肯定是有关联的，代理类必须具备目标类的功能。</p>
+<p>Java 中如何描述功能？用接口描述，在动态生成类的时候，需要参照目标类的接口来生成这个动态代理类。</p>
+<blockquote>
+<p>属性（成员变量）</p>
+</blockquote>
+<p>getFields() 方法获取的是类中的<strong>公有成员变量</strong>（包括从父类继承过来的公有成员变量），public 修饰的</p>
+<p>getDeclaredFields() 方法获取的是类中<strong>全部成员变量</strong>（跟修饰无关，但是不包含父类中的成员变量）</p>
+<p>getField(String name) <strong>根据名称</strong>获取公有成员变量（包含父类继承过来的）</p>
+<p>getDeclaredField(String name) 根据名称获取成员变量（不包含父类继承过来的）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常规方式</span></span><br><span class="line">User user = <span class="keyword">new</span> User();</span><br><span class="line">user.id = <span class="number">1</span>;</span><br><span class="line">System.out.println(user);</span><br><span class="line"></span><br><span class="line"><span class="comment">//反射方式</span></span><br><span class="line">Field id = clazz.getField(<span class="string">"id"</span>);</span><br><span class="line">id.set(user, <span class="number">2</span>);</span><br><span class="line">System.out.println(user);</span><br></pre></td></tr></table></figure>
+
+<h2 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h2><p>赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Class clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        Field id = clazz.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line">        System.out.println(id);</span><br><span class="line">        <span class="comment">//赋值 取值</span></span><br><span class="line">        Constructor&lt;User&gt; constructor = clazz.getConstructor(<span class="keyword">null</span>);</span><br><span class="line">        User user = constructor.newInstance(<span class="keyword">null</span>);</span><br><span class="line">        <span class="comment">//暴力反射</span></span><br><span class="line">        id.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        id.set(user, <span class="number">1</span>);</span><br><span class="line">        System.out.println(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>取值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Class clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        Field id = clazz.getDeclaredField(<span class="string">"id"</span>);</span><br><span class="line">        System.out.println(id);</span><br><span class="line">        <span class="comment">//赋值 取值</span></span><br><span class="line">        Constructor&lt;User&gt; constructor = clazz.getConstructor(<span class="keyword">null</span>);</span><br><span class="line">        User user = constructor.newInstance(<span class="keyword">null</span>);</span><br><span class="line">        <span class="comment">//暴力反射</span></span><br><span class="line">        id.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">        Object o = id.get(user);</span><br><span class="line">        System.out.println(o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="成员方法"><a href="#成员方法" class="headerlink" title="成员方法"></a>成员方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Class clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line">        Method[] methods = clazz.getMethods();</span><br><span class="line">        <span class="keyword">for</span> (Method method : methods) &#123;</span><br><span class="line">            System.out.println(method);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>getMethods 方法获取目标类中的所有公有方法，<strong>包含从父类继承过来的公有方法</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Method[] declaredMethods = clazz.getDeclaredMethods();</span><br><span class="line"><span class="keyword">for</span> (Method declaredMethod : declaredMethods) &#123;</span><br><span class="line">    System.out.println(declaredMethod);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>getDeclaredMethods 方法获取目标类中的所有方法，<strong>不包含</strong>从父类继承过来的方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Class clazz = User<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"><span class="comment">//        Method[] methods = clazz.getMethods();</span></span><br><span class="line"><span class="comment">//        for (Method method : methods) &#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(method);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"><span class="comment">//        Method[] declaredMethods = clazz.getDeclaredMethods();</span></span><br><span class="line"><span class="comment">//        for (Method declaredMethod : declaredMethods) &#123;</span></span><br><span class="line"><span class="comment">//            System.out.println(declaredMethod);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        Method getId = clazz.getDeclaredMethod(<span class="string">"getId"</span>, <span class="keyword">null</span>);<span class="comment">//方法存在重载，所以要传参数</span></span><br><span class="line">        User user = (User) clazz.getConstructor(<span class="keyword">null</span>).newInstance(<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//赋值</span></span><br><span class="line">        Method setId = clazz.getMethod(<span class="string">"setId"</span>, Integer<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">        setId.invoke(user, <span class="number">22</span>);<span class="comment">//invoke让方法去执行</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//取值</span></span><br><span class="line">        System.out.println(getId.invoke(user, <span class="keyword">null</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>反射机制在实际开发中最主要的三个应用构造器、方法、成员变量。</p>
+<p>Spring 框架，IoC 容器，自动创建对象，不需要开发者手动创建对象，程序根据配置文件自动生成程序需要的各种对象。</p>
+<p>1、通过构造器创建对象</p>
+<p>2、给对象的属性赋值</p>
+<h2 id="反射应用之—动态代理"><a href="#反射应用之—动态代理" class="headerlink" title="反射应用之—动态代理"></a>反射应用之—动态代理</h2><p>代理(Proxy)模式是一种常用的 Java 设计模式，代理模式是指处理一个业务逻辑时，通过代理的方式完成。</p>
+<p>代理模式中包含被代理方（委托方），和代理方，委托方委托代理帮助他完成某些工作。</p>
+<p>在所有的代理模式中，委托方和代理方都有一个共性，即双方都具备完成需求的能力。</p>
+<p>Java 程序中如何描述这个关系？将类所具备的能力封装成接口，<strong>Java 委托类和代理类需要实现同一个接口</strong>。</p>
+<p>代理类和委托类是通过依赖注入进行关联，在设计程序时需要将委托类定义为代理类的成员变量，</p>
+<p>1、所有的操作全部在代理类中完成</p>
+<p>2、核心业务操作还是由委托类本身完成</p>
+<p>3、代理类完成其他非核心工作</p>
+<p>4、委托类需要作为成员变量注入到代理类中</p>
+<p>代理模式又可以分为静态代理和动态代理，两者的区别在于静态代理需要提前编写好代理类的代码，在编译期间代理类的 class 文件就已经生成了，代码是写死的。</p>
+<p>动态代理是指编译期间代理类的代码不确定，而是在程序运行期间根据代码的指示动态生成的，代码不是写死的，而是灵活变通的。</p>
+<p>静态代理和反射没有任何关系，动态代理是需要通过反射机制来实现灵活性的。</p>
+<p>静态代理代码如下：</p>
+<p>1、创建接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Phone</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">salePhone</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2、创建委托类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Apple</span> <span class="keyword">implements</span> <span class="title">Phone</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">salePhone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"销售iPhone手机"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HuaWei</span> <span class="keyword">implements</span> <span class="title">Phone</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">salePhone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"销售华为手机"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3、创建代理类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhoneProxy</span> <span class="keyword">implements</span> <span class="title">Phone</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Phone phone;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PhoneProxy</span><span class="params">(Phone phone)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.phone = phone;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">salePhone</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"打广告、宣传等其他代理业务操作"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.phone.salePhone();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4、使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        PhoneProxy phoneProxy = <span class="keyword">new</span> PhoneProxy(<span class="keyword">new</span> Apple());</span><br><span class="line">        System.out.println(phoneProxy.salePhone());</span><br><span class="line">        phoneProxy = <span class="keyword">new</span> PhoneProxy(<span class="keyword">new</span> HuaWei());</span><br><span class="line">        System.out.println(phoneProxy.salePhone());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建一个厂商，既可以卖代理卖手机，也可以代理卖汽车，未来还可能代理卖别的东西。</p>
+<p><strong>动态代理：</strong></p>
+<p>需求：</p>
+<p>要求提供这样一种机制，可以为各种委托类实现代理机制。</p>
+<p>1、肯定需要包含目前项目中已经存在的委托类（销售手机、销售汽车）</p>
+<p>2、同时还要具备非常好的扩展性，这套程序写好之后，如果后期有新的委托类（销售房子）</p>
+<p>代码完全不需要修改，还可以完成代理机制。</p>
+<p>动态代理机制可以实现上述需求，简单理解就是代理类不是提前写好的，根本就不存在，而是程序运行期间动态生成的，（JDK 动态代理）</p>
+<p>开发程序的时候只需要写一个辅助类，辅助动态代理机制动态生成真正的代理类。</p>
+<p>就是动态生成代理类的功能，<strong>Java 中如何让一个类具备某种功能？</strong></p>
+<p>Java 中用接口定义功能，只需要让目标类实现该接口，目标类就具备了相应的功能。</p>
+<p>java.lang.reflect.InvocationHandler</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ClassLoader loader,</span><br><span class="line">Class&lt;?&gt;[] interfaces,</span><br><span class="line">InvocationHandler h &#x2F;&#x2F;InvocationHandler实例</span><br></pre></td></tr></table></figure>
+
+<p>借助于辅助对象 MyInvocationHandler 动态创建代理类，进而创建代理对象</p>
+<p>动态创建一个类，代理类，替代委托类完成某些工作的，这个代理类就需要实现委托类的接口。</p>
+<p>动态创建代理类的时候，必须结合委托类的接口来创建。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.InvocationHandler;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Proxy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">//记录委托对象</span></span><br><span class="line">    <span class="keyword">private</span> Object object = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//传入委托对象</span></span><br><span class="line">    <span class="comment">//返回动态创建的代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">bind</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object = object;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(</span><br><span class="line">                MyInvocationHandler<span class="class">.<span class="keyword">class</span>.<span class="title">getClassLoader</span>(),//类加载器</span></span><br><span class="line"><span class="class">                <span class="title">object</span>.<span class="title">getClass</span>().<span class="title">getInterfaces</span>(),//委托对象接口</span></span><br><span class="line"><span class="class">                <span class="title">this</span>)</span>;<span class="comment">//InvocationHandler实例，就可以用当前对象this</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//invoke通过反射机制来完成方法调用的</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"start proxy model"</span>);</span><br><span class="line">        <span class="comment">//委托对象调用核心业务方法</span></span><br><span class="line">        Object result = method.invoke(<span class="keyword">this</span>.object, args);<span class="comment">//通过反射传入委托对象调用核心业务</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test3</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        //委托对象</span></span><br><span class="line"><span class="comment">//        Phone phone = new HuaWei();</span></span><br><span class="line"><span class="comment">//        //获取代理</span></span><br><span class="line"><span class="comment">//        MyInvocationHandler handler = new MyInvocationHandler();</span></span><br><span class="line"><span class="comment">//        Phone proxy = (Phone) handler.bind(phone);</span></span><br><span class="line"><span class="comment">//        System.out.println(proxy.salePhone());</span></span><br><span class="line"></span><br><span class="line">        Car car = <span class="keyword">new</span> BMW();</span><br><span class="line">        MyInvocationHandler handler = <span class="keyword">new</span> MyInvocationHandler();</span><br><span class="line">        Car proxy = (Car) handler.bind(car);</span><br><span class="line">        System.out.println(proxy.saleCar());<span class="comment">//调用代理对象方法时会自动地通过反射机制来获取到proxy里的方法，然后自动进到invoke方法中</span></span><br><span class="line">        System.out.println(proxy.add(<span class="number">10</span>, <span class="number">20</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总体流程：</p>
+<p>1.创建各个实例化对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Phone phone = <span class="keyword">new</span> HuaWei();</span><br><span class="line">MyInvocationHandler handler = <span class="keyword">new</span> MyInvocationHandler();</span><br></pre></td></tr></table></figure>
+
+<p>2.通过bind()方法创建代理对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Car proxy = (Car) handler.bind(car);</span><br></pre></td></tr></table></figure>
+
+<p>3.调用代理对象的方法，会自动地通过反射机制来获取到proxy里的方法，然后自动进到invoke方法中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">proxy.saleCar()</span><br><span class="line">然后跳到invoke方法</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"start proxy model"</span>);</span><br><span class="line">    <span class="comment">//委托对象调用核心业务方法</span></span><br><span class="line">    Object result = method.invoke(<span class="keyword">this</span>.object, args);<span class="comment">//通过反射传入委托对象调用核心业务</span></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/20/IO%E6%B5%81/" rel="next" title="IO流">
+                <i class="fa fa-chevron-left"></i> IO流
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/%5Bobject%20Object%5D"
+                alt="xzs" />
+            
+              <p class="site-author-name" itemprop="name">xzs</p>
+              <p class="site-description motion-element" itemprop="description">Try me!</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzso3o" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1017477355" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i>QQ</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="1017477355@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzso3o" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>简书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzso3o" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzso3o" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-globe"></i>csdn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xzso3o" target="_blank" title="掘金">
+                      
+                        <i class="fa fa-fw fa-globe"></i>掘金</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/xzso3o" title="Title1" target="_blank">Title1</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/xzso3o" title="Title2" target="_blank">Title2</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#反射"><span class="nav-number">1.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-类"><span class="nav-number">1.1.</span> <span class="nav-text">Class 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取类的结构"><span class="nav-number">1.2.</span> <span class="nav-text">获取类的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员变量"><span class="nav-number">1.3.</span> <span class="nav-text">成员变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#成员方法"><span class="nav-number">1.4.</span> <span class="nav-text">成员方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射应用之—动态代理"><span class="nav-number">1.5.</span> <span class="nav-text">反射应用之—动态代理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">xzs</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+<!-- </div>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div> -->
+
+
+
+  <span class="post-meta-divider">|</span>
+
+<!--
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共48k字</span>
+</div>
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <!-- 页面点击小红心 
+  
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  
+  -->
+
+
+</body>
+</html>

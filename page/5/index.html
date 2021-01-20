@@ -313,6 +313,365 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/" itemprop="url">回调的理解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T15:28:17+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  198
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="在axios中的回调"><a href="#在axios中的回调" class="headerlink" title="在axios中的回调"></a>在axios中的回调</h3><p>回调就是把函数当作参数传进来，然后你可以调用这个函数，调用的同时你不就可以传些东西出去了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">config, success, failure</span>) </span>&#123; <span class="comment">//1.三个参数 后面两个是回调函数</span></span><br><span class="line">  <span class="comment">// 创建axios的实例</span></span><br><span class="line">  <span class="keyword">const</span> instance = axios.create(&#123;</span><br><span class="line">    baseURL: <span class="string">'http://123.207.32.32:8000'</span>,</span><br><span class="line">    timeout: <span class="number">5000</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送真正的网络请求</span></span><br><span class="line">  instance(config)    <span class="comment">//config为请求参数</span></span><br><span class="line">    .then(<span class="function"><span class="params">results</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(results);</span></span><br><span class="line">      success(results);      <span class="comment">//2.使用传进来的那个函数  并且将results放入这个函数就可以回调传出去</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(error);</span></span><br><span class="line">      failure(error)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">request(&#123;</span><br><span class="line">  url: <span class="string">'/home/multidata'</span></span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);    <span class="comment">//3. 这里就可以拿到results放入res执行函数，完成回调</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(err);</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url">Vue零碎知识点</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T15:04:36+08:00">
+                2020-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  675
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="Vue零碎知识点杂笔"><a href="#Vue零碎知识点杂笔" class="headerlink" title="Vue零碎知识点杂笔"></a>Vue零碎知识点杂笔</h3><p>webpack3的使用    webpack ./src/main.js  ./dist/bundle.js<br>        webpack4的使用    webpack ./src/main.js -o ./dist/bundle.js –mode development</p>
+<p>但现在直接用Vue-cli4脚手架快速生成Vue项目</p>
+<p>npm run build  ：会去package.json寻找script脚本属性里的build的指令执行  就可以执行项目本地的webpack指令</p>
+<p>使用vue-cli2<br>           vue init webpack vueclitest（项目名）<br>        使用vue-cli3 4<br>           vue create vueclitest（项目名）</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/Vue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1082,7 +1441,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1236,7 +1595,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共41.9k字</span>
+  <span class="post-count">博客全站共48k字</span>
 </div>
 
 

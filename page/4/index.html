@@ -313,6 +313,415 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/" itemprop="url">Hystrix服务降级、熔断、限流</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T12:53:10+08:00">
+                2020-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringCloud/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringCloud</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  937
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Hystrix"><a href="#Hystrix" class="headerlink" title="Hystrix"></a>Hystrix</h3><h4 id="一、主要三大概念"><a href="#一、主要三大概念" class="headerlink" title="一、主要三大概念"></a>一、主要三大概念</h4><p><img src="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/1.png" alt="01"></p>
+<h4 id="二、服务降级"><a href="#二、服务降级" class="headerlink" title="二、服务降级"></a>二、服务降级</h4><p>1.导入一些依赖</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--hystrix--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line"> 	  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;		</span><br><span class="line">   &lt;!--openfeign--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line"> 	  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;!--eureka client--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line"> 	  &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.消费端yml文件多添加一项</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>3.添加注解</p>
+<p>消费端添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableFeignClients</span></span><br><span class="line"><span class="meta">@EnableHystrix</span></span><br></pre></td></tr></table></figure>
+
+<p>服务端添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableEurekaClient</span></span><br><span class="line"><span class="meta">@EnableCircuitBreaker</span></span><br></pre></td></tr></table></figure>
+
+<p>4.消费端通过openFeign远程调用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"CLOUD-PROVIDER-HYSTRIX-PAYMENT"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PaymentHystrixService</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/payment/hystrix/ok/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_OK</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/payment/hystrix/timeout/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.服务端通过注解和兜底方法进行处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"paymentInfo_TimeOutHandler"</span>,commandProperties = &#123;</span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name=<span class="string">"execution.isolation.thread.timeoutInMilliseconds"</span>,value=<span class="string">"5000"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(Integer id)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//int age = 10/0;</span></span><br><span class="line">        <span class="keyword">try</span> &#123; TimeUnit.MILLISECONDS.sleep(<span class="number">3000</span>); &#125; <span class="keyword">catch</span> (InterruptedException e) &#123; e.printStackTrace(); &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"线程池:  "</span>+Thread.currentThread().getName()+<span class="string">" id:  "</span>+id+<span class="string">"\t"</span>+<span class="string">"O(∩_∩)O哈哈~"</span>+<span class="string">"  耗时(秒): "</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOutHandler</span><span class="params">(Integer id)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"线程池:  "</span>+Thread.currentThread().getName()+<span class="string">"  8001系统繁忙或者运行报错，请稍后再试,id:  "</span>+id+<span class="string">"\t"</span>+<span class="string">"o(╥﹏╥)o"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>@HystrixCommand(fallbackMethod = “paymentInfo_TimeOutHandler”,设置了paymentInfo_TimeOutHandler这个兜底方法，一旦服务发生异常或超时，则跳入到该兜底方法</p>
+<p>，commandProperties = {<br>            @HystrixProperty(name=”execution.isolation.thread.timeoutInMilliseconds”,value=”5000”)<br>        }  设置了允许超时的秒数</p>
+<p>6.消费端通过注解和兜底方法进行处理</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/consumer/payment/hystrix/timeout/&#123;id&#125;"</span>)</span><br><span class="line">    <span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"paymentTimeOutFallbackMethod"</span>,commandProperties = &#123;</span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name=<span class="string">"execution.isolation.thread.timeoutInMilliseconds"</span>,value=<span class="string">"1500"</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> age = <span class="number">10</span>/<span class="number">0</span>;</span><br><span class="line">        String result = paymentHystrixService.paymentInfo_TimeOut(id);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentTimeOutFallbackMethod</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"我是消费者80,对方支付系统繁忙请10秒钟后再试或者自己运行出错请检查自己,o(╥﹏╥)o"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.但都得写个兜底方法，导致代码膨胀。因此还可使用全局服务降级fallback</p>
+<p>先定义全局兜底方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">payment_Global_FallbackMethod</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Global异常处理信息，请稍后再试，/(ㄒoㄒ)/~~"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再在类上加注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DefaultProperties</span>(defaultFallback = <span class="string">"payment_Global_FallbackMethod"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>同时方法上只是@HystrixCommand注解，而不需要指名兜底方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HystrixCommand</span></span><br><span class="line"><span class="comment">//@HystrixCommand(fallbackMethod = "paymentTimeOutFallbackMethod",commandProperties = &#123;</span></span><br><span class="line">           <span class="comment">//@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",value="1500")</span></span><br><span class="line"><span class="comment">//   &#125;)</span></span><br></pre></td></tr></table></figure>
+
+<p>8.设置更全面的通用服务降级类，实现需要进行服务降级的接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PaymentFallbackService</span> <span class="keyword">implements</span> <span class="title">PaymentHystrixService</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_OK</span><span class="params">(Integer id)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"-----PaymentFallbackService fall back-paymentInfo_OK ,o(╥﹏╥)o"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">paymentInfo_TimeOut</span><span class="params">(Integer id)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"-----PaymentFallbackService fall back-paymentInfo_TimeOut ,o(╥﹏╥)o"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient</span>(value = <span class="string">"CLOUD-PROVIDER-HYSTRIX-PAYMENT"</span> ,fallback = PaymentFallbackService<span class="class">.<span class="keyword">class</span>)<span class="title">public</span> <span class="title">interface</span> <span class="title">PaymentHystrixService</span></span></span><br></pre></td></tr></table></figure>
+
+<p>注解添加fallback属性指向了PaymentFallbackService这个服务降级类</p>
+<h4 id="三、服务熔断"><a href="#三、服务熔断" class="headerlink" title="三、服务熔断"></a>三、服务熔断</h4><p>当一些服务调用失败达到一个阙值时，会对服务进行熔断。当检测到该服务正常时，能够恢复调用链路。</p>
+<p>熔断机制注解是@HystrixCommand</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@HystrixCommand</span>(fallbackMethod = <span class="string">"paymentCircuitBreaker_fallback"</span>,commandProperties = &#123;</span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.enabled"</span>,value = <span class="string">"true"</span>),<span class="comment">// 是否开启断路器</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.requestVolumeThreshold"</span>,value = <span class="string">"10"</span>),<span class="comment">// 请求次数</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.sleepWindowInMilliseconds"</span>,value = <span class="string">"10000"</span>), <span class="comment">// 时间窗口期</span></span><br><span class="line">            <span class="meta">@HystrixProperty</span>(name = <span class="string">"circuitBreaker.errorThresholdPercentage"</span>,value = <span class="string">"60"</span>),<span class="comment">// 失败率达到多少后跳闸</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>表示在十秒钟之内发送十次请求，如果失败率达到60%以上就跳闸</p>
+<p><img src="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/2.png" alt="01"></p>
+<p>熔断时候直接调用fallbackMethod</p>
+<h4 id="四、服务限流"><a href="#四、服务限流" class="headerlink" title="四、服务限流"></a>四、服务限流</h4><h4 id="五、Hystrix-Dashboard服务监控"><a href="#五、Hystrix-Dashboard服务监控" class="headerlink" title="五、Hystrix Dashboard服务监控"></a>五、Hystrix Dashboard服务监控</h4><p>1.添加依赖</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-cloud-starter-netflix-hystrix-dashboard&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"> 其中需要监控的服务都要加上这个actuator依赖</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-boot-starter-actuator&lt;/artifactId&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.主启动类上添加注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@EnableHystrixDashboard</span></span><br></pre></td></tr></table></figure>
+
+<p>3.在可视化页面上填写监控地址<a href="http://localhost:8001/hystrix.stream即可进行监控" target="_blank" rel="noopener">http://localhost:8001/hystrix.stream即可进行监控</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/12/21/OpenFeign%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/21/OpenFeign%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/" itemprop="url">OpenFeign服务接口调用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T12:51:51+08:00">
+                2020-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SpringCloud/" itemprop="url" rel="index">
+                    <span itemprop="name">SpringCloud</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  345
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="OpenFeign服务接口调用"><a href="#OpenFeign服务接口调用" class="headerlink" title="OpenFeign服务接口调用"></a>OpenFeign服务接口调用</h3><p>1.引入POM文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--openfeign--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;spring-cloud-starter-openfeign&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;!--eureka client--&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">   	&lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">  	    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/12/21/OpenFeign%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%8F%A3%E8%B0%83%E7%94%A8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/12/21/Ribbon%E6%9C%8D%E5%8A%A1%E8%B0%83%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1757,365 +2166,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/12/%E5%9B%9E%E8%B0%83%E7%9A%84%E7%90%86%E8%A7%A3/" itemprop="url">回调的理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T15:28:17+08:00">
-                2020-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  198
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="在axios中的回调"><a href="#在axios中的回调" class="headerlink" title="在axios中的回调"></a>在axios中的回调</h3><p>回调就是把函数当作参数传进来，然后你可以调用这个函数，调用的同时你不就可以传些东西出去了</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">request</span>(<span class="params">config, success, failure</span>) </span>&#123; <span class="comment">//1.三个参数 后面两个是回调函数</span></span><br><span class="line">  <span class="comment">// 创建axios的实例</span></span><br><span class="line">  <span class="keyword">const</span> instance = axios.create(&#123;</span><br><span class="line">    baseURL: <span class="string">'http://123.207.32.32:8000'</span>,</span><br><span class="line">    timeout: <span class="number">5000</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 发送真正的网络请求</span></span><br><span class="line">  instance(config)    <span class="comment">//config为请求参数</span></span><br><span class="line">    .then(<span class="function"><span class="params">results</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(results);</span></span><br><span class="line">      success(results);      <span class="comment">//2.使用传进来的那个函数  并且将results放入这个函数就可以回调传出去</span></span><br><span class="line">    &#125;)</span><br><span class="line">    .catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(error);</span></span><br><span class="line">      failure(error)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">request(&#123;</span><br><span class="line">  url: <span class="string">'/home/multidata'</span></span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);    <span class="comment">//3. 这里就可以拿到results放入res执行函数，完成回调</span></span><br><span class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(err);</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/" itemprop="url">Vue零碎知识点</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-12T15:04:36+08:00">
-                2020-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  675
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="Vue零碎知识点杂笔"><a href="#Vue零碎知识点杂笔" class="headerlink" title="Vue零碎知识点杂笔"></a>Vue零碎知识点杂笔</h3><p>webpack3的使用    webpack ./src/main.js  ./dist/bundle.js<br>        webpack4的使用    webpack ./src/main.js -o ./dist/bundle.js –mode development</p>
-<p>但现在直接用Vue-cli4脚手架快速生成Vue项目</p>
-<p>npm run build  ：会去package.json寻找script脚本属性里的build的指令执行  就可以执行项目本地的webpack指令</p>
-<p>使用vue-cli2<br>           vue init webpack vueclitest（项目名）<br>        使用vue-cli3 4<br>           vue create vueclitest（项目名）</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/05/12/Vue%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2169,7 +2219,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2323,7 +2373,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共41.9k字</span>
+  <span class="post-count">博客全站共48k字</span>
 </div>
 
 
