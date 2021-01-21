@@ -313,6 +313,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/19/%E6%B3%A8%E8%A7%A3%E3%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%81-%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/19/%E6%B3%A8%E8%A7%A3%E3%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%81-%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" itemprop="url">注解、多态的使用、 抽象方法和抽象类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-19T14:39:41+08:00">
+                2021-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
+                    <span itemprop="name">Java基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><p>@Override 它告诉编译器这个方法是用来覆盖父类方法的。</p>
+<p>@WebServlet Java Web 开发中表示某个类是一个 Servlet，Web 容器就会识别该类，从而加载运行该类，替代传统的 XML 开发，让程序开发更简洁。</p>
+<p>注解和注释</p>
+<p>注释完全不影响程序的运行，注解会影响程序的运行。</p>
+<p>注释是给开发者看的，注解是给程序看的，编译器、框架、Web 容器。</p>
+<p><strong>元注解</strong>：用来描述注解的注解，JDK 提供默认的注解，用这些默认注解帮助</p>
+<p>开发者自定义需要的注解。</p>
+<p>@Target 指定该注解使用的地方（类/方法）</p>
+<ul>
+<li><p>ElementType.TYPE   给类/接口使用</p>
+</li>
+<li><p>ElementType.METHOD 给方法使用</p>
+</li>
+<li><p>ElementType.FIELD 给属性使用</p>
+</li>
+<li><p>ElementType.PARAMETER 给方法参数使用</p>
+</li>
+</ul>
+<p>@Retention 指定注解的保留域</p>
+<ul>
+<li><p>RetentionPolicy.SOURCE    编译器处理，处理之后就不再保留</p>
+</li>
+<li><p>RetentionPolicy.CLASS    class文件处理，类对应的class文件</p>
+</li>
+<li><p>RetentionPolicy.RUNTIME    JVM 读取，程序运行时使用</p>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/01/19/%E6%B3%A8%E8%A7%A3%E3%80%81%E5%A4%9A%E6%80%81%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%81-%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/19/%E5%AD%90%E7%B1%BB%E8%AE%BF%E9%97%AE%E6%9D%83%E9%99%90%E3%80%81%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E5%92%8C%E9%87%8D%E8%BD%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2034,193 +2239,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/18/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/18/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" itemprop="url">数据类型转换、运算符和流程控制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-18T21:13:03+08:00">
-                2021-01-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  4
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="1-数据类型转换"><a href="#1-数据类型转换" class="headerlink" title="1.数据类型转换"></a>1.数据类型转换</h1><h2 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> num1 = <span class="number">10</span>;</span><br><span class="line">        System.out.println(num1);</span><br><span class="line">        <span class="keyword">double</span> num2 = num1;</span><br><span class="line">        System.out.println(num2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>程序会自动识别数据类型并完成转换，这种操作对数据类型是有要求的，并不是所有的数据类型都能完成自动转换。</p>
-<p>1、整型转浮点型都可以，跟字节大小没有关系。</p>
-<p>int  –&gt;  float/double</p>
-<p>long  –&gt;  float/double</p>
-<p>2、浮点型转整型，都无法完成，因为有精度损失，小数点后数值有丢失，对数据的描述不精准。</p>
-<p>3、精度一样（都是整型/都是浮点型）的情况下，只能由低字节转为高字节，反之则不行。</p>
-<h2 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h2><p>当自动转换不能实现的时候，我们可以通过强制手段进行转换，尽量不要强转，如果是基本数据类型，可能会有数据的精度损失，如果是引用类型，可能抛出类型转换异常。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/18/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2274,7 +2292,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2428,7 +2446,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共48k字</span>
+  <span class="post-count">博客全站共49.2k字</span>
 </div>
 
 
