@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="GateWay网关核心逻辑：路由转发+执行过滤器链 三大核心概念：路由、断言、过滤 1.引入POM依赖 GateWay不需要引入web、actuator这两个依赖，本身自己带有 12345678910&lt;!--gateway--&gt;      &lt;dependency&gt;          &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;g">
+<meta name="description" content="Java WebHTML+CSS+JavaScript+jQuery HTML：搭建网页的基本元素 CSS：对网页进行美化 HTML 是盖房子，CSS 就是装修，HTML + CSS 写出来的代码是静态页面 JavaScript JS 是一种脚本语言，JS 让静态页面变成动态页面 HTML：超文本标记语言 文本 图片 视频 音频 HTML 语法很简单，用 tag 标签对的形式来组装程序，后缀 ht">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GateWay网关">
-<meta property="og:url" content="https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/index.html">
+<meta property="og:title" content="文本标签、图片、超链接">
+<meta property="og:url" content="https://xzso3o.github.io/2021/01/21/%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE%E3%80%81%E5%9B%BE%E7%89%87%E3%80%81%E8%B6%85%E9%93%BE%E6%8E%A5/index.html">
 <meta property="og:site_name" content="">
-<meta property="og:description" content="GateWay网关核心逻辑：路由转发+执行过滤器链 三大核心概念：路由、断言、过滤 1.引入POM依赖 GateWay不需要引入web、actuator这两个依赖，本身自己带有 12345678910&lt;!--gateway--&gt;      &lt;dependency&gt;          &lt;groupId&gt;org.springframework.cloud&lt;&#x2F;g">
-<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/2.png">
-<meta property="og:image" content="https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/1.png">
-<meta property="article:published_time" content="2020-12-21T04:53:51.000Z">
-<meta property="article:modified_time" content="2020-12-21T12:15:54.183Z">
+<meta property="og:description" content="Java WebHTML+CSS+JavaScript+jQuery HTML：搭建网页的基本元素 CSS：对网页进行美化 HTML 是盖房子，CSS 就是装修，HTML + CSS 写出来的代码是静态页面 JavaScript JS 是一种脚本语言，JS 让静态页面变成动态页面 HTML：超文本标记语言 文本 图片 视频 音频 HTML 语法很简单，用 tag 标签对的形式来组装程序，后缀 ht">
+<meta property="article:published_time" content="2021-01-21T06:01:15.000Z">
+<meta property="article:modified_time" content="2021-01-21T06:15:08.059Z">
 <meta property="article:author" content="xzs">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/2.png">
 
 
 
@@ -126,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="https://xzso3o.github.io/2020/12/21/GateWay网关/"/>
+  <link rel="canonical" href="https://xzso3o.github.io/2021/01/21/文本标签、图片、超链接/"/>
 
 
 
@@ -137,7 +134,7 @@
     <script src="/js/cursor/text.js"></script>
   
 
-  <title>GateWay网关 | </title>
+  <title>文本标签、图片、超链接 | </title>
   
 
 
@@ -317,7 +314,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2020/12/21/GateWay%E7%BD%91%E5%85%B3/">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/21/%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE%E3%80%81%E5%9B%BE%E7%89%87%E3%80%81%E8%B6%85%E9%93%BE%E6%8E%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="xzs">
@@ -334,7 +331,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GateWay网关</h1>
+          <h1 class="post-title" itemprop="name headline">文本标签、图片、超链接</h1>
         
 
         <div class="post-meta">
@@ -346,8 +343,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-12-21T12:53:51+08:00">
-                2020-12-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-21T14:01:15+08:00">
+                2021-01-21
               </time>
             
 
@@ -369,8 +366,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SpringCloud/" itemprop="url" rel="index">
-                    <span itemprop="name">SpringCloud</span>
+                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaWeb</span>
                   </a>
                 </span>
 
@@ -400,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  610
+                  500
                 </span>
               
 
@@ -437,28 +434,60 @@
       
 
       
-        <h3 id="GateWay网关"><a href="#GateWay网关" class="headerlink" title="GateWay网关"></a>GateWay网关</h3><p>核心逻辑：路由转发+执行过滤器链</p>
-<p>三大核心概念：路由、断言、过滤</p>
-<p>1.引入POM依赖</p>
-<p>GateWay不需要引入web、actuator这两个依赖，本身自己带有</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--gateway--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-gateway&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">      &lt;!--eureka-client--&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+        <h1 id="Java-Web"><a href="#Java-Web" class="headerlink" title="Java Web"></a>Java Web</h1><p>HTML+CSS+JavaScript+jQuery</p>
+<p>HTML：搭建网页的基本元素</p>
+<p>CSS：对网页进行美化</p>
+<p>HTML 是盖房子，CSS 就是装修，HTML + CSS 写出来的代码是静态页面</p>
+<p>JavaScript JS 是一种脚本语言，JS 让静态页面变成动态页面</p>
+<p>HTML：超文本标记语言 文本 图片 视频 音频</p>
+<p>HTML 语法很简单，用 tag 标签对的形式来组装程序，后缀 html,htm</p>
+<p>HTML 支持单标签和标签对</p>
+<p>单标签是指只需要一个标签 <br></p>
+<p>标签对 <html></html> </p><h1></h1><p></p>
+<p>当标签需要包裹某些内容的时候，使用标签对，如果不需要包裹内容，直接用单标签即可</p>
+<a id="more"></a>
 
-<a id="more"></a> 
+<h2 id="文本标签"><a href="#文本标签" class="headerlink" title="文本标签"></a>文本标签</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1  h6</span><br></pre></td></tr></table></figure>
 
-<p>2.建立YML文件</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">locator:</span></span><br><span class="line">          <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment">#开启从注册中心动态创建路由的功能，利用微服务名进行路由</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/get/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line"></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">payment_routh2</span> <span class="comment">#payment_route    #路由的ID，没有固定规则但要求唯一，建议配合服务名</span></span><br><span class="line">          <span class="comment">#uri: http://localhost:8001          #匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://cloud-payment-service</span> <span class="comment">#匹配后提供服务的路由地址</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/payment/lb/**</span>         <span class="comment"># 断言，路径相匹配的进行路由</span></span><br><span class="line">            <span class="comment">#- After=2020-02-21T15:51:37.485+08:00[Asia/Shanghai]</span></span><br><span class="line">            <span class="comment">#- Cookie=username,zzyy</span></span><br><span class="line">            <span class="comment">#- Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的正则表达式</span></span><br></pre></td></tr></table></figure>
+<p>段落</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">p</span><br></pre></td></tr></table></figure>
 
-<p>运行过程：寻找路由里uri提供的服务地址，然后前往predicates断言下的服务地址路径，相匹配的则需要通过访问9527网关端口才可访问服务。同时可添加许多断言规则，具体搜官网</p>
-<p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/2.png" alt="01"></p>
-<p><img src="/2020/12/21/GateWay%E7%BD%91%E5%85%B3/1.png" alt="01"></p>
-<p>同时还可通过编码方式进行配置路由映射</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GateWayConfig</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RouteLocator <span class="title">customRouteLocator</span><span class="params">(RouteLocatorBuilder routeLocatorBuilder)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();</span><br><span class="line"></span><br><span class="line">        routes.route(<span class="string">"path_route_xzs"</span>,</span><br><span class="line">                r -&gt; r.path(<span class="string">"/guonei"</span>)</span><br><span class="line">                        .uri(<span class="string">"http://news.baidu.com/guonei"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> routes.build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>换行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">br</span><br></pre></td></tr></table></figure>
 
-<p>以上为配置了一个叫path_route_xzs的路由，当访问localhost:9527/guonei，则跳转到<a href="http://news.baidu.com/guonei" target="_blank" rel="noopener">http://news.baidu.com/guonei</a></p>
-<p>3.路由过滤</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@Slf</span>4j</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyLogGateWayFilter</span> <span class="keyword">implements</span> <span class="title">GlobalFilter</span>,<span class="title">Ordered</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Mono&lt;Void&gt; <span class="title">filter</span><span class="params">(ServerWebExchange exchange, GatewayFilterChain chain)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        log.info(<span class="string">"***********come in MyLogGateWayFilter:  "</span>+<span class="keyword">new</span> Date());</span><br><span class="line"></span><br><span class="line">        String uname = exchange.getRequest().getQueryParams().getFirst(<span class="string">"uname"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(uname == <span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            log.info(<span class="string">"*******用户名为null，非法用户，o(╥﹏╥)o"</span>);</span><br><span class="line">            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);</span><br><span class="line">            <span class="keyword">return</span> exchange.getResponse().setComplete();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> chain.filter(exchange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOrder</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 注释内容 --&gt;</span><br></pre></td></tr></table></figure>
 
-<p>即实现两个接口GlobalFilter,Ordered，直接进行过滤规则编写。以上为访问时需带上一个uname值才可访问</p>
+<p>字体加粗</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;strong&gt;&lt;&#x2F;strong&gt; &lt;b&gt;&lt;&#x2F;b&gt;</span><br></pre></td></tr></table></figure>
+
+<p>常用文本格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;i&gt;&lt;&#x2F;i&gt;  斜体</span><br><span class="line">&lt;em&gt;&lt;&#x2F;em&gt; 斜体</span><br><span class="line">&lt;del&gt;&lt;&#x2F;del&gt; 横线</span><br><span class="line">&lt;ins&gt;&lt;&#x2F;ins&gt; 下划线</span><br><span class="line">&lt;sub&gt;&lt;&#x2F;sub&gt; 下浮</span><br><span class="line">&lt;sup&gt;&lt;&#x2F;sup&gt; 上浮</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><img>
+
+<p>属性</p>
+<p>src：图片路径</p>
+<p>alt：当图片不显示的时候，用来替代图片的文字</p>
+<p>title：鼠标悬停到图片上之后，显示的文字</p>
+<p>width：图片的宽度，自适应进行缩放，当宽度改变的时候，高度会跟着等比例缩放</p>
+<p>height：图片的高度，自适应进行缩放，当宽度改变的时候，高度会跟着等比例缩放</p>
+<p>width 和 height 单独使用，会等比例缩放，如果同时使用，就会拉伸或压缩图片</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/1.png"</span> <span class="attr">alt</span>=<span class="string">"服务器开小差了..."</span> <span class="attr">title</span>=<span class="string">"这是一张图片"</span> <span class="attr">width</span>=<span class="string">"100px"</span> <span class="attr">height</span>=<span class="string">"600px"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h2><p><a></a></p>
+<p>属性：</p>
+<p>href：跳转的目标路径、</p>
+<p>title：鼠标悬停显示的文字</p>
+<p>target：跳转的形式</p>
+<p>​    1、_self 默认值，在当前页面刷新</p>
+<p>​    2、_blank，打开新的页面</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.bilibili.com"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"images/b.png"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -485,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/12/21/Hystrix%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E3%80%81%E7%86%94%E6%96%AD%E3%80%81%E9%99%90%E6%B5%81/" rel="next" title="Hystrix服务降级、熔断、限流">
-                <i class="fa fa-chevron-left"></i> Hystrix服务降级、熔断、限流
+              <a href="/2021/01/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84-Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" rel="next" title="多线程模式下的 Java 网络编程">
+                <i class="fa fa-chevron-left"></i> 多线程模式下的 Java 网络编程
               </a>
             
           </div>
@@ -495,8 +524,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/12/21/SpringCloud-Stream%E6%B6%88%E6%81%AF%E9%A9%B1%E5%8A%A8/" rel="prev" title="SpringCloud Stream消息驱动">
-                SpringCloud Stream消息驱动 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/01/21/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E3%80%81CSS/" rel="prev" title="HTML常用标签、CSS">
+                HTML常用标签、CSS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -721,7 +750,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#GateWay网关"><span class="nav-number">1.</span> <span class="nav-text">GateWay网关</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java-Web"><span class="nav-number">1.</span> <span class="nav-text">Java Web</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本标签"><span class="nav-number">2.1.</span> <span class="nav-text">文本标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片"><span class="nav-number">2.2.</span> <span class="nav-text">图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#超链接"><span class="nav-number">2.3.</span> <span class="nav-text">超链接</span></a></li></ol></li></ol></div>
             
 
           </div>
