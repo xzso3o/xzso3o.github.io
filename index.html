@@ -313,6 +313,1744 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/10-%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/10-%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D/" itemprop="url">10.对象实例化内存布局与访问定位</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T20:15:57+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="对象实例化内存布局与访问定位"><a href="#对象实例化内存布局与访问定位" class="headerlink" title="对象实例化内存布局与访问定位"></a>对象实例化内存布局与访问定位</h1><h2 id="对象实例化"><a href="#对象实例化" class="headerlink" title="对象实例化"></a>对象实例化</h2><h3 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h3><p>美团：</p>
+<ul>
+<li>对象在JVM中是怎么存储的？</li>
+<li>对象头信息里面有哪些东西？</li>
+</ul>
+<p>蚂蚁金服：</p>
+<ul>
+<li>Java对象头有什么？</li>
+</ul>
+<p>从对象创建的方式 和 步骤开始说</p>
+<p><img src="/2021/02/13/10-%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D/image-20200709095356247.png" alt="image-20200709095356247"></p>
+<h3 id="对象创建方式"><a href="#对象创建方式" class="headerlink" title="对象创建方式"></a>对象创建方式</h3><ul>
+<li><p>new：最常见的方式、单例类中调用getInstance的静态类方法，XXXFactory的静态方法</p>
+</li>
+<li><p>Class的newInstance方法：被标记为过时的方法，因为只能调用空参构造器,权限必须是public</p>
+</li>
+<li><p>Constructor的newInstance(XXX)：反射的方式，可以调用空参的，或者带参的构造器，权限没有要求</p>
+</li>
+<li><p>使用clone()：不调用任何的构造器，要求当前的类需要实现Cloneable接口中的clone接口</p>
+</li>
+<li><p>使用反序列化：从文件中、从网络中获取一个对象的二进制流</p>
+</li>
+<li><p>第三方库 Objenesis</p></li></ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/13/10-%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80%E4%B8%8E%E8%AE%BF%E9%97%AE%E5%AE%9A%E4%BD%8D/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/" itemprop="url">9.方法区</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T20:09:20+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  20
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这次所讲述的是运行时数据区的最后一个部分</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708093918121.png" alt="image-20200708093918121"></p>
+<p>从线程共享与否的角度来看</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708094507624.png" alt="image-20200708094507624"></p>
+<p>方法区JDK8后叫元空间</p>
+<p>ThreadLocal：如何保证多个线程在并发环境下的安全性？典型应用就是数据库连接管理，以及会话管理</p>
+<h2 id="栈、堆、方法区的交互关系"><a href="#栈、堆、方法区的交互关系" class="headerlink" title="栈、堆、方法区的交互关系"></a>栈、堆、方法区的交互关系</h2><p>下面就涉及了对象的访问定位</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708094747667.png" alt="image-20200708094747667"></p>
+<ul>
+<li>Person：存放在元空间，也可以说方法区</li>
+<li>person：存放在Java栈的局部变量表中</li>
+<li>new Person()：存放在Java堆中</li>
+</ul>
+<h2 id="方法区的理解"><a href="#方法区的理解" class="headerlink" title="方法区的理解"></a>方法区的理解</h2><p>《Java虚拟机规范》中明确说明：“尽管所有的方法区在逻辑上是属于堆的一部分，但一些简单的实现可能不会选择去进行垃圾收集或者进行压缩。”但对于HotSpotJVM而言，方法区还有一个别名叫做Non-Heap（非堆），目的就是要和堆分开。</p>
+<p>所以，<strong>方法区看作是一块独立于Java堆的内存空间</strong>。</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708095853544.png" alt="image-20200708095853544"></p>
+<p>方法区主要存放的是 Class，而堆中主要存放的是 实例化的对象</p>
+<ul>
+<li>方法区（Method Area）与Java堆一样，是各个线程共享的内存区域。</li>
+<li>方法区在JVM启动的时候被创建，并且它的实际的物理内存空间中和Java堆区一样都可以是不连续的。</li>
+<li>方法区的大小，跟堆空间一样，可以选择固定大小或者可扩展。</li>
+<li>方法区的大小决定了系统可以保存多少个类，如果系统定义了太多的类，导致方法区溢出，虚拟机同样会抛出内存溢出错误：ava.lang.OutofMemoryError：<strong>PermGen space</strong> 或者java.lang.OutOfMemoryError:<strong>Metaspace</strong><ul>
+<li><strong>加载大量的第三方的jar包</strong></li>
+<li><strong>Tomcat部署的工程过多（30~50个）</strong></li>
+<li><strong>大量动态的生成反射类</strong></li>
+</ul>
+</li>
+<li>关闭JVM就会释放这个区域的内存。</li>
+</ul>
+<h3 id="HotSpot中方法区的演进"><a href="#HotSpot中方法区的演进" class="headerlink" title="HotSpot中方法区的演进"></a>HotSpot中方法区的演进</h3><p>在jdk7及以前，习惯上把方法区，称为永久代。jdk8开始，使用元空间取代了永久代。</p>
+<ul>
+<li>JDK 1.8后，元空间存放在堆外内存中</li>
+</ul>
+<p>本质上，<strong>方法区和永久代并不等价。仅是对hotspot而言的。</strong>《Java虚拟机规范》对如何实现方法区，不做统一要求。例如：BEAJRockit / IBM J9 中不存在永久代的概念。            </p>
+<blockquote>
+<p>现在来看，当年使用永久代，不是好的idea。导致Java程序更容易oom（超过-XX:MaxPermsize上限）</p>
+</blockquote>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708102919149.png" alt="image-20200708102919149"></p>
+<p>而到了JDK8，终于完全废弃了永久代的概念，改用与JRockit、J9一样在本地内存中实现的元空间（Metaspace）来代替</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708103055914.png" alt="image-20200708103055914"></p>
+<p>元空间的本质和永久代类似，都是对JVM规范中方法区的实现。不过元空间与永久代最大的区别在于：<strong>元空间不在虚拟机设置的内存中，而是使用本地内存</strong></p>
+<p>永久代、元空间二者并不只是名字变了，内部结构也调整了</p>
+<p>根据《Java虚拟机规范》的规定，如果方法区无法满足新的内存分配需求时，将抛出OOM异常</p>
+<h2 id="设置方法区大小与OOM"><a href="#设置方法区大小与OOM" class="headerlink" title="设置方法区大小与OOM"></a>设置方法区大小与OOM</h2><p>方法区的大小不必是固定的，JVM可以根据应用的需要动态调整。 </p>
+<h3 id="jdk7及以前"><a href="#jdk7及以前" class="headerlink" title="jdk7及以前"></a>jdk7及以前</h3><ul>
+<li>通过<strong>-xx:Permsize</strong>来设置永久代<strong>初始分配空间</strong>。默认值是<strong>20.75M</strong></li>
+<li><strong>-XX:MaxPermsize</strong>来设定永久代<strong>最大可分配空间</strong>。32位机器默认是64M，64位机器模式是<strong>82M</strong></li>
+<li><strong>当JVM加载的类信息容量超过了这个值，会报异常</strong>OutofMemoryError:PermGen space。</li>
+</ul>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708111756800.png" alt="image-20200708111756800"></p>
+<h3 id="JDK8以后"><a href="#JDK8以后" class="headerlink" title="JDK8以后"></a>JDK8以后</h3><p>元数据区大小可以使用参数 <strong>-XX:MetaspaceSize</strong> 和 <strong>-XX:MaxMetaspaceSize</strong>指定</p>
+<p>默认值依赖于平台。windows下，-XX:MetaspaceSize是<strong>21M</strong>，-XX:MaxMetaspaceSize的值是<strong>-1，即没有限制</strong>。</p>
+<p>与永久代不同，如果不指定大小，默认情况下，虚拟机会耗尽所有的可用系统内存。如果元数据区发生溢出，虚拟机一样会抛出异常OutOfMemoryError:Metaspace</p>
+<p>-XX:MetaspaceSize：设置初始的元空间大小。对于一个64位的服务器端JVM来说，其默认的-xx:MetaspaceSize值为21MB。这就是初始的高水位线，<strong>一旦触及这个水位线，Full GC将会被触发并卸载没用的类</strong>（即这些类对应的类加载器不再存活）然后这个高水位线将会重置。新的高水位线的值取决于GC后释放了多少元空间。如果<strong>释放的空间不足，那么在不超过MaxMetaspaceSize时，适当提高该值</strong>。如果<strong>释放空间过多，则适当降低该值。</strong></p>
+<p>如果初始化的高水位线设置过低，上述高水位线调整情况会发生很多次。通过垃圾回收器的日志可以观察到Ful1GC多次调用。<strong>为了避免频繁地GC，建议将-XX:MetaspaceSize设置为一个相对较高的值。</strong></p>
+<h3 id="如何解决这些OOM"><a href="#如何解决这些OOM" class="headerlink" title="如何解决这些OOM"></a>如何解决这些OOM</h3><ul>
+<li><p>要解决OOM异常或heap space的异常，一般的手段是首先通过内存映像分析工具（如Eclipse Memory Analyzer）对dump出来的堆转储快照进行分析，重点是确认内存中的对象是否是必要的，也就是要<strong>先分清楚到底是出现了内存泄漏</strong>（Memory Leak）<strong>还是内存溢出</strong>（Memory Overflow）</p>
+<ul>
+<li>内存泄漏就是 有大量的引用指向某些对象，但是这些对象以后不会使用了，但是因为它们还和GC ROOT有关联，所以导致以后这些对象也不会被回收，这就是内存泄漏的问题</li>
+</ul>
+</li>
+<li><p>如果是内存泄漏，可进一步通过工具查看泄漏对象到GC Roots的引用链。于是就能找到泄漏对象是通过怎样的路径与GCRoots相关联并导致垃圾收集器无法自动回收它们的。掌握了泄漏对象的类型信息，以及GCRoots引用链的信息，就可以比较准确地定位出泄漏代码的位置。</p>
+</li>
+<li><p>如果不存在内存泄漏，换句话说就是内存中的对象确实都还必须存活着，那就应当检查虚拟机的堆参数（-Xmx与-Xms），与机器物理内存对比看是否还可以调大，从代码上检查是否存在某些对象生命周期过长、持有状态时间过长的情况，尝试减少程序运行期的内存消耗。</p>
+</li>
+</ul>
+<h2 id="方法区的内部结构"><a href="#方法区的内部结构" class="headerlink" title="方法区的内部结构"></a>方法区的内部结构</h2><p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708161728320.png" alt="image-20200708161728320"></p>
+<p>《深入理解Java虚拟机》书中对方法区（Method Area）存储内容描述如下：它用于存储已被虚拟机加载的<strong>类型信息、常量、静态变量、即时编译器编译后的代码缓存等</strong>。</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708161856504.png" alt="image-20200708161856504"></p>
+<h3 id="类型信息"><a href="#类型信息" class="headerlink" title="类型信息"></a>类型信息</h3><p>对每个加载的类型（类class、接口interface、枚举enum、注解annotation），JVM必须在方法区中存储以下类型信息：</p>
+<ul>
+<li>这个类型的完整有效名称（全名=包名.类名）</li>
+<li>这个类型直接父类的完整有效名（对于interface或是java.lang.object，都没有父类）</li>
+<li>这个类型的修饰符（public，abstract，final的某个子集）</li>
+<li>这个类型直接接口的一个有序列表</li>
+</ul>
+<h3 id="域信息"><a href="#域信息" class="headerlink" title="域信息"></a>域信息</h3><p>JVM必须在方法区中保存类型的所有域的相关信息以及域的声明顺序。</p>
+<p>域的相关信息包括：域名称、域类型、域修饰符（public，private，protected，static，final，volatile，transient的某个子集）</p>
+<h3 id="方法（Method）信息"><a href="#方法（Method）信息" class="headerlink" title="方法（Method）信息"></a>方法（Method）信息</h3><p>JVM必须保存所有方法的以下信息，同域信息一样包括声明顺序：</p>
+<ul>
+<li>方法名称</li>
+<li>方法的返回类型（或void）</li>
+<li>方法参数的数量和类型（按顺序）</li>
+<li>方法的修饰符（public，private，protected，static，final，synchronized，native，abstract的一个子集）</li>
+<li>方法的字节码（bytecodes）、操作数栈、局部变量表及大小（abstract和native方法除外）</li>
+<li>异常表（abstract和native方法除外）</li>
+</ul>
+<blockquote>
+<p>每个异常处理的开始位置、结束位置、代码处理在程序计数器中的偏移地址、被捕获的异常类的常量池索引</p>
+</blockquote>
+<h3 id="non-final的类变量"><a href="#non-final的类变量" class="headerlink" title="non-final的类变量"></a>non-final的类变量</h3><p>静态变量和类关联在一起，随着类的加载而加载，他们成为类数据在逻辑上的一部分</p>
+<p>类变量被类的所有实例共享，即使没有类实例时，你也可以访问它</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * non-final的类变量</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodAreaTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Order order = <span class="keyword">new</span> Order();</span><br><span class="line">        order.hello();</span><br><span class="line">        System.out.println(order.count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Order</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> number = <span class="number">2</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">hello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如上代码所示，即使我们把order设置为null，也不会出现空指针异常</p>
+<h3 id="全局常量"><a href="#全局常量" class="headerlink" title="全局常量"></a>全局常量</h3><p>全局常量就是使用 <strong>static final 进行修饰</strong></p>
+<p>被声明为final的类变量的处理方法则不同，每个全局常量<strong>在编译的时候就会被分配了</strong>。 </p>
+<h3 id="运行时常量池-VS-常量池"><a href="#运行时常量池-VS-常量池" class="headerlink" title="运行时常量池 VS 常量池"></a>运行时常量池 VS 常量池</h3><p>运行时常量池，就是运行时常量池</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708171151384.png" alt="image-20200708171151384"></p>
+<ul>
+<li><strong>方法区</strong>，内部包含了<strong>运行时常量池</strong></li>
+<li><strong>字节码文件</strong>，内部包含了<strong>常量池</strong></li>
+<li>要弄清楚方法区，需要理解清楚Class File，因为加载类的信息都在方法区。</li>
+<li>要弄清楚方法区的运行时常量池，需要理解清楚Class File中的常量池。</li>
+</ul>
+<h3 id="常量池"><a href="#常量池" class="headerlink" title="常量池"></a>常量池</h3><p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708172357052.png" alt="image-20200708172357052"></p>
+<p>一个有效的<strong>字节码文件中</strong>除了包含类的版本信息、字段、方法以及接口等描述符信息外，还包含一项信息就是<strong>常量池表（Constant Pool Table），包括各种字面量和对类型、域和方法的符号引用</strong></p>
+<h4 id="为什么需要常量池"><a href="#为什么需要常量池" class="headerlink" title="为什么需要常量池"></a>为什么需要常量池</h4><p>一个java源文件中的类、接口，编译后产生一个字节码文件。而Java中的字节码需要数据支持，通常这种数据会很大以至于不能直接存到字节码里，换另一种方式，可以存到常量池，这个字节码包含了指向常量池的引用。在动态链接的时候会用到运行时常量池，之前有介绍。</p>
+<p>比如：如下的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>虽然上述代码只有194字节，但是里面却使用了String、System、PrintStream及Object等结构。这里的代码量其实很少了，如果代码多的话，引用的结构将会更多，这里就需要用到常量池了。</p>
+<h4 id="常量池中有什么"><a href="#常量池中有什么" class="headerlink" title="常量池中有什么"></a>常量池中有什么</h4><ul>
+<li>数量值</li>
+<li>字符串值</li>
+<li>类引用</li>
+<li>字段引用</li>
+<li>方法引用</li>
+</ul>
+<p>例如下面这段代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodAreaTest2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        Object obj = <span class="keyword">new</span> Object();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将会被翻译成如下字节码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">new <span class="comment">#2  </span></span><br><span class="line">dup</span><br><span class="line">invokespecial</span><br></pre></td></tr></table></figure>
+
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p><strong>常量池、可以看做是一张表，虚拟机指令根据这张常量表找到要执行的类名、方法名、参数类型、字面量等类型</strong></p>
+<h3 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h3><p>运行时常量池（Runtime Constant Pool）是方法区的一部分。</p>
+<p>常量池表（Constant Pool Table）是Class文件的一部分，<strong>用于存放编译期生成的各种字面量与符号引用</strong>，<strong>这部分内容将在类加载后存放到方法区的运行时常量池中。</strong></p>
+<p>运行时常量池，在加载类和接口到虚拟机后，就会创建对应的运行时常量池。</p>
+<p><strong>就是说放在常量池中的各种字面量和符号引用，实际中在方法区中被使用的就是运行时常量池。</strong></p>
+<p><strong>eg.味精没用的时候就只是味精，用了才是真实使用的</strong></p>
+<p>JVM为每个已加载的类型（类或接口）都维护一个常量池。池中的数据项像数组项一样，是通过索引访问的。</p>
+<p>运行时常量池中包含多种不同的常量，包括编译期就已经明确的数值字面量，也包括到运行期解析后才能够获得的方法或者字段引用。<strong>此时不再是常量池中的符号地址了，这里换为真实地址。</strong></p>
+<p>运行时常量池，相对于Class文件常量池的另一重要特征是：<strong>具备动态性</strong>。</p>
+<p>运行时常量池类似于传统编程语言中的符号表（symboltable），但是它所包含的数据却比符号表要更加丰富一些。</p>
+<p>当创建类或接口的运行时常量池时，如果构造运行时常量池所需的内存空间超过了方法区所能提供的最大值，则JVM会抛outofMemoryError异常。</p>
+<h2 id="方法区使用举例"><a href="#方法区使用举例" class="headerlink" title="方法区使用举例"></a>方法区使用举例</h2><p>如下代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodAreaDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">500</span>;</span><br><span class="line">        <span class="keyword">int</span> y = <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">int</span> a = x / y;</span><br><span class="line">        <span class="keyword">int</span> b = <span class="number">50</span>;</span><br><span class="line">        System.out.println(a+b);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>字节码执行过程展示</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708204750374.png" alt="image-20200708204750374"></p>
+<p>首先现将操作数500放入到操作数栈中</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708204953552.png" alt="image-20200708204953552"></p>
+<p>然后存储到局部变量表中</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708205029376.png" alt="image-20200708205029376"></p>
+<p>然后重复一次，把100放入局部变量表中，最后再将变量表中的500 和 100 取出，进行操作</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708205221737.png" alt="image-20200708205221737"></p>
+<p>将500 和 100 进行一个除法运算，在把结果入栈</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708205413721.png" alt="image-20200708205413721"></p>
+<p>在最后就是输出流，需要调用运行时常量池的常量</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708205708057.png" alt="image-20200708205708057"></p>
+<p>最后调用invokevirtual（虚方法调用），然后返回</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708205909176.png" alt="image-20200708205909176"></p>
+<p>返回时</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708210540696.png" alt="image-20200708210540696"></p>
+<p>程序计数器始终计算的都是当前代码运行的位置，目的是为了方便记录 方法调用后能够正常返回，或者是进行了CPU切换后，也能回来到原来的代码进行执行。</p>
+<h2 id="方法区的演进细节"><a href="#方法区的演进细节" class="headerlink" title="方法区的演进细节"></a>方法区的演进细节</h2><p>首先明确：<strong>只有Hotspot才有永久代。BEA JRockit、IBMJ9等来说，是不存在永久代的概念的。</strong>原则上如何实现方法区属于虚拟机实现细节，不受《Java虚拟机规范》管束，并不要求统一</p>
+<p>Hotspot中方法区的变化：</p>
+<table>
+<thead>
+<tr>
+<th>JDK1.6及以前</th>
+<th>有永久代，静态变量、字符串常量池还存储在永久代上</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>JDK1.7</td>
+<td>有永久代，但已经逐步 “去永久代”，<strong>字符串常量池，静态变量移除，保存在堆中</strong></td>
+</tr>
+<tr>
+<td>JDK1.8</td>
+<td><strong>无永久代，类型信息，字段，方法，常量保存在本地内存的元空间</strong>，<strong>但字符串常量池、静态变量仍然在堆中。</strong></td>
+</tr>
+</tbody></table>
+<p>JDK6的时候</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708211541300.png" alt="image-20200708211541300"></p>
+<p>JDK7的时候</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708211609911.png" alt="image-20200708211609911"></p>
+<p>JDK8的时候，元空间大小只受物理内存影响</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708211637952.png" alt="image-20200708211637952"></p>
+<h3 id="为什么永久代要被元空间替代？"><a href="#为什么永久代要被元空间替代？" class="headerlink" title="为什么永久代要被元空间替代？"></a>为什么永久代要被元空间替代？</h3><p><strong>JRockit是和HotSpot融合后的结果，因为JRockit没有永久代，所以他们不需要配置永久代</strong></p>
+<p>随着Java8的到来，HotSpot VM中再也见不到永久代了。但是这并不意味着类的元数据信息也消失了。这些数据被移到了<strong>一个与堆不相连的本地内存区域，这个区域叫做元空间</strong>（Metaspace）。</p>
+<p>由于类的元数据<strong>分配在本地内存中</strong>，元空间的最大可分配空间就是系统可用内存空间，这项改动是很有必要的，原因有：</p>
+<ul>
+<li><strong>为永久代设置空间大小是很难确定的。</strong></li>
+</ul>
+<p>在某些场景下，如果<strong>动态加载类过多</strong>，容易产生Perm区的<strong>OOM</strong>。比如某个实际Web工<br>程中，因为功能点比较多，在运行过程中，要不断动态加载很多类，经常出现致命错误。<strong>分配少了就容易GC</strong></p>
+<p>“Exception in thread‘dubbo client x.x connector’java.lang.OutOfMemoryError:PermGen space”</p>
+<p>而元空间和永久代之间最大的区别在于：<strong>元空间并不在虚拟机中，而是使用本地内存。</strong><br>因此，默认情况下，元空间的大小仅受本地内存限制。</p>
+<ul>
+<li><strong>对永久代进行调优是很困难的。</strong><ul>
+<li><strong>主要是为了降低Full GC</strong></li>
+</ul>
+</li>
+</ul>
+<p>有些人认为方法区（如HotSpot虚拟机中的元空间或者永久代）是没有垃圾收集行为的，其实不然。《Java虚拟机规范》对方法区的约束是非常宽松的，提到过可以不要求虚拟机在方法区中实现垃圾收集。事实上也确实有未实现或未能完整实现方法区类型卸载的收集器存在（如JDK11时期的ZGC收集器就不支持类卸载）。<br>一般来说这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻。但是这部分区域的回收有时又确实是必要的。以前sun公司的Bug列表中，曾出现过的若干个严重的Bug就是由于低版本的HotSpot虚拟机对此区域未完全回收而导致内存泄漏</p>
+<p>方法区的垃圾收集主要回收两部分内容：常量池中废弃的常量和不在使用的类型</p>
+<h3 id="StringTable为什么要调整位置"><a href="#StringTable为什么要调整位置" class="headerlink" title="StringTable为什么要调整位置"></a>StringTable为什么要调整位置</h3><p>jdk7中将StringTable放到了堆空间中。因为<strong>永久代的回收效率很低，在Full GC的时候才会触发</strong>。而Full GC是老年代的空间不足、永久代不足时才会触发。</p>
+<p>这就<strong>导致StringTable回收效率不高。而我们开发中会有大量的字符串被创建，回收效率低，导致永久代内存不足。</strong>放到堆里，能及时回收内存。</p>
+<h3 id="静态变量存放在那里？"><a href="#静态变量存放在那里？" class="headerlink" title="静态变量存放在那里？"></a>静态变量存放在那里？</h3><p><strong>静态引用对应的对象实体始终都存在堆空间</strong></p>
+<p>可以使用 jhsdb.ext，需要在jdk9的时候才引入的</p>
+<p>staticobj随着Test的类型信息存放在方法区，instanceobj随着Test的对象实例存放在Java堆，localobject则是存放在foo（）方法栈帧的局部变量表中。</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/JVM/LearningNotes/JVM/1_%E5%86%85%E5%AD%98%E4%B8%8E%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AF%87/9_%E6%96%B9%E6%B3%95%E5%8C%BA/images/image-20200708215025527.png" alt="image-20200708215025527"></p>
+<p>测试发现：三个对象的数据在内存中的地址都落在Eden区范围内，所以结论：只要是对象实例必然会在Java堆中分配。</p>
+<p>接着，找到了一个引用该staticobj对象的地方，是在一个java.1ang.Class的实例里，并且给出了这个实例的地址，通过Inspector查看该对象实例，可以清楚看到这确实是一个java.lang.Class类型的对象实例，里面有一个名为staticobj的实例字段：</p>
+<p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708215218078.png" alt="image-20200708215218078"></p>
+<p>从《Java虚拟机规范》所定义的概念模型来看，所有Class相关的信息都应该存放在方法区之中，但方法区该如何实现，《Java虚拟机规范》并未做出规定，这就成了一件允许不同虚拟机自己灵活把握的事情。JDK7及其以后版本的<strong>HotSpot虚拟机选择把静态变量与类型在Java语言一端的映射class对象存放在一起，存储于Java堆之中</strong>，从我们的实验中也明确验证了这一点</p>
+<h2 id="方法区的垃圾回收"><a href="#方法区的垃圾回收" class="headerlink" title="方法区的垃圾回收"></a>方法区的垃圾回收</h2><p>有些人认为方法区（如Hotspot虚拟机中的元空间或者永久代）是没有垃圾收集行为的，其实不然。《Java虚拟机规范》对方法区的约束是非常宽松的，提到过<strong>可以不要求虚拟机在方法区中实现垃圾收集</strong>。事实上也确实有未实现或未能完整实现方法区类型卸载的收集器存在（如JDK11时期的ZGC收集器就不支持类卸载）。</p>
+<p>一般来说<strong>这个区域的回收效果比较难令人满意，尤其是类型的卸载，条件相当苛刻</strong>。但是这部分区域的回收<strong>有时又确实是必要</strong>的。以前Sun公司的Bug列表中，曾出现过的若干个严重的Bug就是由于低版本的HotSpot虚拟机对此区域未完全回收而导致内存泄漏。</p>
+<p><strong>方法区的垃圾收集主要回收两部分内容：常量池中废弃的常量和不再使用的类型(类)。</strong></p>
+<p>先来说说方法区内常量池之中主要存放的两大类常量：字面量和符号引用。字面量比较接近Java语言层次的常量概念，如文本字符串、被声明为final的常量值等。而符号引用则属于编译原理方面的概念，包括下面三类常量：</p>
+<ul>
+<li>类和接口的全限定名</li>
+<li>字段的名称和描述符</li>
+<li>方法的名称和描述符</li>
+</ul>
+<p>HotSpot虚拟机<strong>对常量池的回收</strong>策略是很明确的，<strong>只要常量池中的常量没有被任何地方引用，就可以被回收。</strong></p>
+<p>回收废弃常量与回收Java堆中的对象非常类似。（关于常量的回收比较简单，重点是类的回收）</p>
+<p><strong>回收常量好办，回收类就比较苛刻了</strong></p>
+<p>判定一个常量是否“废弃”还是相对简单，而要判定一个类型是否属于“不再被使用的类”的条件就比较苛刻了。需要同时满足下面三个条件：</p>
+<ul>
+<li><strong>该类所有的实例都已经被回收</strong>，也就是Java堆中不存在该类及其任何派生子类的实例。</li>
+<li><strong>加载该类的类加载器已经被回收</strong>，这个条件除非是经过精心设计的可替换类加载器的场景，如osGi、JSP的重加载等，否则通常是很难达成的。</li>
+<li><strong>该类对应的java.lang.Class对象没有在任何地方被引用</strong>，无法在任何地方通过反射访问该类的方法。Java虚拟机被允许对满足上述三个条件的无用类进行回收，这里说的仅仅是“被允许”，而并不是和对象一样，没有引用了就必然会回收。关于是否要对类型进行回收，HotSpot虚拟机提供了-Xnoclassgc参数进行控制，还可以使用-verbose:class 以及 -XX：+TraceClass-Loading、-XX：+TraceClassUnLoading查看类加载和卸载信息</li>
+</ul>
+<p>在大量使用反射、动态代理、CGLib等字节码框架，动态生成JSP以及oSGi这类频繁自定义类加载器的场景中，通常都需要Java虚拟机具备类型卸载的能力，以保证不会对方法区造成过大的内存压力。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2021/02/13/9-%E6%96%B9%E6%B3%95%E5%8C%BA/image-20200708220303243.png" alt="image-20200708220303243"></p>
+<h3 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h3><p>百度：<br>三面：说一下JVM内存模型吧，有哪些区？分别干什么的？</p>
+<p>蚂蚁金服：<br>Java8的内存分代改进<br>JVM内存分哪几个区，每个区的作用是什么？<br>一面：JVM内存分布/内存结构？栈和堆的区别？堆的结构？为什么两个survivor区？<br>二面：Eden和survior的比例分配</p>
+<p>小米：<br>jvm内存分区，为什么要有新生代和老年代</p>
+<p>字节跳动：<br>二面：Java的内存分区<br>二面：讲讲jvm运行时数据区<br>什么时候对象会进入老年代？</p>
+<p>京东：<br>JVM的内存结构，Eden和Survivor比例。<br>JVM内存为什么要分成新生代，老年代，持久代。新生代中为什么要分为Eden和survivor。</p>
+<p>天猫：<br>一面：Jvm内存模型以及分区，需要详细到每个区放什么。<br>一面：JVM的内存模型，Java8做了什么改动</p>
+<p>拼多多：<br>JVM内存分哪几个区，每个区的作用是什么？</p>
+<p>美团：<br>java内存分配<br>jvm的永久代中会发生垃圾回收吗？<br>一面：jvm内存分区，为什么要有新生代和老年代？</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/8-%E5%A0%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/8-%E5%A0%86/" itemprop="url">8.堆</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T19:54:38+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  8.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  33
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><h2 id="堆的核心概念"><a href="#堆的核心概念" class="headerlink" title="堆的核心概念"></a>堆的核心概念</h2><p><strong>栈管运行，堆管存储！</strong></p>
+<p><strong>一个Java程序运行起来就是一个进程，一个进程对应一个JVM实例，一个JVM实例当中就有一个运行时数据区，所以堆针对一个JVM进程来说是唯一的，也就是一个进程只有一个JVM</strong>，但是进程包含多个线程，他们是共享同一堆空间的。</p>
+<p><img src="/2021/02/13/8-%E5%A0%86/image-20200706195127740.png" alt="image-20200706195127740"></p>
+<p>一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。</p>
+<p>Java堆区在JVM启动的时候即被创建，其空间大小也就确定了。是JVM管理的<strong>最大一块内存空间</strong>。</p>
+<ul>
+<li>堆内存的大小是可以调节的。</li>
+</ul>
+<p>《Java虚拟机规范》规定，堆<strong>可以处于物理上不连续</strong>的内存空间中，但在<strong>逻辑上</strong>它应该被视为<strong>连续</strong>的。</p>
+<p>所有的线程共享Java堆，在这里<strong>还可以划分线程私有的缓冲区</strong>（Thread Local Allocation Buffer，<strong>TLAB</strong>）。</p>
+<blockquote>
+<p>-Xms10m：最小堆内存</p>
+<p>-Xmx10m：最大堆内存</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/13/8-%E5%A0%86/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/7-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/7-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88/" itemprop="url">7.本地方法栈</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T19:41:17+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  444
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h1><p>Java虚拟机栈于管理Java方法的调用，而<strong>本地方法栈用于管理本地方法的调用</strong>。</p>
+<p>本地方法栈，也是线程私有的。</p>
+<p>允许被实现成固定或者是可动态扩展的内存大小。（在内存溢出方面是相同的）</p>
+<ul>
+<li>如果线程请求分配的栈容量超过本地方法栈允许的最大容量，Java虚拟机将会抛出一个stackoverflowError 异常。</li>
+<li>如果本地方法栈可以动态扩展，并且在尝试扩展的时候无法申请到足够的内存，或者在创建新的线程时没有足够的内存去创建对应的本地方法栈，那么Java虚拟机将会抛出一个outofMemoryError异常。</li>
+</ul>
+<p>本地方法是使用C语言实现的。</p>
+<p>它的具体做法是Native Method Stack中登记native方法，在Execution Engine 执行时加载本地方法库。</p>
+<p><img src="/2021/02/13/7-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88/image-20200706174708418.png" alt="image-20200706174708418"></p>
+<p><strong>当某个线程调用一个本地方法时，它就进入了一个全新的并且不再受虚拟机限制的世界。它和虚拟机拥有同样的权限。</strong></p>
+<ul>
+<li>本地方法可以通过本地方法接口来<strong>访问虚拟机内部的运行时数据区。</strong></li>
+<li>它甚至可以直接使用本地处理器中的寄存器</li>
+<li>直接从本地内存的堆中分配任意数量的内存。</li>
+</ul>
+<p><strong>并不是所有的JVM都支持本地方法。因为Java虚拟机规范并没有明确要求本地方法栈的使用语言、具体实现方式、数据结构等。如果JVM产品不打算支持native方法，也可以无需实现本地方法栈。</strong></p>
+<p>在Hotspot JVM中，直接将本地方法栈和虚拟机栈合二为一。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/6-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%8E%A5%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/6-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%8E%A5%E5%8F%A3/" itemprop="url">6.本地方法接口</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T19:35:21+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  960
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="本地方法接口"><a href="#本地方法接口" class="headerlink" title="本地方法接口"></a>本地方法接口</h1><h2 id="什么是本地方法"><a href="#什么是本地方法" class="headerlink" title="什么是本地方法"></a>什么是本地方法</h2><p>简单地讲，<strong>一个Native Method就是一个Java调用非Java代码的接囗。</strong>一个Native Method是这样一个Java方法：<strong>该方法的实现由非Java语言实现，比如C。</strong>这个特征并非Java所特有，很多其它的编程语言都有这一机制，比如在C++中，你可以用extern “c” 告知c++编译器去调用一个c的函数。</p>
+<p>“A native method is a Java method whose implementation is provided by non-java code.”（本地方法是一个非Java的方法，它的具体实现是非Java代码的实现）</p>
+<p>在定义一个native method时，并不提供实现体（有些像定义一个Java interface），因为其实现体是由非java语言在外面实现的。</p>
+<p>本地接口的作用是融合不同的编程语言为Java所用，它的初衷是融合C/C++程序。</p>
+<p><img src="/2021/02/13/6-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%8E%A5%E5%8F%A3/image-20200706164139252.png" alt="image-20200706164139252"></p>
+<p>代码举例说明Native方法是如何编写的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IhaveNatives</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">Native1</span><span class="params">(<span class="keyword">int</span> x)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">static</span> <span class="keyword">public</span> <span class="keyword">long</span> <span class="title">Native2</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">synchronized</span> <span class="keyword">private</span> <span class="keyword">float</span> <span class="title">Native3</span><span class="params">(Object o)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">void</span> <span class="title">Natives</span><span class="params">(<span class="keyword">int</span>[] ary)</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>需要注意的是：标识符native可以与其它java标识符连用，但是abstract除外，因为native方法其实有方法体，只不过是非java的实现，而abstract没有方法体</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/13/6-%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%8E%A5%E5%8F%A3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/5-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/5-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88/" itemprop="url">5.虚拟机栈</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T19:22:37+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  7.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  26
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h1><h2 id="虚拟机栈概述"><a href="#虚拟机栈概述" class="headerlink" title="虚拟机栈概述"></a>虚拟机栈概述</h2><p>由于跨平台性的设计，Java的指令都是根据栈来设计的。不同平台CPU架构不同，所以不能设计为基于寄存器的。<br>        <strong>优点是跨平台，指令集小，编译器容易实现，缺点是性能下降，实现同样的功能需要更多的指令。</strong></p>
+<p>有不少Java开发人员一提到Java内存结构，就会非常粗粒度地将JVM中的内存区理解为仅有Java堆（heap）和Java栈（stack）？为什么？</p>
+<p>首先栈是运行时的单位，而堆是存储的单位</p>
+<ul>
+<li><strong>栈解决程序的运行问题，即程序如何执行，或者说如何处理数据。</strong></li>
+<li><strong>堆解决的是数据存储的问题，即数据怎么放，放哪里</strong></li>
+</ul>
+<p><img src="/2021/02/13/5-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88/image-20200705163928652.png" alt="image-20200705163928652"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/13/5-%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/4-%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/4-%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8/" itemprop="url">4.程序计数器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T19:13:36+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>JVM中的程序计数寄存器（Program Counter Register）中，Register的命名源于CPU的寄存器，寄存器存储指令相关的现场信息。CPU只有把数据装载到寄存器才能够运行。这里，并非是广义上所指的物理寄存器，或许将其翻译为PC计数器（或指令计数器）会更加贴切（也称为程序钩子），并且也不容易引起一些不必要的误会。<strong>JVM中的PC寄存器是对物理PC寄存器的一种抽象模拟。</strong></p>
+<p><img src="/2021/02/13/4-%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8/image-20200705155551919.png" alt="image-20200705155551919"></p>
+<p>它是一块<strong>很小的内存空间</strong>，几乎可以忽略不记。也是<strong>运行速度最快</strong>的存储区域。</p>
+<p><strong>唯一不会出现OOM</strong>的空间</p>
+<p>在JVM规范中，每个线程都有它自己的程序计数器，是<strong>线程私有的</strong>，生命周期与线程的生命周期保持一致。</p>
+<p>任何时间一个线程都只有一个方法在执行，也就是所谓的当前方法。程序计数器会<strong>存储当前线程正在执行的Java方法的JVM指令地址</strong>；或者，<strong>如果是在执行native方法，则是未指定值</strong>（undefned）。</p>
+<p>它是程序控制流的指示器，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。</p>
+<p>它是唯一一个在Java虚拟机规范中没有规定任何outotMemoryError情况的区域。</p>
+<p>可把PC寄存器当作游标、集合的迭代器</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/13/4-%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/3-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%BA%BF%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="xzs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/%5Bobject%20Object%5D">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/13/3-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%BA%BF%E7%A8%8B/" itemprop="url">3.运行时数据区概述及线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-02-13T19:07:58+08:00">
+                2021-02-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVM/" itemprop="url" rel="index">
+                    <span itemprop="name">JVM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="运行时数据区概述及线程"><a href="#运行时数据区概述及线程" class="headerlink" title="运行时数据区概述及线程"></a>运行时数据区概述及线程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本节主要讲的是运行时数据区，也就是下图这部分，它是在类加载完成后的阶段</p>
+<p><img src="/2021/02/13/3-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%BA%BF%E7%A8%8B/image-20200705111640511.png" alt="image-20200705111640511"></p>
+<p>当我们通过前面的：类的加载-&gt; 验证 -&gt; 准备 -&gt; 解析 -&gt; 初始化 这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区</p>
+<p><img src="/2021/02/13/3-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%BA%BF%E7%A8%8B/image-20200705111843003.png" alt="image-20200705111843003"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/02/13/3-%E8%BF%90%E8%A1%8C%E6%97%B6%E6%95%B0%E6%8D%AE%E5%8C%BA%E6%A6%82%E8%BF%B0%E5%8F%8A%E7%BA%BF%E7%A8%8B/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+	
+	
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/02/13/2-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%AD%90%E7%B3%BB%E7%BB%9F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -673,1560 +2411,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/21/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E3%80%81CSS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/21/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E3%80%81CSS/" itemprop="url">HTML常用标签、CSS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-21T14:31:46+08:00">
-                2021-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaWeb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="HTML-常用标签"><a href="#HTML-常用标签" class="headerlink" title="HTML 常用标签"></a>HTML 常用标签</h1><blockquote>
-<p>table</p>
-</blockquote>
-<p>table 构建表格的基本标签</p>
-<p>tr 构建行元素</p>
-<p>td 构建列元素</p>
-<p>colspan    列合并  colspan=”3”合并三列</p>
-<p>rowspan   行合并  rowspan=”2”合并两行</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/21/HTML%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E3%80%81CSS/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/21/%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE%E3%80%81%E5%9B%BE%E7%89%87%E3%80%81%E8%B6%85%E9%93%BE%E6%8E%A5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/21/%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE%E3%80%81%E5%9B%BE%E7%89%87%E3%80%81%E8%B6%85%E9%93%BE%E6%8E%A5/" itemprop="url">文本标签、图片、超链接</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-21T14:01:15+08:00">
-                2021-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaWeb/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaWeb</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  500
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Java-Web"><a href="#Java-Web" class="headerlink" title="Java Web"></a>Java Web</h1><p>HTML+CSS+JavaScript+jQuery</p>
-<p>HTML：搭建网页的基本元素</p>
-<p>CSS：对网页进行美化</p>
-<p>HTML 是盖房子，CSS 就是装修，HTML + CSS 写出来的代码是静态页面</p>
-<p>JavaScript JS 是一种脚本语言，JS 让静态页面变成动态页面</p>
-<p>HTML：超文本标记语言 文本 图片 视频 音频</p>
-<p>HTML 语法很简单，用 tag 标签对的形式来组装程序，后缀 html,htm</p>
-<p>HTML 支持单标签和标签对</p>
-<p>单标签是指只需要一个标签 <br></p>
-<p>标签对 <html></html> </p><h1></h1><p></p>
-<p>当标签需要包裹某些内容的时候，使用标签对，如果不需要包裹内容，直接用单标签即可</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/21/%E6%96%87%E6%9C%AC%E6%A0%87%E7%AD%BE%E3%80%81%E5%9B%BE%E7%89%87%E3%80%81%E8%B6%85%E9%93%BE%E6%8E%A5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84-Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84-Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" itemprop="url">多线程模式下的 Java 网络编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-21T11:09:10+08:00">
-                2021-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  445
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>多线程模式下的 Java 网络编程</p>
-<p>总体过程：</p>
-<p>​    对于服务端：先创建出服务端ServerSocket，服务端一直等待接收客户端的socket，一旦接收到了，传入到写好的ServerRunnable中，通过多线程的方式将服务端接收的信息跑起来</p>
-<p>​    对于客户端：直接创建多个ClientRunnable以多线程形式跑起来，在run()中实现对服务端的发送消息</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.thread;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.ServerSocket;</span><br><span class="line"><span class="keyword">import</span> java.net.Socket;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerThread</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ServerSocket serverSocket = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            serverSocket = <span class="keyword">new</span> ServerSocket(<span class="number">8080</span>);</span><br><span class="line">            System.out.println(<span class="string">"服务器已启动..."</span>);</span><br><span class="line">            <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line">                Socket socket = serverSocket.accept();</span><br><span class="line">                <span class="comment">//开启子线程完成操作</span></span><br><span class="line">                ServerRunnable serverRunnable = <span class="keyword">new</span> ServerRunnable(socket);</span><br><span class="line">                <span class="keyword">new</span> Thread(serverRunnable).start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                serverSocket.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84-Java-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/20/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/20/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" itemprop="url">网络编程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T22:05:38+08:00">
-                2021-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Java-网络编程"><a href="#Java-网络编程" class="headerlink" title="Java 网络编程"></a>Java 网络编程</h1><p>计算机网络就是通过硬件设施、传输媒介把分布在不同物理地址上的计算机进行连接，形成一个资源共享和数据传输的网络系统。</p>
-<p>两台终端通过网络进行连接时，需要遵守一定的规则，网络协议：</p>
-<p>1、语法：数据信息的结构。</p>
-<p>2、语义：描述请求、动作和响应。</p>
-<p>3、同步：动作的实现顺序。</p>
-<p>TCP/IP、IPX/SPX、NetBEUI…</p>
-<p>最常用的是 TCP/IP</p>
-<p>1、应用层</p>
-<p>2、传输层</p>
-<p>3、网络层</p>
-<p>4、网络接口层（数据链路层+物理层）</p>
-<p><img src="/2021/01/20/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/1.png" alt="1611152396457"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/20/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/20/%E5%8F%8D%E5%B0%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/20/%E5%8F%8D%E5%B0%84/" itemprop="url">反射</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T16:49:47+08:00">
-                2021-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  12
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><p>反射非常重要，它是<strong>动态</strong>语言的关键。</p>
-<p>动态语言就是<strong>不写死</strong>，而是根据程序的具体执行情况做出不同的变化。</p>
-<p>反射概念很抽象</p>
-<p>日常生活中的反射：照镜子可以反射物体的形态</p>
-<p>都是通过一个虚像可以映射到一个事物，可以直接获取实物的某些特征。</p>
-<p>程序中的反射是通过某些信息（对象、类名 “java.lang.String”）可以映射到类，在程序运行期间获取类的相关信息。</p>
-<p>反射的工作都是在程序运行期间进行的</p>
-<p>反射具体操作简单来说就是在程序运行期间，<strong>动态获取类的信息</strong>，从而完成某些操作。</p>
-<p>常规情况下，是通过类创建对象，反射就是将其进行反转，通过对象来获取类的信息。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/20/%E5%8F%8D%E5%B0%84/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/20/IO%E6%B5%81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/20/IO%E6%B5%81/" itemprop="url">IO流</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T14:03:27+08:00">
-                2021-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  15
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="IO-流（输入输出流）"><a href="#IO-流（输入输出流）" class="headerlink" title="IO 流（输入输出流）"></a>IO 流（输入输出流）</h1><p>使用 Java 程序完成输入输出操作，输入 Input，输出 Output</p>
-<p>输入是指将文件以数据流的形式读取到 Java 程序中</p>
-<p>输出是指通过 Java 程序将数据流写入到文件中</p>
-<h2 id="File-类"><a href="#File-类" class="headerlink" title="File 类"></a>File 类</h2><p>java.lang.File</p>
-<p>常用方法</p>
-<p>注：目录是指文件夹，文件是指图片、txt、word等等</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>public File(String pathname)</td>
-<td>根据路径创建文件对象</td>
-</tr>
-<tr>
-<td>public String getName()</td>
-<td>获取文件名</td>
-</tr>
-<tr>
-<td>public String getParent()</td>
-<td>获取文件所在目录</td>
-</tr>
-<tr>
-<td>public File getParentFile()</td>
-<td>获取文件所在目录对应的对象</td>
-</tr>
-<tr>
-<td>public String getPath()</td>
-<td>获取文件路径</td>
-</tr>
-<tr>
-<td>public boolean exists()</td>
-<td>判断文件是否存在</td>
-</tr>
-<tr>
-<td>public boolean isDirectory()</td>
-<td>判断对象是否为目录</td>
-</tr>
-<tr>
-<td>public boolean isFile()</td>
-<td>判断对象是否为文件</td>
-</tr>
-<tr>
-<td>public long length()</td>
-<td>获取文件大小，以byte为单位</td>
-</tr>
-<tr>
-<td>public boolean createNewFile()</td>
-<td>根据当前File创建新的文件</td>
-</tr>
-<tr>
-<td>public boolean delete()</td>
-<td>删除文件</td>
-</tr>
-<tr>
-<td>public boolean mkdir()</td>
-<td>根据当前对象创建新目录</td>
-</tr>
-<tr>
-<td>public boolean renameTo(File file)</td>
-<td>为已存在的对象重命名</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/20/IO%E6%B5%81/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url">HashMap底层数据结构</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-20T09:42:26+08:00">
-                2021-01-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  9
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="HashMap-的底层数据结构"><a href="#HashMap-的底层数据结构" class="headerlink" title="HashMap 的底层数据结构"></a>HashMap 的底层数据结构</h1><p>HashMap 底层是数组，称为哈希桶，JDK7 和 JDK8 版本的变动是比较大的。</p>
-<p>存储结构：JDK7 是<strong>数组+链表</strong>，JDK8 是<strong>数组+链表+红黑树</strong>。</p>
-<p><strong>本质就是为了存数据，改进是为了查询效率越来越高</strong></p>
-<p><strong>为什么要使用数组+链表的形式？</strong></p>
-<p>HashMap 底层数组的默认大小是 16，最大索引是 15，数组是可以<strong>扩容</strong>的。</p>
-<p>HashMap 以 key-value 的形式进行存储，key+value 会以一个 Entry 对象的形式来存储，把 Entry 存入数组中，具体存入的下标不是按顺序存入，而是通过 key 获取对应的 hash 值，再根据 <strong>hash 值与数组最大索引进行按位与运算</strong>（将操作数转换为二进制，分别对比各位上的值，都为 1 则该位返回 1，否则返回 0，得到的结果就是按位与运算结果）</p>
-<p>与数组最大索引进行按位与运算是为了保证数组下标不越界</p>
-<p>A &amp; B 结果一定是小于等于 B</p>
-<p>很有可能出现两个 Entry 下标一样，hash 冲突，我们应该尽量避免，如果一旦一样怎么处理？意味着需要将两个 Entry 存入数组中的同一个位置，所以就形成了链表。</p>
-<p>数组中存储的是第一个 Entry 的地址，第二个 Entry 就往后排。</p>
-<p><img src="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/1.png" alt="1611106695027"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/20/HashMap%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://xzso3o.github.io/2021/01/19/%E6%B3%9B%E5%9E%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="xzs">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/%5Bobject%20Object%5D">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/19/%E6%B3%9B%E5%9E%8B/" itemprop="url">泛型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-19T21:15:04+08:00">
-                2021-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index">
-                    <span itemprop="name">Java基础</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  614
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>Generics （泛型）是指在类定义时<strong>不指定类中信息的具体数据类型</strong>，而是用一个标识符来替代，当外部实例化对象时来指定具体的数据类型。</p>
-<p>有了泛型，就可以在定义类的时候不指定具体的类型信息，极大的提升程序的灵活性。</p>
-<h2 id="泛型的应用"><a href="#泛型的应用" class="headerlink" title="泛型的应用"></a>泛型的应用</h2><p>基本语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class 类名&lt;T,D,A...&gt;&#123;</span><br><span class="line">	private T param1;</span><br><span class="line">	private D param2;</span><br><span class="line">	private A param3;</span><br><span class="line">	</span><br><span class="line">	public T test()&#123;</span><br><span class="line">		return T;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Time</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> T value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xzs.test2;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Time&lt;Integer&gt; time = <span class="keyword">new</span> Time();</span><br><span class="line">        time.setValue(<span class="number">10</span>);</span><br><span class="line">        System.out.println(<span class="string">"现在的时间是:"</span> + time.getValue());</span><br><span class="line">        Time&lt;String&gt; time1 = <span class="keyword">new</span> Time();</span><br><span class="line">        time1.setValue(<span class="string">"十点整"</span>);</span><br><span class="line">        System.out.println(<span class="string">"现在的时间是:"</span> + time1.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2021/01/19/%E6%B3%9B%E5%9E%8B/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-	
-	
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2280,7 +2464,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2443,7 +2627,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共61.8k字</span>
+  <span class="post-count">博客全站共89.3k字</span>
 </div>
 
 
